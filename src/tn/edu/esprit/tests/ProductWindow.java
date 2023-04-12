@@ -8,18 +8,22 @@ package tn.edu.esprit.tests;
 import java.io.IOException;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import tn.edu.esprit.utils.Database;
 
 /**
  *
  * @author ghada
  */
-public class MainClass extends Application {
-       @Override
+public class ProductWindow extends Application {
+    
+    @Override
     public void start(Stage primaryStage) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AddProduct.fxml"));
         Parent root = loader.load();
@@ -27,7 +31,7 @@ public class MainClass extends Application {
          
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Add Produit");
+        primaryStage.setTitle("Welcome");
         primaryStage.show();
     }
 
@@ -37,4 +41,5 @@ public class MainClass extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+    
 }
