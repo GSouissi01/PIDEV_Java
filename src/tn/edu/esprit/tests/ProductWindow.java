@@ -25,7 +25,7 @@ public class ProductWindow extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AddProduct.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/ListProduct.fxml"));
         Parent root = loader.load();
         
          

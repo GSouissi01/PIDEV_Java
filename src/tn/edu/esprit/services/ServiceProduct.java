@@ -17,6 +17,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import tn.edu.esprit.entities.Promotion;
 import tn.edu.esprit.utils.Database;
 
 /**
@@ -25,11 +30,30 @@ import tn.edu.esprit.utils.Database;
  */
 public class ServiceProduct implements IProduct<Produit>{
     Connection cnx = Database.getInstance().getCnx();
+      private static ServiceProduct instance;
+  
+    private Statement st;
+    private ResultSet rs;
+    public ServiceProduct(){
+     Database cs=Database.getInstance();
+        try {
+            st=cs.getCnx().createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceProduct.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+        
+    public static ServiceProduct getInstance(){
+        if(instance==null) 
+            instance=new ServiceProduct();
+        return instance;
+    }
+    
 
     @Override
     public void ajouter(Produit p) {
         try {
-            String req = "INSERT INTO produit (libelle, stock, prix, dateexpiration, prixachat, image_file) VALUES ('"+p.getLibelle()+"', '"+p.getStock()+"','"+p.getPrix()+"','"+formatDate(p.getDateexpiration()) +"','"+p.getPrixachat()+"','"+p.getImageFile()+"')";
+            String req = "INSERT INTO produit (libelle, stock, prix, dateexpiration, promotion_id,prixachat ,image_file) VALUES ('"+p.getLibelle()+"', '"+p.getStock()+"','"+p.getPrix()+"','"+formatDate(p.getDateexpiration()) +"', '" + p.getPromotion().getIdpromo() + "','"+p.getPrixachat()+ "', '" +p.getImageFile()+"')";
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
             System.out.println("produit created !");
@@ -38,38 +62,10 @@ public class ServiceProduct implements IProduct<Produit>{
         }
     }
     
-    public void register(Produit u) {/*
-        try {
-            String req = "INSERT INTO `produit1` (`email`, `password`,`nom`, `prenom`,`tel`, `nomSup`, `adresseSup`) VALUES (?,?)";
-            PreparedStatement ps = cnx.prepareStatement(req);
-            ps.setString(1, u.getEmail());
-            ps.setString(2, u.getPassword());
-            ps.setString(3, u.getNom());
-            ps.setString(4, u.getPrenom());
-            ps.setString(5, String.valueOf(u.getTel()));
-            ps.setString(6, u.getNomSup());
-            ps.setString(7, u.getAdresseSup());
-            ps.executeUpdate();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }*/
-    }
     
+  
     
-    
-    public void ajouter2(Produit p) {
-        /*try {
-            String req = "INSERT INTO `personne` (`nom`, `prenom`) VALUES (?,?)";
-            PreparedStatement ps = cnx.prepareStatement(req);
-            ps.setString(2, p.getPrenom());
-            ps.setString(1, p.getNom());
-            ps.executeUpdate();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }*/
-    }
-    
-    @Override
+   /* @Override
     public void supprimer(int id) {
         try {
             String req = "DELETE FROM `produit` WHERE id = " + id;
@@ -79,39 +75,109 @@ public class ServiceProduct implements IProduct<Produit>{
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-    }
-
-    @Override
-    public void modifier(Produit p) {
-       /* try {
-            String req = "UPDATE `produit` SET `nom` = '" + p.getNom() + "', `prenom` = '" + p.getPrenom() + "' WHERE `personne`.`id` = " + p.getId();
-            Statement st = cnx.createStatement();
-            st.executeUpdate(req);
-            System.out.println("Personne updated !");
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }*/
-    }
-
-    @Override
-    public List<Produit> getAll() {
+    }*/
+    
+    
+       @Override
+    public Produit displayById(int id) {
+        String req = "Select * from produit where id =" + id;
         
-        List<Produit> list = new ArrayList<>();
+                  Produit p = new Produit();
         try {
-            String req = "Select * from personne";
-            Statement st = cnx.createStatement();
-            ResultSet rs = st.executeQuery(req);
-            while(rs.next()){
-                //Produit p = new Produit(rs.getInt(1), rs.getString("nom"), rs.getString(3));
-                //list.add(p);
-            }
+            
+             rs=st.executeQuery(req);
+           // while(rs.next()){
+            rs.next();
+                p.setId(rs.getInt(1));
+               p.setLibelle(rs.getString("libelle"));
+               p.setStock(rs.getInt("stock"));
+                p.setPrix(rs.getInt("prix"));
+               p.setDateexpiration(rs.getDate("dateexpiration"));
+             
+               p.setPrixachat(rs.getInt("prixachat"));
+               p.setImageFile(rs.getString("image_file"));
+              
+        
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-
-        
-        return list;
+     return p; 
     }
+    
+
+         @Override
+    public void supprimer(int id) {
+        String req="delete from produit where id="+id;
+        Produit p=displayById(id);
+        
+          if(p!=null)
+              try {
+           
+            st.executeUpdate(req);
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceProduct.class.getName()).log(Level.SEVERE, null, ex);
+        }else System.out.println("n'existe pas");
+    }
+        
+        
+@Override
+public void modifier(Produit p) {
+    try {
+        String req = "UPDATE `produit` SET `libelle` = '" + p.getLibelle() + "', `stock` = " + p.getStock() + ", `prix` = " + p.getPrix() + ", `dateexpiration` = '" + new SimpleDateFormat("yyyy-MM-dd").format(p.getDateexpiration()) + "', `prixAchat` = " + p.getPrixachat() + ", `image_file` = '" + p.getImageFile() + "' WHERE `produit`.`id` = " + p.getId();
+        Statement st = cnx.createStatement();
+        st.executeUpdate(req);
+        System.out.println("Produit updated !");
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+}
+
+
+
+   @Override
+public List<Produit> getAll() {
+    
+    List<Produit> list = new ArrayList<>();
+    try {
+        String req = "SELECT * FROM produit LEFT JOIN promotion ON produit.promotion_id = promotion.idpromo";
+        Statement st = cnx.createStatement();
+        ResultSet rs = st.executeQuery(req);
+        while(rs.next()){
+            Produit p = new Produit();
+            Promotion promo = new Promotion();
+            
+            p.setId(rs.getInt("id"));
+            p.setLibelle(rs.getString("libelle"));
+            p.setStock(rs.getInt("stock"));
+            p.setPrix(rs.getInt("prix"));
+            p.setDateexpiration(rs.getDate("dateexpiration"));
+            promo.setPourcentage(rs.getInt("pourcentage"));
+            p.setPromotion(promo);
+            p.setPrixachat(rs.getInt("prixachat"));
+            p.setImageFile(rs.getString("image_file"));
+          
+            list.add(p);
+        }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+
+    
+    return list;
+}
+
+    
+
+          
+            
+    
+    
+    
+    
+    
+    
+    
 
     private String formatDate(Date dateexpiration) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

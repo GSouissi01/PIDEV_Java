@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="625.0" prefWidth="816.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.edu.esprit.gui.homeprodController">
+   <children>
+      
+      <HBox fx:id="root" layoutX="2.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="588.0" prefWidth="918.0">
+         <children>
+            <VBox prefHeight="609.0" prefWidth="222.0">
+               <children>
+                  <AnchorPane fx:id="side_menu" prefHeight="731.0" prefWidth="220.0" styleClass="side_menu" stylesheets="@home.css">
+                     <children>
+                        
+                        <Button fx:id="menu_btn" layoutX="18.0" layoutY="329.0" mnemonicParsing="false" onAction="#home" prefHeight="43.0" prefWidth="178.0" styleClass="menu-btn" stylesheets="@home.css" text="HOME" textFill="#5dc21d">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="product" layoutX="18.0" layoutY="390.0" mnemonicParsing="false" onAction="#product" prefHeight="43.0" prefWidth="178.0" styleClass="menu-btn" stylesheets="@home.css" text="Products" textFill="#5dc21d">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font>
+                        </Button>
+                        <Label fx:id="username" alignment="CENTER" layoutX="79.0" layoutY="212.0" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Black" size="12.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="7.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+        <Image url="file:///C:/xampp/htdocs/produit_final/produit/public/images/logo/1.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="promotion" layoutX="18.0" layoutY="451.0" mnemonicParsing="false" onAction="#promotion" prefHeight="43.0" prefWidth="178.0" styleClass="menu-btn" stylesheets="@home.css" text="Promotions" textFill="#5dc21d">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+            <AnchorPane prefHeight="588.0" prefWidth="701.0">
+               <children>
+                  <ImageView fitHeight="588.0" fitWidth="699.0">
+                  
+    <image>
+        <Image url="file:///C:/Users/azizb/Downloads/background.jpg" />
+    </image>
+</ImageView>
+
+                
+               </children></AnchorPane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

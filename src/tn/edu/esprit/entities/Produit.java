@@ -5,6 +5,10 @@
  */
 package tn.edu.esprit.entities;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Date;
 
 /**
@@ -12,13 +16,45 @@ import java.util.Date;
  * @author azizbramli
  */
 public class Produit {
-    int id;
-    String libelle;
-    int stock;
-    float prix;
-    Date dateexpiration;
-    float prixachat;
-    String imageFile;
+   private int id;
+   private String libelle;
+  private  int stock;
+   private float prix;
+  private  Date dateexpiration;
+  private  float prixachat;
+   private String imageFile;
+    private Promotion promotion;
+    
+        public Produit(int id, String libelle, int stock, float prix, Date dateexpiration, float prixachat,int idpromo ,String imageFile) {
+        this.id = id;
+        this.libelle = libelle;
+        this.stock = stock;
+        this.prix = prix;
+        this.dateexpiration = dateexpiration;
+        this.prixachat = prixachat;
+        this.promotion.idpromo=idpromo;
+        this.imageFile = imageFile;
+    }
+  public Produit(String libelle, int stock, float prix, Date dateexpiration,Promotion promotion,float prixachat ,String imageFile) {
+       
+        this.libelle = libelle;
+        this.stock = stock;
+        this.prix = prix;
+        this.dateexpiration = dateexpiration;
+        this.prixachat = prixachat;
+      this.promotion=promotion;
+        this.imageFile = imageFile;
+    }
+
+
+
+    public void setPromotion(Promotion promotion) {
+        this.promotion = promotion;
+    }
+
+    public Promotion getPromotion() {
+        return promotion;
+    }
 
     public Produit(int id, String libelle, int stock, float prix, Date dateexpiration, float prixachat, String imageFile) {
         this.id = id;
@@ -42,6 +78,15 @@ public class Produit {
     public Produit() {
      
     }
+
+    public Produit(int id) {
+this.id=id;    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+ 
 
     public int getId() {
         return id;
@@ -97,11 +142,11 @@ public class Produit {
 
     @Override
     public String toString() {
-        return "Produit{" + "libelle=" + libelle + ", stock=" + stock + ", prix=" + prix + ", dateexpiration=" + dateexpiration + ", prixachat=" + prixachat + ", imageFile=" + imageFile + '}';
+        return "Produit{" + "id=" + id + ", libelle=" + libelle + ", stock=" + stock + ", prix=" + prix + ", dateexpiration=" + dateexpiration + ", prixachat=" + prixachat + ", imageFile=" + imageFile + '}';
     }
-    
-    
-    
+
+  
+
     
     
 }
