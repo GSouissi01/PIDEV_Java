@@ -26,7 +26,7 @@ public class UserWindow extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/Register.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/BackEnd.fxml"));
         Parent root = loader.load();
         
          

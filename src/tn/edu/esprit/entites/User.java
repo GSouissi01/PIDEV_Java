@@ -18,8 +18,40 @@ public class User {
     private int tel; 
     private String nomSup;
     private String adresseSup;
+    String imagePath; 
+    private String role;
 
     public User() {
+    }
+
+    public User(String email, String password, String nom, String prenom, int tel, String nomSup, String adresseSup, String imagePath) {
+        this.email = email;
+        this.password = password;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.tel = tel;
+        this.nomSup = nomSup;
+        this.adresseSup = adresseSup;
+        this.imagePath = imagePath;
+    }
+
+    public User(int id, String email, String nom, String prenom, int tel, String nomSup, String adresseSup) {
+        this.id = id;
+        this.email = email;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.tel = tel;
+        this.nomSup = nomSup;
+        this.adresseSup = adresseSup;
+    }
+
+    public User(String email, String nom, String prenom, int tel, String nomSup, String adresseSup) {
+        this.email = email;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.tel = tel;
+        this.nomSup = nomSup;
+        this.adresseSup = adresseSup;
     }
 
     public User(int id, String email, String password, String nom, String prenom, int tel, String nomSup, String adresseSup) {
@@ -41,6 +73,26 @@ public class User {
         this.tel = tel;
         this.nomSup = nomSup;
         this.adresseSup = adresseSup;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+    
+    public void setProfilePic(String imagePath) {
+        this.imagePath = imagePath;
     }
 
     public int getId() {
