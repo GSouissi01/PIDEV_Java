@@ -3,16 +3,25 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/tests/UserWindow.java</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/UserDashboard1Controller.java</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/Login1.fxml</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/Register1Controller.java</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/UserAcc1Controller.java</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/Register1.fxml</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/UserDashboard1.fxml</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/Login1Controller.java</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/UserAcc1.fxml</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/UserAcc.fxml</file>
+            <file>file:/C:/Users/khalil.jammezi/OneDrive%20-%20Keyrus/Bureau/Workshop3A36/src/GUI/Page3Controller.java</file>
+            <file>file:/C:/Users/khalil.jammezi/OneDrive%20-%20Keyrus/Bureau/Workshop3A36/src/utils/MyConnection.java</file>
+            <file>file:/C:/Users/khalil.jammezi/OneDrive%20-%20Keyrus/Bureau/Workshop3A36/src/GUI/ModifierCatController.java</file>
+            <file>file:/C:/Users/khalil.jammezi/OneDrive%20-%20Keyrus/Bureau/Workshop3A36/src/entities/Depense.java</file>
+            <file>file:/C:/Users/khalil.jammezi/OneDrive%20-%20Keyrus/Bureau/Workshop3A36/src/Interfaces/InterfaceDepense.java</file>
+            <file>file:/C:/Users/khalil.jammezi/OneDrive%20-%20Keyrus/Bureau/Workshop3A36/src/entities/Categorie.java</file>
+            <file>file:/C:/Users/khalil.jammezi/OneDrive%20-%20Keyrus/Bureau/Workshop3A36/src/services/CategorieCRUD.java</file>
+            <file>file:/C:/Users/khalil.jammezi/OneDrive%20-%20Keyrus/Bureau/Workshop3A36/src/GUI/AjouterDepenseController.java</file>
+            <file>file:/C:/Users/khalil.jammezi/OneDrive%20-%20Keyrus/Bureau/Workshop3A36/src/GUI/page2.fxml</file>
+            <file>file:/C:/Users/khalil.jammezi/OneDrive%20-%20Keyrus/Bureau/Workshop3A36/src/services/DepenseCRUD.java</file>
+            <file>file:/C:/Users/khalil.jammezi/OneDrive%20-%20Keyrus/Bureau/Workshop3A36/src/GUI/AjouterCat.fxml</file>
+            <file>file:/C:/Users/khalil.jammezi/OneDrive%20-%20Keyrus/Bureau/Workshop3A36/src/GUI/ModifierCat.fxml</file>
+            <file>file:/C:/Users/khalil.jammezi/OneDrive%20-%20Keyrus/Bureau/Workshop3A36/src/GUI/Page2Controller.java</file>
+            <file>file:/C:/Users/khalil.jammezi/OneDrive%20-%20Keyrus/Bureau/Workshop3A36/src/GUI/FirstWindow.java</file>
+            <file>file:/C:/Users/khalil.jammezi/OneDrive%20-%20Keyrus/Bureau/Workshop3A36/src/GUI/AjouterCatController.java</file>
+            <file>file:/C:/Users/khalil.jammezi/OneDrive%20-%20Keyrus/Bureau/Workshop3A36/src/GUI/ModifierDepense.fxml</file>
+            <file>file:/C:/Users/khalil.jammezi/OneDrive%20-%20Keyrus/Bureau/Workshop3A36/src/GUI/MainController.java</file>
+            <file>file:/C:/Users/khalil.jammezi/OneDrive%20-%20Keyrus/Bureau/Workshop3A36/src/GUI/txtDate.java</file>
+            <file>file:/C:/Users/khalil.jammezi/OneDrive%20-%20Keyrus/Bureau/Workshop3A36/src/GUI/ModifierDepenseController.java</file>
         </group>
     </open-files>
 </project-private>

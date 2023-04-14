@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
+
+<HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Page2Controller">
+   <children>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="depense" textAlignment="CENTER">
+         <style>
+            <String fx:value="-fx-font-family: 'Bernard MT Condensed'; -fx-font-size: 38.0;" />
+         </style>
+      </Text>
+      <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+         <children>
+            <TableView fx:id="tableDepenses" layoutX="52.0" layoutY="59.0" prefHeight="249.0" prefWidth="496.0">
+               <columns>
+                  <TableColumn fx:id="colLibelle" prefWidth="215.0" text="id">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="id" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="colMontant" prefWidth="90.0" text="Prix">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="prix" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="colDate" prefWidth="90.0" text="Date">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="date" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="colPaye" prefWidth="101.0" text="ETAT">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="etat" />
+                     </cellValueFactory>
+                  </TableColumn>
+               </columns>
+            </TableView>
+             <Button fx:id="btnAjouter" layoutX="52.0" layoutY="329.0" mnemonicParsing="false" onAction="#ajouterDepense" text="Ajouter" />
+      <Button fx:id="btnSupprimer" layoutX="217.0" layoutY="329.0" mnemonicParsing="false" onAction="#supprimerDepense" text="Supprimer" />
+      <Button fx:id="btnModifier" layoutX="371.0" layoutY="329.0" mnemonicParsing="false" onAction="#modifierDepense" text="Modifier" />
+
+         </children>
+      </AnchorPane>
+   </children>
+</HBox>

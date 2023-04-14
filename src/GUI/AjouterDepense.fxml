@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AjouterDepenseController">
+   <children>
+      <Label layoutX="105.0" layoutY="47.0" text="description" />
+      <Label layoutX="105.0" layoutY="107.0" text="Montant" />
+      <Label layoutX="105.0" layoutY="167.0" text="Date" />
+        <Label layoutX="105.0" layoutY="267.0" text="Montant total" />
+      <Label layoutX="105.0" layoutY="227.0" text="Payé" />
+      <TextField fx:id="fxLibelle" layoutX="259.0" layoutY="43.0" />
+      <TextField fx:id="fxMontant" layoutX="259.0" layoutY="103.0" />
+      <DatePicker fx:id="fxDate" layoutX="259.0" layoutY="163.0" />
+          <TextField fx:id="ttt" layoutX="256.0" layoutY="256.0" />
+
+      <CheckBox fx:id="fxPaye" layoutX="259.0" layoutY="223.0" text="Payé" />
+      <Button fx:id="fxButton" layoutX="259.0" layoutY="296.0" mnemonicParsing="false" onAction="#save" text="Ajouter" />
+   </children>
+</AnchorPane>
