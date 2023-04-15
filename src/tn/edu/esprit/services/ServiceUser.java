@@ -85,6 +85,18 @@ public class ServiceUser implements IUser<User>{
     }
 }
     
+    public void supprimeruser(User us) {
+        try {
+            String req = "DELETE FROM user WHERE id = ?";
+            PreparedStatement ste=cnx.prepareStatement(req);
+            ste.setInt(1, us.getId());
+            ste.executeUpdate();
+            System.out.println("user supprimé !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
     @Override
     public User login(String email, String password) {
     try {

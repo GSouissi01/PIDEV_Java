@@ -108,7 +108,7 @@ public class Login1Controller implements Initializable {
                         
                         tfEmail_Login.getScene().setRoot(root);
         
-            Scene scene = new Scene(root);
+        Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();

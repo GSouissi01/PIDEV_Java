@@ -55,8 +55,6 @@ public class UserAcc1Controller implements Initializable {
     @FXML
     private ImageView profilePic;
     @FXML
-    private HBox root;
-    @FXML
     private AnchorPane side_menu;
     @FXML
     private ImageView logo;
@@ -76,6 +74,10 @@ public class UserAcc1Controller implements Initializable {
     private Pane pane;
     @FXML
     private Button btnSupprimer;
+    @FXML
+    private Button logoutBtn;
+    @FXML
+    private HBox root1;
 
     /**
      * Initializes the controller class.
@@ -139,6 +141,22 @@ public class UserAcc1Controller implements Initializable {
         }
 }
 
+    @FXML
+    public void handleLogOutBtn(ActionEvent event) {
+        try {
+            // Load the FXML file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Register1.fxml"));
+            Parent root = loader.load();
+
+            // Create a new scene and display it
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+}
    
     @FXML
 void ModifierUser(ActionEvent event) {

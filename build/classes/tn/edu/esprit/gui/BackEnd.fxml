@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="569.0" prefWidth="826.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="tn.edu.esprit.gui.BackEndController">
+<AnchorPane id="AnchorPane" prefHeight="569.0" prefWidth="826.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.edu.esprit.gui.BackEndController">
    <children>
       <HBox prefHeight="569.0" prefWidth="826.0">
          <children>
@@ -43,6 +42,7 @@
                               <Font name="Arial Rounded MT Bold" size="13.0" />
                            </font>
                         </Button>
+                        <Button layoutX="47.0" layoutY="521.0" mnemonicParsing="false" onAction="#handleLogOutBtn" prefHeight="24.0" prefWidth="115.0" styleClass="menu3-btn" stylesheets="@back.css" text="Log out" textFill="WHITE" />
                      </children>
                   </AnchorPane>
                </children>
@@ -54,7 +54,7 @@
                         <Image url="file:/C:/Users/SOUISSI/Downloads/laundry+detergent+aisle+Charlotte+North+Carolina+South+Carolina.jpg" />
                      </image>
                   </ImageView>
-                  <FlowPane fx:id="pane" layoutX="39.0" layoutY="44.0" prefHeight="145.0" prefWidth="141.0" />
+                  <FlowPane fx:id="pane" layoutX="39.0" layoutY="44.0" prefHeight="130.0" prefWidth="127.0" />
                </children>
             </AnchorPane>
          </children>

@@ -8,15 +8,21 @@ package tn.edu.esprit.gui;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -29,6 +35,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import tn.edu.esprit.entities.User;
 import tn.edu.esprit.services.ServiceUser;
 
@@ -107,10 +114,11 @@ ServiceUser su = new ServiceUser();
     Text userPrenom = new Text("Prénom: " + us.getPrenom());
     userPrenom.setFill(javafx.scene.paint.Color.BLACK);
     userPrenom.setWrappingWidth(175.0);
+    int idUser=su.getUserIdByEmail(us.getEmail());
     Button deleteButton = new Button("Delete");
     deleteButton.setOnAction(event -> {
         ServiceUser serviceUser = new ServiceUser();
-        serviceUser.supprimer(us);
+        serviceUser.supprimerUser(idUser);
         pane.getChildren().clear();
         initialize(location, resources);
     });
@@ -124,6 +132,22 @@ ServiceUser su = new ServiceUser();
     count++;
 
 }
+}
+@FXML
+    public void handleLogOutBtn(ActionEvent event) {
+        try {
+            // Load the FXML file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Register1.fxml"));
+            Parent root = loader.load();
+
+            // Create a new scene and display it
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 }
 
     

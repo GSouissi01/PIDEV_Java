@@ -22,7 +22,7 @@
                         <Font name="Arial Rounded MT Bold" size="17.0" />
                      </font>
                   </Label>
-                  <Button fx:id="tfCreateAcc1_btn" layoutX="96.0" layoutY="547.0" mnemonicParsing="false" onAction="#handleCreateAccountButtonAction" prefHeight="21.0" prefWidth="210.0" styleClass="create-btn" text="Create Account">
+                  <Button fx:id="tfCreateAcc1_btn" layoutX="96.0" layoutY="547.0" mnemonicParsing="false" onAction="#handleCreateAccountButtonAction" prefHeight="21.0" prefWidth="210.0" styleClass="login-btn" text="Create Account">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -51,7 +51,7 @@
                         <Font name="Arial Rounded MT Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Button fx:id="tfLogin1_btn" layoutX="108.0" layoutY="386.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="27.0" prefWidth="206.0" styleClass="login-btn" text="Sign In" textFill="WHITE">
+                  <Button fx:id="tfLogin1_btn" layoutX="108.0" layoutY="386.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="27.0" prefWidth="206.0" styleClass="create-btn" text="Sign In" textFill="WHITE">
                      <font>
                         <Font size="13.0" />
                      </font>
