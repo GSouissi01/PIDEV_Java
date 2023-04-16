@@ -6,6 +6,7 @@
 package tn.edu.esprit.gui;
 
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.text.DateFormat;
@@ -32,6 +33,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import tn.edu.esprit.entities.Produit;
 import tn.edu.esprit.entities.Promotion;
@@ -80,11 +83,19 @@ private DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
     private Button product;
     @FXML
     private Button promotion;
+    @FXML
+    private TextField tftitre;
+    @FXML
+    private TableColumn<Promotion, String> titre;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        TablePromotion.setStyle("-fx-font-family: Arial; -fx-selection-bar: lightblue;");
+
+// Charger un fichier CSS externe
+TablePromotion.getStylesheets().add("file:///C:/Users/azizb/Downloads/tableview.css");
         ObservableList<String> options = FXCollections.observableArrayList(
     "active",
     "cancelled",
@@ -98,6 +109,7 @@ tfstatus.setItems(options);
     datedebut.setCellValueFactory(new PropertyValueFactory<>("datedebut"));
     datefin.setCellValueFactory(new PropertyValueFactory<>("datefin"));
     status.setCellValueFactory(new PropertyValueFactory<>("status"));
+    titre.setCellValueFactory(new PropertyValueFactory<>("titre"));
   
               TablePromotion.setOnMouseClicked(event -> {
     Promotion pr = TablePromotion.getSelectionModel().getSelectedItem();
@@ -106,7 +118,28 @@ tfstatus.setItems(options);
     }
 });
 
-   
+      Media media = new Media(new File("C:\\Users\\azizb\\Downloads\\sound.mp3").toURI().toString());
+
+    // Ajouter un événement de souris pour jouer le son lors du survol du bouton "menu_btn"
+    menu_btn.setOnMouseEntered(e -> {
+        // Créer un nouveau MediaPlayer pour chaque événement de souris
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.play();
+    });
+    
+    // Ajouter un événement de souris pour jouer le son lors du survol du bouton "promotion"
+    promotion.setOnMouseEntered(e -> {
+        // Créer un nouveau MediaPlayer pour chaque événement de souris
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.play();
+    });
+    
+    // Ajouter un événement de souris pour jouer le son lors du survol du bouton "product"
+    product.setOnMouseEntered(e -> {
+        // Créer un nouveau MediaPlayer pour chaque événement de souris
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.play();
+    });
     
         // TODO
     }    
@@ -114,6 +147,7 @@ tfstatus.setItems(options);
 @FXML
 private void ajouter(ActionEvent event) {
     // Retrieve input values from the GUI
+    String titre=tftitre.getText();
     String description = tfdescription.getText();
     String pourcentageString = tfpourcentage.getText();
     int pourcentage = 0;
@@ -135,10 +169,22 @@ private void ajouter(ActionEvent event) {
         alert.setHeaderText(null);
         alert.setContentText("Veuillez remplir tous les champs");
         alert.showAndWait();
-    } else {
+    }else if (tfdatedebut.getValue().isAfter(tfdatefin.getValue())|| tfdatedebut.getValue().isBefore(LocalDate.now()) || tfdatefin.getValue().isBefore(LocalDate.now())) {
+        alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error Message");
+        alert.setHeaderText(null);
+        alert.setContentText("La date de fin doit être après la date de début et être supérieure à la date actuelle");
+        alert.showAndWait();
+    } else if (pourcentage < 0 ) {
+    alert = new Alert(Alert.AlertType.ERROR);
+    alert.setTitle("Error Message");
+    alert.setHeaderText(null);
+    alert.setContentText("Le pourcentage doit être positive ");
+    alert.showAndWait();
+} else {
         try {
             // Create a Promotion object with the input values
-            Promotion p = new Promotion(description, pourcentage, java.sql.Date.valueOf(datedebut), java.sql.Date.valueOf(datefin), status);
+            Promotion p = new Promotion(description, pourcentage, java.sql.Date.valueOf(datedebut), java.sql.Date.valueOf(datefin), status,titre);
             
             // Call the ServicePromotion to add the Promotion object to the database
             ServicePromotion promotiondao = new ServicePromotion();
@@ -184,7 +230,7 @@ private void fillTextFields(Promotion p) {
     tfdescription.setText(p.getDescription());
     tfpourcentage.setText(Integer.toString(p.getPourcentage()));
   tfstatus.getSelectionModel().select(p.getStatus());
- 
+ tftitre.setText(p.getTitre());
 }
 
 
@@ -200,6 +246,7 @@ private void modifier(ActionEvent event) {
         return;
     }
 
+    String titre=tftitre.getText();
     String description = tfdescription.getText();
     String stockString = tfpourcentage.getText();
     int pourcentage = 0;
@@ -211,7 +258,7 @@ private void modifier(ActionEvent event) {
     String status = tfstatus.getSelectionModel().getSelectedItem();
 
     Alert alert;
-    if (description.isEmpty() || stockString.isEmpty() || datedebut == null || datefin == null) {
+    if (description.isEmpty() || stockString.isEmpty() || datedebut == null || datefin == null||titre.isEmpty()) {
         alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error Message");
         alert.setHeaderText(null);
@@ -223,11 +270,13 @@ private void modifier(ActionEvent event) {
             String dateStr = sdf.format(java.sql.Date.valueOf(datedebut));
             String dateStrf = sdf.format(java.sql.Date.valueOf(datefin));
 
+           
             p.setDescription(description);
             p.setPourcentage(pourcentage);
             p.setDatedebut(sdf.parse(dateStr));
             p.setDatefin(sdf.parse(dateStrf));
             p.setStatus(status);
+             p.setTitre(titre);
 
             ServicePromotion sp = new ServicePromotion();
             sp.update(p);

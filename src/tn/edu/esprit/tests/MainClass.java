@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import tn.edu.esprit.entities.Produit;
 import tn.edu.esprit.entities.Promotion;
+
 import tn.edu.esprit.services.ServiceProduct;
 import tn.edu.esprit.services.ServicePromotion;
 import tn.edu.esprit.utils.Database;
@@ -30,10 +31,14 @@ public class MainClass extends Application {
         
          
         Scene scene = new Scene(root);
+
+
         primaryStage.setScene(scene);
-        primaryStage.setTitle("HOME");
+        primaryStage.setTitle("COMPTAMERVEILLE");
         primaryStage.show();
     }
+    
+
 
     /**
      * @param args the command line arguments

@@ -58,15 +58,14 @@ public class ServicePromotion implements ipromotion<Promotion> {
             while(rs.next()){
                   Promotion p = new Promotion();
                 p.setIdpromo(rs.getInt(1));
-               p.setDescription(rs.getString("description"));
-               p.setPourcentage(rs.getInt("pourcentage"));
-              
-               p.setDatedebut(rs.getDate("datedebut"));
-                 p.setDatefin(rs.getDate("datefin"));
-             
-              
-               p.setStatus(rs.getString("status"));
-              
+                
+                   
+            p.setDescription(rs.getString("description"));
+            p.setPourcentage(rs.getInt("pourcentage"));
+            p.setDatedebut(rs.getDate("datedebut"));
+            p.setDatefin(rs.getDate("datefin"));
+            p.setStatus(rs.getString("status"));
+             p.setTitre(rs.getString("titre"));
                
                list.add(p);
              
@@ -82,13 +81,14 @@ public class ServicePromotion implements ipromotion<Promotion> {
     @Override
     public void insert(Promotion o) {
         try {
-            String req = "INSERT INTO promotion (description, pourcentage, datedebut, datefin, status) VALUES (?, ?, ?, ?, ?)";
+            String req = "INSERT INTO promotion (description, pourcentage, datedebut, datefin, status,titre) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setString(1, o.getDescription());
             ps.setInt(2, o.getPourcentage());
             ps.setDate(3, new java.sql.Date(o.getDatedebut().getTime()));
             ps.setDate(4, new java.sql.Date(o.getDatefin().getTime()));
             ps.setString(5, o.getStatus());
+            ps.setString(6, o.getTitre());
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -116,13 +116,13 @@ public class ServicePromotion implements ipromotion<Promotion> {
             ResultSet rs = st.executeQuery(req);
             while(rs.next()){
                 Promotion p = new Promotion();
-                p.setIdpromo(rs.getInt("idpromo"));
-                p.setDescription(rs.getString("description"));
-                p.setPourcentage(rs.getInt("pourcentage"));
-                p.setDatedebut(rs.getDate("datedebut"));
-                p.setDatefin(rs.getDate("datefin"));
-                p.setStatus(rs.getString("status"));
-                list.add(p);
+                    p.setIdpromo(rs.getInt("idpromo"));
+            p.setDescription(rs.getString("description"));
+            p.setPourcentage(rs.getInt("pourcentage"));
+            p.setDatedebut(rs.getDate("datedebut"));
+            p.setDatefin(rs.getDate("datefin"));
+            p.setStatus(rs.getString("status"));
+             p.setTitre(rs.getString("titre"));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -140,12 +140,13 @@ public class ServicePromotion implements ipromotion<Promotion> {
            // while(rs.next()){
             rs.next();
                 p.setIdpromo(rs.getInt(1));
-               p.setDescription(rs.getString("description"));
-               p.setPourcentage(rs.getInt("pourcentage"));
-              
-               p.setDatedebut(rs.getDate("datedebut"));
-                 p.setDatefin(rs.getDate("datefin"));
-               p.setStatus(rs.getString("status"));
+           
+            p.setDescription(rs.getString("description"));
+            p.setPourcentage(rs.getInt("pourcentage"));
+            p.setDatedebut(rs.getDate("datedebut"));
+            p.setDatefin(rs.getDate("datefin"));
+            p.setStatus(rs.getString("status"));
+             p.setTitre(rs.getString("titre"));
             //}  
         } catch (SQLException ex) {
             Logger.getLogger(ServicePromotion.class.getName()).log(Level.SEVERE, null, ex);
@@ -155,7 +156,7 @@ public class ServicePromotion implements ipromotion<Promotion> {
 
   @Override
 public Promotion getOneByName(String nom) {
-    String req = "SELECT * FROM promotion WHERE description=?";
+    String req = "SELECT * FROM promotion WHERE titre=?";
     Promotion p = new Promotion();
     try {
         PreparedStatement ps = cnx.prepareStatement(req);
@@ -168,6 +169,7 @@ public Promotion getOneByName(String nom) {
             p.setDatedebut(rs.getDate("datedebut"));
             p.setDatefin(rs.getDate("datefin"));
             p.setStatus(rs.getString("status"));
+             p.setTitre(rs.getString("titre"));
         }
     } catch (SQLException ex) {
         Logger.getLogger(ServicePromotion.class.getName()).log(Level.SEVERE, null, ex);
@@ -200,8 +202,10 @@ String req = "UPDATE `promotion` SET " +
              "`pourcentage` = " + p.getPourcentage() + ", " +
              "`datedebut` = '" + new SimpleDateFormat("yyyy-MM-dd").format(p.getDatedebut()) + "', " +
              "`datefin` = '" + new SimpleDateFormat("yyyy-MM-dd").format(p.getDatefin()) + "', " +
-             "`status` = '" + p.getStatus() + "' " +
-             " WHERE idpromo ="+ p.getIdpromo();
+             "`status` = '" + p.getStatus() + "', " +
+             "`titre` = '" + p.getTitre() + "' " +
+             "WHERE idpromo =" + p.getIdpromo();
+
         Statement st = cnx.createStatement();
         st.executeUpdate(req);
         System.out.println("Promoton updated !");

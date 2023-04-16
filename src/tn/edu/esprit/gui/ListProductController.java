@@ -33,10 +33,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -57,7 +60,7 @@ public class ListProductController implements Initializable {
       private ListData listdata = new ListData();
 
     @FXML
-    private FlowPane productPane;
+    private GridPane productPane;
       @FXML
     private Button back;
     @FXML
@@ -71,31 +74,33 @@ public class ListProductController implements Initializable {
 
   
 
-  
-@Override
+ @Override
 public void initialize(URL location, ResourceBundle resources) {
+       Media media = new Media(new File("C:\\Users\\azizb\\Downloads\\sound.mp3").toURI().toString());
+
+    // Ajouter un événement de souris pour jouer le son lors du survol du bouton "menu_btn"
+    menu_btn.setOnMouseEntered(e -> {
+        // Créer un nouveau MediaPlayer pour chaque événement de souris
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.play();
+    });
+    
+    // Ajouter un événement de souris pour jouer le son lors du survol du bouton "promotion"
+   
     
     Font cardTitleFont = new Font("System Bold", 18.0);
     Font cardSubtitleFont = new Font("System", 14.0);
     Font cardBodyFont = new Font("System", 12.0);
 
-    productPane.setHgap(10);
-    productPane.setVgap(10);
+    productPane.setHgap(20); // ajouter de l'espace horizontal entre les cartes
+    productPane.setVgap(20); // ajouter de l'espace vertical entre les cartes
     productPane.setAlignment(Pos.CENTER);
 
-    int count = 0;
-    HBox cardContainer = new HBox();
-    cardContainer.setSpacing(10.0);
-    cardContainer.setAlignment(Pos.CENTER);
-    productPane.getChildren().add(cardContainer);
+    int row = 0;
+    int col = 0;
 
     for (Produit produit : listdata.getProduit()) {
-        if (count % 3 == 0 && count > 0) {
-            cardContainer = new HBox();
-            cardContainer.setSpacing(10.0);
-            cardContainer.setAlignment(Pos.CENTER);
-            productPane.getChildren().add(cardContainer);
-        }
+          
         StackPane card = new StackPane();
         card.setAlignment(Pos.CENTER);
         card.setPrefSize(200.0, 250.0);
@@ -123,19 +128,26 @@ public void initialize(URL location, ResourceBundle resources) {
         Text productDescription = new Text("Stock: " + produit.getStock());
         productDescription.setFill(javafx.scene.paint.Color.BLACK);
         productDescription.setWrappingWidth(175.0);
-        
-           Text productPromo = new Text(String.format("Promotion: %d%%", produit.getPromotion().getPourcentage()));
-        productDescription.setFill(javafx.scene.paint.Color.BLACK);
-        productDescription.setWrappingWidth(175.0);
+            
+        Text productPromo = new Text(String.format("Promotion: %d%%", produit.getPromotion().getPourcentage()));
+        productPromo.setFill(javafx.scene.paint.Color.BLACK);
+        productPromo.setWrappingWidth(175.0);
 
         VBox cardContent = new VBox();
         cardContent.setSpacing(5.0);
         cardContent.getChildren().addAll(productImage, productName, productPrice, productDescription,productPromo);
         card.getChildren().add(cardContent);
 
-        cardContainer.getChildren().add(card);
-        count++;
+        productPane.add(card, col, row);
+
+        col++;
+        if (col == 4) {
+            col = 0;
+            row++;
+        }       
     }
+    
+    // calculer la hauteur préférée de
 }
 
       @FXML

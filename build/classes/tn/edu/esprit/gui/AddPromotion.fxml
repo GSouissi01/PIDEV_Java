@@ -14,37 +14,37 @@
 
 <AnchorPane id="AnchorPane" prefHeight="423.0" prefWidth="836.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.edu.esprit.gui.AddPromotionController">
    <children>
-      <ImageView fitHeight="507.0" fitWidth="909.0" layoutX="212.0" layoutY="-1.0">
+      <ImageView fitHeight="507.0" fitWidth="951.0" layoutX="212.0" layoutY="-1.0">
          <image>
              <Image url="file:///C:/Users/azizb/Downloads/f.png" />
          </image>
       </ImageView>
-      <TextField fx:id="tfdescription" layoutX="366.0" layoutY="95.0" />
-      <TextField fx:id="tfpourcentage" layoutX="366.0" layoutY="151.0" />
-      <ComboBox fx:id="tfstatus" layoutX="365.0" layoutY="320.0" prefWidth="150.0" />
-      <Label layoutX="215.0" layoutY="94.0" style="-fx-background-color: #F6F7EE;" text="Description">
+      <TextField fx:id="tfdescription" layoutX="363.0" layoutY="143.0" />
+      <TextField fx:id="tfpourcentage" layoutX="363.0" layoutY="196.0" />
+      <ComboBox fx:id="tfstatus" layoutX="362.0" layoutY="365.0" prefWidth="150.0" />
+      <Label layoutX="212.0" layoutY="142.0" style="-fx-background-color: #F6F7EE;" text="Description">
          <font>
             <Font name="System Bold" size="19.0" />
          </font></Label>
-      <Label layoutX="219.0" layoutY="151.0" style="-fx-background-color: #F6F7EE;" text="POURCENTAGE">
+      <Label layoutX="216.0" layoutY="196.0" style="-fx-background-color: #F6F7EE;" text="POURCENTAGE">
          <font>
             <Font name="System Bold" size="19.0" />
          </font></Label>
-      <Label layoutX="227.0" layoutY="204.0" style="-fx-background-color: #F6F7EE;" text="DATE DEBUT">
+      <Label layoutX="224.0" layoutY="249.0" style="-fx-background-color: #F6F7EE;" text="DATE DEBUT">
          <font>
             <Font name="System Bold" size="19.0" />
          </font></Label>
-      <Label layoutX="235.0" layoutY="260.0" style="-fx-background-color: #F6F7EE;" text="DATE FIN">
+      <Label layoutX="232.0" layoutY="305.0" style="-fx-background-color: #F6F7EE;" text="DATE FIN">
          <font>
             <Font name="System Bold" size="19.0" />
          </font></Label>
-      <Label layoutX="240.0" layoutY="319.0" style="-fx-background-color: #F6F7EE;" text="STATUS">
+      <Label layoutX="237.0" layoutY="364.0" style="-fx-background-color: #F6F7EE;" text="STATUS">
          <font>
             <Font name="System Bold" size="19.0" />
          </font></Label>
-      <DatePicker fx:id="tfdatedebut" layoutX="366.0" layoutY="205.0" />
-      <DatePicker fx:id="tfdatefin" layoutX="366.0" layoutY="261.0" />
-      <Button layoutX="387.0" layoutY="377.0" mnemonicParsing="false" onAction="#ajouter" text="AJOUTER">
+      <DatePicker fx:id="tfdatedebut" layoutX="363.0" layoutY="250.0" />
+      <DatePicker fx:id="tfdatefin" layoutX="363.0" layoutY="306.0" />
+      <Button layoutX="384.0" layoutY="422.0" mnemonicParsing="false" onAction="#ajouter" text="AJOUTER">
          <font>
             <Font name="Arial Rounded MT Bold" size="17.0" />
          </font></Button>
@@ -52,13 +52,14 @@
          <font>
             <Font name="Arial Rounded MT Bold" size="17.0" />
          </font></Button>
-      <TableView fx:id="TablePromotion" layoutX="609.0" layoutY="16.0" prefHeight="306.0" prefWidth="481.0">
+      <TableView fx:id="TablePromotion" layoutX="582.0" layoutY="43.0" prefHeight="306.0" prefWidth="568.0">
         <columns>
           <TableColumn fx:id="description" prefWidth="146.39999389648438" text="description" />
           <TableColumn fx:id="pourcentage" prefWidth="84.79998779296875" text="pourcentage" />
             <TableColumn fx:id="datedebut" text="date debut" />
             <TableColumn fx:id="datefin" prefWidth="86.39990234375" text="date fin" />
-            <TableColumn fx:id="status" prefWidth="92.800048828125" text="satus" />
+            <TableColumn fx:id="status" prefWidth="110.39990234375" text="satus" />
+            <TableColumn fx:id="titre" prefWidth="146.39999389648438" text="titre" />
         </columns>
       </TableView>
       <Button layoutX="857.0" layoutY="361.0" mnemonicParsing="false" onAction="#delete" text="SUPPRIMER">
@@ -99,5 +100,11 @@
             <Font name="Arial Rounded MT Bold" size="29.0" />
          </font>
       </Label>
+      <Label layoutX="216.0" layoutY="99.0" prefHeight="28.0" prefWidth="71.0" style="-fx-background-color: #F6F7EE;" text="Titre">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tftitre" layoutX="363.0" layoutY="100.0" />
    </children>
 </AnchorPane>

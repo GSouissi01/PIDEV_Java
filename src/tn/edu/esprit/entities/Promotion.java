@@ -18,25 +18,36 @@ public class Promotion {
     Date datedebut;
     Date datefin;
     String status;
+    String titre;
 
     public Promotion() {
     }
 
-    public Promotion(String description, int pourcentage, Date datedebut, Date datefin, String status) {
+    public Promotion(String description, int pourcentage, Date datedebut, Date datefin, String status,String titre) {
         this.description = description;
         this.pourcentage = pourcentage;
         this.datedebut = datedebut;
         this.datefin = datefin;
         this.status = status;
+        this.titre=titre;
     }
 
-    public Promotion(int idpromo, String description, int pourcentage, Date datedebut, Date datefin, String status) {
+    public Promotion(int idpromo, String description, int pourcentage, Date datedebut, Date datefin, String status,String titre) {
         this.idpromo = idpromo;
         this.description = description;
         this.pourcentage = pourcentage;
         this.datedebut = datedebut;
         this.datefin = datefin;
         this.status = status;
+        this.titre=titre;
+    }
+
+    public void setTitre(String titre) {
+        this.titre = titre;
+    }
+
+    public String getTitre() {
+        return titre;
     }
 
     public int getIdpromo() {
@@ -89,7 +100,7 @@ public class Promotion {
 
     @Override
     public String toString() {
-        return description ;
+        return titre ;
     }
 
   
