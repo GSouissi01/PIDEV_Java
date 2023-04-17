@@ -51,7 +51,7 @@
                         <Font name="Arial Rounded MT Bold" size="24.0" />
                      </font>
                   </Label>
-                  <Button fx:id="tfLogin1_btn" layoutX="108.0" layoutY="386.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="27.0" prefWidth="206.0" styleClass="create-btn" text="Sign In" textFill="WHITE">
+                  <Button fx:id="submitButton" layoutX="108.0" layoutY="386.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="27.0" prefWidth="206.0" styleClass="create-btn" text="Sign In" textFill="WHITE">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -66,6 +66,7 @@
                         <Font size="16.0" />
                      </font>
                   </PasswordField>
+                  <Button fx:id="forgotPasswordButton" layoutX="153.0" layoutY="352.0" mnemonicParsing="false" text="Forgot password" />
                </children>
             </AnchorPane>
          </right>

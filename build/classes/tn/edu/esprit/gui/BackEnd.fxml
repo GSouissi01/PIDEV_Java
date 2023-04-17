@@ -4,14 +4,16 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="569.0" prefWidth="826.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.edu.esprit.gui.BackEndController">
+<AnchorPane id="AnchorPane" prefHeight="710.0" prefWidth="1012.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.edu.esprit.gui.BackEndController">
    <children>
-      <HBox prefHeight="569.0" prefWidth="826.0">
+      <HBox prefHeight="710.0" prefWidth="1012.0">
          <children>
             <VBox prefHeight="570.0" prefWidth="220.0" styleClass="side_menu" stylesheets="@back.css">
                <children>
@@ -22,22 +24,22 @@
                               <Image url="file:/C:/Users/SOUISSI/Downloads/logo.png" />
                            </image>
                         </ImageView>
-                        <Button layoutX="21.0" layoutY="219.0" mnemonicParsing="false" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Users List" textFill="#1a569f">
+                        <Button layoutX="12.0" layoutY="312.0" mnemonicParsing="false" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Users List" textFill="#1a569f">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="13.0" />
                            </font>
                         </Button>
-                        <Button layoutX="20.0" layoutY="276.0" mnemonicParsing="false" prefWidth="178.0" styleClass="menu-btn" text="Products List" textFill="#1a569f">
+                        <Button layoutX="14.0" layoutY="358.0" mnemonicParsing="false" prefWidth="178.0" styleClass="menu-btn" text="Products List" textFill="#1a569f">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="13.0" />
                            </font>
                         </Button>
-                        <Button layoutX="19.0" layoutY="335.0" mnemonicParsing="false" prefWidth="178.0" styleClass="menu-btn" text="Suppliers List" textFill="#1a569f">
+                        <Button layoutX="12.0" layoutY="403.0" mnemonicParsing="false" prefWidth="178.0" styleClass="menu-btn" text="Suppliers List" textFill="#1a569f">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="13.0" />
                            </font>
                         </Button>
-                        <Button layoutX="24.0" layoutY="396.0" mnemonicParsing="false" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Ads List" textFill="#1a569f">
+                        <Button layoutX="14.0" layoutY="450.0" mnemonicParsing="false" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Ads List" textFill="#1a569f">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="13.0" />
                            </font>
@@ -47,17 +49,29 @@
                   </AnchorPane>
                </children>
             </VBox>
-            <AnchorPane prefHeight="570.0" prefWidth="618.0">
+            <AnchorPane prefHeight="710.0" prefWidth="830.0">
                <children>
-                  <ImageView fitHeight="577.0" fitWidth="618.0" layoutY="-2.0">
+                  <ImageView fitHeight="710.0" fitWidth="804.0" layoutY="-2.0">
                      <image>
                         <Image url="file:/C:/Users/SOUISSI/Downloads/laundry+detergent+aisle+Charlotte+North+Carolina+South+Carolina.jpg" />
                      </image>
                   </ImageView>
-                  <FlowPane fx:id="pane" layoutX="39.0" layoutY="44.0" prefHeight="130.0" prefWidth="127.0" />
+                  <GridPane fx:id="gridPane" layoutX="30.0" layoutY="81.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                  </GridPane>
                </children>
             </AnchorPane>
          </children>
       </HBox>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

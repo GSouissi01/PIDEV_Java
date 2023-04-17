@@ -19,6 +19,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -28,8 +29,10 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
@@ -47,93 +50,88 @@ import tn.edu.esprit.services.ServiceUser;
 public class BackEndController implements Initializable {
 
     @FXML
-    private FlowPane pane;
+    private GridPane gridPane;
 
     /**
      * Initializes the controller class.
      */
     @Override
-public void initialize(URL location, ResourceBundle resources) {
+public void initialize(URL location, ResourceBundle resources)
+{
     
-    Font cardTitleFont = new Font("System Bold", 18.0);
-Font cardSubtitleFont = new Font("System", 14.0);
-Font cardBodyFont = new Font("System", 12.0);
+    VBox container = new VBox();
+    container.setSpacing(10);
+    container.setAlignment(Pos.CENTER);
+    container.setPadding(new Insets(20, 0, 0, 0)); // Add 20 pixels of padding to the top
+    gridPane.getChildren().add(container);
 
-pane.setHgap(10);
-pane.setVgap(10);
-pane.setAlignment(Pos.CENTER);
+    ServiceUser su = new ServiceUser();
+    ObservableList<User> listuser = su.afficherusers();
 
-int count = 0;
-HBox cardContainer = new HBox();
-cardContainer.setSpacing(10.0);
-cardContainer.setAlignment(Pos.CENTER);
-pane.getChildren().add(cardContainer);
+    TilePane cardContainer = new TilePane();
+    cardContainer.setPrefColumns(2);
+    cardContainer.setTileAlignment(Pos.CENTER);
+    cardContainer.setHgap(10);
+    cardContainer.setVgap(10);
+    cardContainer.setPadding(new Insets(20, 0, 0, 0)); 
+    cardContainer.setPrefWidth(600);
 
-ServiceUser su = new ServiceUser();
-        ObservableList<User> listuser = FXCollections.observableArrayList();
-        listuser = su.afficherusers();
-        
-        for (User us : listuser) {
-    if (count % 2 == 0 && count > 0) {
-        cardContainer = new HBox();
-        cardContainer.setSpacing(10.0);
-        cardContainer.setAlignment(Pos.CENTER);
-        pane.getChildren().add(cardContainer);
+    for (User us : listuser) {
+        StackPane card = new StackPane();
+        card.setAlignment(Pos.CENTER);
+        card.setPrefSize(250, 250);
+        card.setStyle("-fx-background-color: #1a569f; -fx-background-radius: 50px; -fx-border-color: #white; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-padding: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);");
+
+        ImageView userImage = new ImageView();
+        userImage.setFitHeight(150.0);
+        userImage.setFitWidth(150.0);
+        userImage.setClip(new Circle(75, 75, 75));
+        //userImage.setPreserveRatio(true);
+
+        String imagePath = us.getImagePath();
+        Image image = null;
+        try {
+            image = new Image(new FileInputStream(imagePath));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        userImage.setImage(image);
+
+        Text userName = new Text("Nom: " + us.getNom());
+        userName.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        userName.setFill(javafx.scene.paint.Color.WHITE);
+            Font cardSubtitleFont = null;
+        userName.setFont(cardSubtitleFont);
+
+        Text userEmail = new Text("Email: " + us.getEmail());
+        userEmail.setFill(javafx.scene.paint.Color.WHITE);
+        userEmail.setFont(cardSubtitleFont);
+
+        Text userPrenom = new Text("Prénom: " + us.getPrenom());
+        userPrenom.setFill(javafx.scene.paint.Color.WHITE);
+        userPrenom.setWrappingWidth(175.0);
+        int idUser=su.getUserIdByEmail(us.getEmail());
+        Button deleteButton = new Button("Delete");
+        deleteButton.setOnAction(event -> {
+            ServiceUser serviceUser = new ServiceUser();
+            serviceUser.supprimerUser(idUser);
+            container.getChildren().clear();
+            initialize(location, resources);
+        });
+
+        VBox cardContent = new VBox();
+        cardContent.setSpacing(5.0);
+        cardContent.getChildren().addAll(userImage, userName, userEmail, userPrenom, deleteButton);
+        card.getChildren().add(cardContent);
+
+        cardContainer.getChildren().add(card);
     }
-    StackPane card = new StackPane();
-    card.setAlignment(Pos.CENTER);
-    card.setPrefSize(250, 250);
-    card.setStyle("-fx-background-color: #ffffff; -fx-border-color: #cccccc; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-padding: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);");
 
-    ImageView userImage = new ImageView();
-    userImage.setFitHeight(150.0);
-    userImage.setFitWidth(150.0);
-    userImage.setClip(new Circle(75, 75, 75));
-    userImage.setPreserveRatio(true);
-
-    
-    String imagePath = us.getImagePath();
-    Image image = null;
-    try {
-        image = new Image(new FileInputStream(imagePath));
-    } catch (FileNotFoundException e) {
-        e.printStackTrace();
+    container.getChildren().add(cardContainer);
     }
 
-    userImage.setImage(image);
-
-    Text userName = new Text("Nom: " + us.getNom());
-    userName.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-    userName.setFill(javafx.scene.paint.Color.BLACK);
-    userName.setFont(cardSubtitleFont);
-
-    Text userEmail = new Text("Email: " + us.getEmail());
-    userEmail.setFill(javafx.scene.paint.Color.RED);
-    userEmail.setFont(cardSubtitleFont);
-
-    Text userPrenom = new Text("Prénom: " + us.getPrenom());
-    userPrenom.setFill(javafx.scene.paint.Color.BLACK);
-    userPrenom.setWrappingWidth(175.0);
-    int idUser=su.getUserIdByEmail(us.getEmail());
-    Button deleteButton = new Button("Delete");
-    deleteButton.setOnAction(event -> {
-        ServiceUser serviceUser = new ServiceUser();
-        serviceUser.supprimerUser(idUser);
-        pane.getChildren().clear();
-        initialize(location, resources);
-    });
-
-    VBox cardContent = new VBox();
-    cardContent.setSpacing(5.0);
-    cardContent.getChildren().addAll(userImage, userName, userEmail, userPrenom, deleteButton);
-    card.getChildren().add(cardContent);
-
-    cardContainer.getChildren().add(card);
-    count++;
-
-}
-}
-@FXML
+    @FXML
     public void handleLogOutBtn(ActionEvent event) {
         try {
             // Load the FXML file

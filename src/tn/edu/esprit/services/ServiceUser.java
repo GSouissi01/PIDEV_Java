@@ -12,12 +12,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
+import tn.edu.esprit.entites.PasswordResetToken;
 import tn.edu.esprit.entities.User;
 import tn.edu.esprit.utils.Database;
 /**
@@ -158,6 +160,32 @@ public class ServiceUser implements IUser<User>{
     }
     return userId;
 }  
+  public void updateUserPassword(String userId, String newPassword)
+  {
+    
+    PreparedStatement stmt = null;
+    try {
+        stmt = cnx.prepareStatement("UPDATE user SET password = ? WHERE id = ?");
+        stmt.setString(1, newPassword);
+        stmt.setString(2, userId);
+        stmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        try {
+            if (stmt != null) {
+                stmt.close();
+            }
+            if (cnx != null) {
+                cnx.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
     public void register(User u) {
         try {
             String req = "INSERT INTO `user1` (`email`, `password`,`nom`, `prenom`,`tel`, `nomSup`, `adresseSup`) VALUES (?,?)";
@@ -175,7 +203,7 @@ public class ServiceUser implements IUser<User>{
         }
     }
     
-    public User findByEmail(String email) {
+    public User getUserByEmail(String email) {
     try {
         String req = "SELECT * FROM user WHERE email=?";
         PreparedStatement ps = cnx.prepareStatement(req);
@@ -197,6 +225,76 @@ public class ServiceUser implements IUser<User>{
         System.out.println(ex.getMessage());
         return null;
     }
+}
+    public void insertPasswordResetToken(int userId, String token, long timestamp) {
+    try {
+        String req = "INSERT INTO password_reset_tokens (user_id, token, created_at) VALUES (?, ?, ?)";
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ps.setInt(1, userId);
+        ps.setString(2, token);
+        ps.setTimestamp(3, new Timestamp(timestamp));
+
+        ps.executeUpdate();
+    } catch (SQLException ex) {
+        // Handle the exception
+    }
+}
+    public PasswordResetToken getPasswordResetToken(String token) {
+    Connection conn = null;
+    PreparedStatement stmt = null;
+    ResultSet rs = null;
+    PasswordResetToken passwordResetToken = null;
+
+    try {
+        stmt = cnx.prepareStatement("SELECT * FROM password_reset_token WHERE token = ?");
+        stmt.setString(1, token);
+        rs = stmt.executeQuery();
+
+        if (rs.next()) {
+            passwordResetToken = new PasswordResetToken();
+            passwordResetToken.setId(rs.getLong("id"));
+            passwordResetToken.setToken(rs.getString("token"));
+            passwordResetToken.setUser(getUserById(rs.getLong("user_id")));
+            passwordResetToken.setExpiryDate(rs.getTimestamp("expiry_date").toLocalDateTime());
+        }
+    } catch (SQLException ex) {
+        // handle exception
+    } finally {
+        // close resources
+    }
+
+    return passwordResetToken;
+}
+    
+    
+    public User getUserById(Long id) {
+    PreparedStatement stmt = null;
+    ResultSet rs = null;
+    User user = null;
+
+    try {
+        
+        stmt = cnx.prepareStatement("SELECT * FROM user WHERE id = ?");
+        stmt.setLong(1, id);
+        rs = stmt.executeQuery();
+
+        if (rs.next()) {
+            User u = new User();
+            u.setNom(rs.getString("nom")); 
+            u.setEmail(rs.getString("email"));
+            u.setPrenom(rs.getString("prenom"));
+            u.setTel(rs.getInt("tel"));
+            u.setNomSup(rs.getString("nom_sup"));  
+            u.setAdresseSup(rs.getString("adresse_sup"));
+            u.setImagePath(rs.getString("imagePath"));
+        }
+    } catch (SQLException ex) {
+        // handle exception
+    } finally {
+        // close resources
+    }
+
+    return user;
 }
     
     public void login() {

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="569.0" prefWidth="882.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.edu.esprit.gui.ProfileController">
+   <children>
+      <HBox layoutX="-1.0" prefHeight="564.0" prefWidth="882.0">
+         <children>
+            <VBox prefHeight="570.0" prefWidth="406.0" styleClass="side_menu">
+               <stylesheets>
+                  <URL value="@register.css" />
+                  <URL value="@home.css" />
+               </stylesheets>
+               <children>
+                  <AnchorPane prefHeight="566.0" prefWidth="330.0">
+                     <children>
+                        <ImageView fitHeight="102.0" fitWidth="224.0" layoutX="-10.0" layoutY="27.0">
+                           <image>
+                              <Image url="file:/C:/Users/SOUISSI/Downloads/logo.png" />
+                           </image>
+                        </ImageView>
+                        <Button layoutX="24.0" layoutY="206.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="166.0" styleClass="menu-btn" stylesheets="@register.css" text="Home" textFill="#6db082">
+                           <font>
+                              <Font name="Candara Bold" size="16.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="9.0" layoutY="267.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="196.0" styleClass="menu-btn" stylesheets="@register.css" text="Compte Utilisateur" textFill="#6db082">
+                           <font>
+                              <Font name="Candara Bold" size="16.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="24.0" layoutY="324.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="166.0" styleClass="menu-btn" stylesheets="@register.css" text="Réclamation" textFill="#6db082">
+                           <font>
+                              <Font name="Candara Bold" size="16.0" />
+                           </font>
+                        </Button>
+                        <ImageView fx:id="profilePic" fitHeight="120.0" fitWidth="166.0" layoutX="24.0" layoutY="404.0" pickOnBounds="true" preserveRatio="true" />
+                        <Button layoutX="14.0" layoutY="527.0" mnemonicParsing="false" onAction="#handleLogOutBtn" text="Log Out" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="570.0" fitWidth="657.0">
+                     <image>
+                        <Image url="file:/C:/Users/SOUISSI/Downloads/gren.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="150.0" layoutY="41.0" text="Votre Compte" textFill="#3ea95e">
+                     <font>
+                        <Font name="Candara Bold Italic" size="58.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="NomAcc" layoutX="260.0" layoutY="147.0" prefHeight="26.0" prefWidth="345.0" />
+                  <TextField fx:id="AdresseAcc" layoutX="259.0" layoutY="436.0" prefHeight="26.0" prefWidth="345.0" />
+                  <TextField fx:id="PrenomAcc" layoutX="260.0" layoutY="201.0" prefHeight="26.0" prefWidth="345.0" />
+                  <TextField fx:id="TelAcc" layoutX="259.0" layoutY="255.0" prefHeight="26.0" prefWidth="345.0" />
+                  <TextField fx:id="EmailAcc" layoutX="259.0" layoutY="319.0" prefHeight="26.0" prefWidth="345.0" />
+                  <TextField fx:id="SupAcc" layoutX="260.0" layoutY="377.0" prefHeight="26.0" prefWidth="345.0" />
+                  <Label layoutX="75.0" layoutY="145.0" text="Nom:" textFill="WHITE">
+                     <font>
+                        <Font name="Candara Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="74.0" layoutY="199.0" text="Prénom:" textFill="WHITE">
+                     <font>
+                        <Font name="Candara Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="75.0" layoutY="253.0" text="Téléphone:" textFill="WHITE">
+                     <font>
+                        <Font name="Candara Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="75.0" layoutY="317.0" text="Email:" textFill="WHITE">
+                     <font>
+                        <Font name="Candara Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="75.0" layoutY="375.0" text="Superette: " textFill="WHITE">
+                     <font>
+                        <Font name="Candara Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="75.0" layoutY="434.0" text="Adresse:" textFill="WHITE">
+                     <font>
+                        <Font name="Candara Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="186.0" layoutY="501.0" mnemonicParsing="false" onAction="#ModifierUser" prefHeight="31.0" prefWidth="136.0" styleClass="menu-btn" stylesheets="@register.css" text="Modifier" textFill="#6db082">
+                     <font>
+                        <Font name="Candara Bold" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnSupprimer" layoutX="350.0" layoutY="501.0" mnemonicParsing="false" onAction="#supprimerCompte" prefHeight="31.0" prefWidth="196.0" styleClass="menu-btn" stylesheets="@register.css" text="Supprimer mon compte" textFill="#e41111">
+                     <font>
+                        <Font name="Candara Bold" size="16.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

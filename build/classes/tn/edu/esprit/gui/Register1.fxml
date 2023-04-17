@@ -15,16 +15,16 @@
    <children>
       <BorderPane fx:id="register_form" prefHeight="599.0" prefWidth="878.0">
          <left>
-            <AnchorPane prefHeight="599.0" prefWidth="389.0" styleClass="other-form" stylesheets="@register.css" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="599.0" prefWidth="419.0" styleClass="other-form" stylesheets="@register.css" BorderPane.alignment="CENTER">
                <children>
-                  <Label layoutX="93.0" layoutY="518.0" text="Vous avez déja un compte ?" textFill="WHITE">
+                  <Label layoutX="43.0" layoutY="489.0" text="Vous avez déja un compte ?" textFill="WHITE">
                      <font>
-                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                        <Font name="Candara" size="25.0" />
                      </font>
                   </Label>
-                  <Button fx:id="tfLogin_btn" layoutX="96.0" layoutY="547.0" mnemonicParsing="false" onAction="#handleLoginButtonAction" prefHeight="21.0" prefWidth="210.0" styleClass="login-btn" text="Login">
+                  <Button fx:id="tfLogin_btn" layoutX="129.0" layoutY="537.0" mnemonicParsing="false" onAction="#handleLoginButtonAction" prefHeight="27.0" prefWidth="131.0" styleClass="login-btn" text="Login">
                      <font>
-                        <Font size="13.0" />
+                        <Font name="Candara Light" size="14.0" />
                      </font>
                   </Button>
                   <ImageView fitHeight="168.0" fitWidth="360.0" layoutX="11.0" layoutY="184.0" preserveRatio="true">
@@ -41,67 +41,53 @@
          <right>
             <AnchorPane prefHeight="599.0" prefWidth="445.0" styleClass="white-form" stylesheets="@register.css" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fitHeight="599.0" fitWidth="495.0" layoutX="-43.0">
+                  <Label fx:id="URLImage" layoutX="30.0" layoutY="46.0" prefWidth="191.0" text="Label" />
+                  <ImageView fitHeight="608.0" fitWidth="465.0" layoutX="-18.0" layoutY="-6.0">
                      <image>
-                        <Image url="file:/C:/Users/SOUISSI/Downloads/supermaket.jpg" />
+                        <Image url="file:/C:/Users/SOUISSI/Downloads/supermarket1.jpg" />
                      </image>
                   </ImageView>
-                  <Label layoutX="110.0" layoutY="24.0" text="Inscrivez-vous" textFill="WHITE">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="24.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="tfCreateAcc_btn" layoutX="64.0" layoutY="548.0" mnemonicParsing="false" onAction="#saveUser" prefHeight="27.0" prefWidth="206.0" styleClass="create-btn" stylesheets="@register.css" text="Create Account" textFill="WHITE">
+                  <Button fx:id="tfCreateAcc_btn" layoutX="137.0" layoutY="565.0" mnemonicParsing="false" onAction="#saveUser" prefHeight="27.0" prefWidth="163.0" styleClass="create-btn" stylesheets="@register.css" text="Create Account" textFill="WHITE">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Button>
-                  <TextField fx:id="tfNom" layoutX="65.0" layoutY="77.0" prefHeight="2.0" prefWidth="246.0" promptText="Nom">
+                  <TextField fx:id="tfNom" layoutX="96.0" layoutY="157.0" prefHeight="2.0" prefWidth="246.0" promptText="Nom">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Candara Light Italic" size="17.0" />
                      </font></TextField>
-                  <TextField fx:id="tfPrenom" layoutX="65.0" layoutY="127.0" prefHeight="2.0" prefWidth="246.0" promptText="Prénom">
+                  <TextField fx:id="tfPrenom" layoutX="95.0" layoutY="202.0" prefHeight="2.0" prefWidth="246.0" promptText="Prénom">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Candara Light Italic" size="17.0" />
                      </font></TextField>
-                  <TextField fx:id="tfEmail" layoutX="65.0" layoutY="181.0" prefHeight="2.0" prefWidth="246.0" promptText="Email">
+                  <TextField fx:id="tfEmail" layoutX="95.0" layoutY="254.0" prefHeight="2.0" prefWidth="246.0" promptText="Email">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Candara Light Italic" size="17.0" />
                      </font></TextField>
-                  <TextField fx:id="tfTel" layoutX="66.0" layoutY="317.0" prefHeight="32.0" prefWidth="246.0" promptText="Num Tel">
+                  <TextField fx:id="tfTel" layoutX="96.0" layoutY="396.0" prefHeight="32.0" prefWidth="246.0" promptText="Num Tel">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Candara Light Italic" size="17.0" />
                      </font></TextField>
-                  <TextField fx:id="tfSup" layoutX="65.0" layoutY="363.0" prefHeight="2.0" prefWidth="246.0" promptText="Superette">
+                  <TextField fx:id="tfSup" layoutX="96.0" layoutY="444.0" prefHeight="2.0" prefWidth="246.0" promptText="Superette">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Candara Light Italic" size="17.0" />
                      </font></TextField>
-                  <TextField fx:id="tfAdresse" layoutX="65.0" layoutY="411.0" prefHeight="2.0" prefWidth="246.0" promptText="Adresse">
+                  <TextField fx:id="tfAdresse" layoutX="96.0" layoutY="491.0" prefHeight="2.0" prefWidth="246.0" promptText="Adresse">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Candara Light Italic" size="17.0" />
                      </font></TextField>
-                  <PasswordField fx:id="tfPassword" layoutX="66.0" layoutY="230.0" prefHeight="2.0" prefWidth="246.0" promptText="Password">
+                  <PasswordField fx:id="tfPassword" layoutX="95.0" layoutY="302.0" prefHeight="2.0" prefWidth="246.0" promptText="Password">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Candara Light Italic" size="17.0" />
                      </font>
                   </PasswordField>
-                  <ImageView fx:id="profilePictureView" fitHeight="124.0" fitWidth="166.0" layoutX="266.0" layoutY="438.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="profilePictureView" fitHeight="124.0" fitWidth="166.0" layoutX="276.0" layoutY="448.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label fx:id="imagePathLabel" layoutX="-12.0" layoutY="460.0" prefHeight="18.0" prefWidth="289.0" text="Label" textFill="WHITE">
+                  <ImageView fx:id="profileImageView" fitHeight="124.0" fitWidth="166.0" layoutX="132.0" layoutY="20.0" onMouseClicked="#chooseImage" pickOnBounds="true" preserveRatio="true" styleClass="imageView" />
+                  <PasswordField fx:id="tfConfirmPassword" layoutX="96.0" layoutY="349.0" prefHeight="2.0" prefWidth="246.0" promptText="Confirm Password">
                      <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="tfUpload_btn" layoutX="92.0" layoutY="510.0" mnemonicParsing="false" onAction="#handleUploadButtonAction" prefHeight="27.0" prefWidth="133.0" styleClass="create-btn" text="Upload" textFill="#842929">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Button>
-                  <PasswordField fx:id="tfConfirmPassword" layoutX="66.0" layoutY="275.0" prefHeight="2.0" prefWidth="246.0" promptText="Confirm Password">
-                     <font>
-                        <Font size="14.0" />
+                        <Font name="Candara Light Italic" size="17.0" />
                      </font>
                   </PasswordField>
+                  <Button layoutX="153.0" layoutY="532.0" mnemonicParsing="false" onAction="#uploadImage" text="Choose Profile Picture" />
                </children>
             </AnchorPane>
          </right>

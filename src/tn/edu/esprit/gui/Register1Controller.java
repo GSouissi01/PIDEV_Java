@@ -18,12 +18,20 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import tn.edu.esprit.services.ServiceUser;
 import com.sun.org.apache.xerces.internal.util.FeatureState;
+import java.awt.event.MouseEvent;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -77,18 +85,16 @@ public class Register1Controller implements Initializable {
     
     private Connection connect; 
     private FXMLLoader loginLoader;
-    @FXML
-    private ImageView profilePictureView;
-    @FXML
-    private Label imagePathLabel;
-    @FXML
-    private Button tfUpload_btn;
      
     private String imagePath;
     @FXML
     private PasswordField tfConfirmPassword;
-       @FXML
-    private Label username;
+    
+    private Image profileImage;
+    @FXML
+    private ImageView profileImageView;
+    @FXML
+    private Label URLImage;
     /**
      * Initializes the controller class.
      */
@@ -96,6 +102,56 @@ public class Register1Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    
+    private User getUserFromForm() 
+    {
+        // get the user data from the form
+        String nom = tfNom.getText();
+        String prenom = tfPrenom.getText();
+        String email = tfEmail.getText();
+        String password = tfPassword.getText();
+        String telString = tfTel.getText();
+        int tel = 0;
+        if (!telString.isEmpty()) {
+            tel = Integer.parseInt(telString);
+        }
+        String nomSup = tfSup.getText();
+        String adresseSup = tfAdresse.getText();
+
+        // create a new user object with the form data
+        User user = new User(email, password, nom, prenom, tel, nomSup, adresseSup, imagePath);
+
+        return user;
+    }
+    
+    @FXML
+private void uploadImage(ActionEvent event) {
+    FileChooser fileChooser = new FileChooser();
+    fileChooser.setTitle("Choose Image");
+    fileChooser.getExtensionFilters().addAll(
+            new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif", "*.jpeg"));
+    File file = fileChooser.showOpenDialog(null);
+    if (file != null) {
+        try {
+            // Copy the image to a new file with a unique name
+            Random rand = new Random();
+            int x = rand.nextInt(1000);
+            String imageExtension = file.getName().substring(file.getName().lastIndexOf("."));
+            String newImagePath = "image_" + x + imageExtension;
+            Files.copy(file.toPath(), new File(newImagePath).toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+            // Set the new image path and display the image
+            imagePath = newImagePath;
+            Image image = new Image(new File(newImagePath).toURI().toString());
+            profileImageView.setImage(image);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    } else {
+        System.out.println("Error: No file chosen.");
+    }
+}
+    
     
     @FXML
     private void handleLoginButtonAction(ActionEvent event) throws IOException {
@@ -112,28 +168,7 @@ public class Register1Controller implements Initializable {
             stage.setScene(scene);
         }
     }
-    @FXML
-private void handleUploadButtonAction(ActionEvent event) {
     
-    ServiceUser su = new ServiceUser();
-    FileChooser fileChooser = new FileChooser();
-    fileChooser.setTitle("Select Profile Picture");
-    fileChooser.getExtensionFilters().addAll(
-            new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
-    File selectedFile = fileChooser.showOpenDialog(((Node) event.getSource()).getScene().getWindow());
-    if (selectedFile != null) {
-       imagePath = selectedFile.getAbsolutePath();
-        imagePathLabel.setText(imagePath);
-                // Get the Image object using the getProfilePic function
-        Image image = su.getProfilePic(imagePath);
-
-        // Set the Image to the ImageView
-        profilePictureView.setImage(image);
-    }
-}
-    public void setProfilePicture(Image image) {
-        profilePictureView.setImage(image);
-    }
    
     @FXML
     private void saveUser(ActionEvent event) throws IOException {
@@ -197,24 +232,6 @@ private void handleUploadButtonAction(ActionEvent event) {
             }
             else{
                 int tel = Integer.parseInt(telString);
-                /*
-                // Upload profile picture
-                String imagePath = "";
-                FileChooser fileChooser = new FileChooser();
-                fileChooser.setTitle("Select Profile Picture");
-                fileChooser.getExtensionFilters().addAll(
-                        new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
-                File selectedFile = fileChooser.showOpenDialog(((Node) event.getSource()).getScene().getWindow());
-                if (selectedFile != null) {
-                    imagePath = selectedFile.getAbsolutePath();
-                    imagePathLabel.setText(imagePath);
-                    // Get the Image object using the getProfilePic function
-                    Image image = su.getProfilePic(imagePath);
-
-                    // Set the Image to the ImageView
-                    profilePictureView.setImage(image);
-                    
-                }*/
                 
                 User u = new User(email, password, nom, prenom, tel, nomSup, adresseSup, imagePath);
                 su.ajouter(u);
@@ -226,17 +243,17 @@ private void handleUploadButtonAction(ActionEvent event) {
                 alert.showAndWait();
 
                 // Update UserAcc1Controller with user data
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("UserAcc1.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("Profile.fxml"));
                 try {
                     Parent root = loader.load();
-                    UserAcc1Controller acc = loader.getController();
+                    ProfileController acc = loader.getController();
                     acc.setTextNom(u.getNom());
                     acc.setTextPrenom(u.getPrenom());
                     acc.setTextEmail(u.getEmail());
                     acc.setTextTel("" + u.getTel());
                     acc.setTextSup(u.getNomSup());
                     acc.setTextAdresse(u.getAdresseSup());
-                    //acc.initData(u);
+                    acc.initData(u);
 
                     tfNom.getScene().setRoot(root);
                 } catch (IOException ex) {
@@ -248,5 +265,13 @@ private void handleUploadButtonAction(ActionEvent event) {
         e.printStackTrace();
     }
 }
+
+    @FXML
+    private void chooseImage(javafx.scene.input.MouseEvent event) {
+    }
+
+    @FXML
+    private void chooseImage(ActionEvent event) {
+    }
     
   }

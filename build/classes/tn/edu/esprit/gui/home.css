@@ -9,7 +9,7 @@ and open the template in the editor.
 */
 
 .side_menu{
-    -fx-background-color: linear-gradient(to bottom right, #84c943,#4cc744);
+    -fx-background-color: linear-gradient(to bottom right, #177540,#4cc744);
     -fx-border-color: transparent;
     -fx-border-width: 2px 2px 2px 2px; 
     -fx_border_radius: 20px;

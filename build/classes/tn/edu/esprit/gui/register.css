@@ -10,7 +10,7 @@ and open the template in the editor.
 
 
 .other-form{
-    -fx-background-color: linear-gradient(to bottom right, #84c943,#4cc744);
+    -fx-background-color: linear-gradient(to bottom right, #177540,#4cc744);
 }
 
 .login-btn{
@@ -28,4 +28,11 @@ and open the template in the editor.
 }
 .create-btn:hover{
     -fx-background-color: #4cc744;
+}
+.imageView {
+    -fx-border-radius: 50%;
+    -fx-background-radius: 50%;
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
 }
