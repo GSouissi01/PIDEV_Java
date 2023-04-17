@@ -12,7 +12,9 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,6 +33,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
@@ -69,6 +72,10 @@ public class ListProductController implements Initializable {
     private Label username;
     @FXML
     private Button menu_btn;
+    @FXML
+    private TextField searchField;
+    @FXML
+    private Button searchButton;
 
   
 
@@ -179,6 +186,81 @@ public void initialize(URL location, ResourceBundle resources) {
         e.printStackTrace();
     }
     }
+
+    @FXML
+    private void handleSearchFieldAction(KeyEvent event) {
+    }
+
+   @FXML
+private void handleSearchButtonAction(ActionEvent event) {
+    List<Produit> filteredProduits = listdata.getProduit().stream()
+        .filter(p -> p.getLibelle().toLowerCase().contains(searchField.getText().toLowerCase()))
+        .collect(Collectors.toList());
+
+    productPane.getChildren().clear(); // clear the productPane before adding new products
+
+    Font cardTitleFont = new Font("System Bold", 18.0);
+    Font cardSubtitleFont = new Font("System", 14.0);
+    Font cardBodyFont = new Font("System", 12.0);
+
+    productPane.setHgap(20); // ajouter de l'espace horizontal entre les cartes
+    productPane.setVgap(20); // ajouter de l'espace vertical entre les cartes
+    productPane.setAlignment(Pos.CENTER);
+
+    int row = 0;
+    int col = 0;
+
+    for (Produit produit : filteredProduits) {
+        
+             
+        StackPane card = new StackPane();
+        card.setAlignment(Pos.CENTER);
+        card.setPrefSize(200.0, 250.0);
+        card.setStyle("-fx-background-color: #FFFFF0; -fx-border-color: #000000;");
+
+        ImageView productImage = new ImageView();
+        productImage.setFitHeight(150.0);
+        productImage.setFitWidth(150.0);
+        productImage.setPickOnBounds(true);
+        productImage.setPreserveRatio(true);
+
+        String imageFile = "C:\\xampp\\htdocs\\produit_final\\produit\\public\\images\\product\\" + produit.getImageFile();
+        Image image = new Image(new File(imageFile).toURI().toString());
+        productImage.setImage(image);
+
+        Text productName = new Text("Libelle: " +produit.getLibelle());
+        productName.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+        productName.setFill(javafx.scene.paint.Color.BLACK);
+        productName.setFont(cardTitleFont);
+
+        Text productPrice = new Text(String.format("Prix: " +"€%.2f", produit.getPrix()));
+        productPrice.setFill(javafx.scene.paint.Color.RED);
+        productPrice.setFont(cardSubtitleFont);
+
+        Text productDescription = new Text("Stock: " + produit.getStock());
+        productDescription.setFill(javafx.scene.paint.Color.BLACK);
+        productDescription.setWrappingWidth(175.0);
+            
+        Text productPromo = new Text(String.format("Promotion: %d%%", produit.getPromotion().getPourcentage()));
+        productPromo.setFill(javafx.scene.paint.Color.BLACK);
+        productPromo.setWrappingWidth(175.0);
+
+        VBox cardContent = new VBox();
+        cardContent.setSpacing(5.0);
+        cardContent.getChildren().addAll(productImage, productName, productPrice, productDescription,productPromo);
+        card.getChildren().add(cardContent);
+
+        productPane.add(card, col, row);
+
+        col++;
+        if (col == 4) {
+            col = 0;
+            row++;
+        }       
+    
+    }
+}
+
     
 }
 

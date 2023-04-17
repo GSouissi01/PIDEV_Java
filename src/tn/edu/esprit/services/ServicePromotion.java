@@ -193,25 +193,32 @@ public Promotion getOneByName(String nom) {
     }
        
     
-
 @Override
 public void update(Promotion p) {
   try {
-String req = "UPDATE `promotion` SET " +
-             "`description` = '" + p.getDescription() + "', " +
-             "`pourcentage` = " + p.getPourcentage() + ", " +
-             "`datedebut` = '" + new SimpleDateFormat("yyyy-MM-dd").format(p.getDatedebut()) + "', " +
-             "`datefin` = '" + new SimpleDateFormat("yyyy-MM-dd").format(p.getDatefin()) + "', " +
-             "`status` = '" + p.getStatus() + "', " +
-             "`titre` = '" + p.getTitre() + "' " +
-             "WHERE idpromo =" + p.getIdpromo();
+    String req = "UPDATE `promotion` SET " +
+                 "`description` = ?, " +
+                 "`pourcentage` = ?, " +
+                 "`datedebut` = ?, " +
+                 "`datefin` = ?, " +
+                 "`status` = ?, " +
+                 "`titre` = ? " +
+                 "WHERE idpromo = ?";
 
-        Statement st = cnx.createStatement();
-        st.executeUpdate(req);
-        System.out.println("Promoton updated !");
-    } catch (SQLException ex) {
-        System.out.println(ex.getMessage());
-    }
+    PreparedStatement ps = cnx.prepareStatement(req);
+    ps.setString(1, p.getDescription());
+    ps.setInt(2, p.getPourcentage());
+    ps.setDate(3, new java.sql.Date(p.getDatedebut().getTime()));
+    ps.setDate(4, new java.sql.Date(p.getDatefin().getTime()));
+    ps.setString(5, p.getStatus());
+    ps.setString(6, p.getTitre());
+    ps.setInt(7, p.getIdpromo());
 
+    ps.executeUpdate();
+    System.out.println("Promotion updated!");
+  } catch (SQLException ex) {
+    System.out.println(ex.getMessage());
+  }
 }
+
 }

@@ -21,6 +21,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.chart.PieChart;
 import tn.edu.esprit.entities.Promotion;
 import tn.edu.esprit.utils.Database;
 
@@ -121,12 +122,22 @@ public class ServiceProduct implements IProduct<Produit>{
     }
         
         
+
+
 @Override
 public void modifier(Produit p) {
     try {
-        String req = "UPDATE `produit` SET `libelle` = '" + p.getLibelle() + "', `stock` = " + p.getStock() + ", `prix` = " + p.getPrix() + ", `dateexpiration` = '" + new SimpleDateFormat("yyyy-MM-dd").format(p.getDateexpiration()) + "', `prixAchat` = " + p.getPrixachat() + ", `image_file` = '" + p.getImageFile() + "' WHERE `produit`.`id` = " + p.getId();
-        Statement st = cnx.createStatement();
-        st.executeUpdate(req);
+        String req = "UPDATE `produit` SET `libelle` = ?, `stock` = ?, `prix` = ?, `dateexpiration` = ?, `promotion_id` = ?, `prixAchat` = ?, `image_file` = ? WHERE `produit`.`id` = ?";
+        PreparedStatement st = cnx.prepareStatement(req);
+        st.setString(1, p.getLibelle());
+        st.setInt(2, p.getStock());
+        st.setDouble(3, p.getPrix());
+        st.setDate(4, new java.sql.Date(p.getDateexpiration().getTime()));
+        st.setInt(5, p.getPromotion().getIdpromo());
+        st.setDouble(6, p.getPrixachat());
+        st.setString(7, p.getImageFile());
+        st.setInt(8, p.getId());
+        st.executeUpdate();
         System.out.println("Produit updated !");
     } catch (SQLException ex) {
         System.out.println(ex.getMessage());
@@ -170,9 +181,74 @@ public List<Produit> getAll() {
     
 
           
-            
-    
-    
+public ObservableList<PieChart.Data> getPrixProduits() throws SQLException {
+    PreparedStatement statement = cnx.prepareStatement("SELECT prix, SUM(stock) AS total_stock FROM produit GROUP BY prix");
+    ResultSet resultSet = statement.executeQuery();
+
+    ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+
+    while (resultSet.next()) {
+        float prixProduit = resultSet.getFloat("prix");
+        int totalStock = resultSet.getInt("total_stock");
+       pieChartData.add(new PieChart.Data(String.format("%.2f DT (%d Kg)", prixProduit, totalStock), totalStock));
+
+        System.out.println(totalStock);
+    }
+
+    return pieChartData;
+}
+
+
+
+  public ObservableList<Produit> search(String libelle, Double prixMin, Double prixMax, Integer stockMin, Integer stockMax, Integer pourcentageMin, Integer pourcentageMax) {
+    String req = "SELECT * FROM produit WHERE 1=1";
+    if (libelle != null && !libelle.isEmpty()) {
+        req += " AND libelle LIKE '%" + libelle + "%'";
+    }
+    if (prixMin != null) {
+        req += " AND prix >= " + prixMin;
+    }
+    if (prixMax != null) {
+        req += " AND prix <= " + prixMax;
+    }
+    if (stockMin != null) {
+        req += " AND stock >= " + stockMin;
+    }
+    if (stockMax != null) {
+        req += " AND stock <= " + stockMax;
+    }
+    if (pourcentageMin != null) {
+        req += " AND pourcentage >= " + pourcentageMin;
+    }
+    if (pourcentageMax != null) {
+        req += " AND pourcentage <= " + pourcentageMax;
+    }
+
+    ObservableList<Produit> list = FXCollections.observableArrayList();
+    try {
+        rs = st.executeQuery(req);
+        while (rs.next()) {
+            Produit p = new Produit();
+            Promotion promo = new Promotion();
+
+            p.setId(rs.getInt("id"));
+            p.setLibelle(rs.getString("libelle"));
+            p.setStock(rs.getInt("stock"));
+            p.setPrix(rs.getInt("prix"));
+            p.setDateexpiration(rs.getDate("dateexpiration"));
+            promo.setPourcentage(rs.getInt("pourcentage"));
+            p.setPromotion(promo);
+            p.setPrixachat(rs.getInt("prixachat"));
+            p.setImageFile(rs.getString("image_file"));
+
+            list.add(p);
+        }
+    } catch (SQLException ex) {
+        Logger.getLogger(ServiceProduct.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return list;
+}
+
     
     
     

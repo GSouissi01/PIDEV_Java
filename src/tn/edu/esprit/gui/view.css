@@ -1,0 +1,29 @@
+#topGrid {
+    -fx-background-color: #2F3134;
+}
+
+#padGrid {
+	-fx-background-color: #2F3134;
+}
+
+.text-field {
+    -fx-background-radius: 0;
+    -fx-border-color: #000000;
+    -fx-border-width: 1;
+}
+
+.button { 
+    -fx-border-color: #e2e2e2;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #1d1d1d;
+    -fx-font-family: "Tahoma";
+    -fx-font-size: 24pt;
+    -fx-text-fill: #d8d8d8;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.button:hover {
+    -fx-background-color: 
+        radial-gradient(center 50% 50%, radius 100%, #000000, #FFFFFF);
+}

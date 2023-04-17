@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -17,7 +18,7 @@
             <Image url="file:///C:/Users/azizb/Downloads/list.png" />
          </image>
       </ImageView>
-      <Button fx:id="back" layoutX="871.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" text="back" />
+      <Button fx:id="back" layoutX="1176.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" text="back" />
       <AnchorPane fx:id="side_menu" layoutY="2.0" prefHeight="696.0" prefWidth="211.0" styleClass="side_menu" stylesheets="@home.css">
          <children>
             <Label fx:id="username" alignment="CENTER" layoutX="79.0" layoutY="212.0" textFill="WHITE">
@@ -64,5 +65,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
+      <TextField fx:id="searchField" layoutX="844.0" layoutY="57.0" onKeyReleased="#handleSearchFieldAction" />
+      <Button fx:id="searchButton" layoutX="1042.0" layoutY="57.0" mnemonicParsing="false" onAction="#handleSearchButtonAction" text="search" />
    </children>
 </AnchorPane>
