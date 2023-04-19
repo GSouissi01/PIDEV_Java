@@ -86,6 +86,26 @@ public class ServiceUser implements IUser<User>{
         System.out.println(ex.getMessage());
     }
 }
+    public boolean userExists(String email) throws SQLException {
+    String query = "SELECT * FROM user WHERE email = ?";
+    try (PreparedStatement statement = cnx.prepareStatement(query)) {
+        statement.setString(1, email);
+        try (ResultSet resultSet = statement.executeQuery()) {
+            return resultSet.next();
+        }
+    }
+}
+    public void banUser(int userId) {
+    String query = "UPDATE user SET is_banned = ? WHERE id = ?";
+    try (PreparedStatement stmt = cnx.prepareStatement(query)) {
+        stmt.setBoolean(1, true);
+        stmt.setInt(2, userId);
+        stmt.executeUpdate();
+        System.out.println("user Banned !");
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+    }
+}
     
     public void supprimeruser(User us) {
         try {
@@ -160,6 +180,49 @@ public class ServiceUser implements IUser<User>{
     }
     return userId;
 }  
+  public int getUserTelByEmail(String email) {
+    int userTel = -1; // default value if user is not found
+    try {
+        String query = "SELECT tel FROM user WHERE email = ?";
+        PreparedStatement ps = cnx.prepareStatement(query);
+        ps.setString(1, email);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            userTel = rs.getInt("tel");
+        }
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+    return userTel;
+}  
+  public User getUserByEmail(String email) {
+    try {
+        
+        PreparedStatement stmt = cnx.prepareStatement("SELECT * FROM user WHERE email = ?");
+        stmt.setString(1, email);
+        ResultSet rs = stmt.executeQuery();
+
+        if (rs.next()) {
+            int id = rs.getInt("id");
+            String username = rs.getString("username");
+            String password = rs.getString("password");
+            String nom = rs.getString("nom");
+            String prenom = rs.getString("prenom");
+            String tel = rs.getString("tel");
+            String nom_sup = rs.getString("nom_sup");
+            String adresse_sup = rs.getString("adresse_sup");
+            String imagePath = rs.getString("imagePath");
+            return new User(id, username, email, password, nom, prenom, tel, nom_sup, adresse_sup, imagePath);
+        } else {
+            return null;
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return null;
+    }
+}
+
+  
   public void updateUserPassword(String userId, String newPassword)
   {
     

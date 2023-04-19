@@ -42,6 +42,7 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.InternetAddress;
 import javax.mail.Transport;
 import javax.mail.MessagingException;
+import tn.edu.esprit.services.TwilioService;
 
 /**
  * FXML Controller class
@@ -73,49 +74,59 @@ public class Login1Controller implements Initializable {
     }    
     
     @FXML
-    private void handleLogin(ActionEvent event) throws IOException {
+private void handleLogin(ActionEvent event) throws IOException {
     String email = tfEmail_Login.getText();
     String password = pfPassword_Login.getText();
 
     ServiceUser su = new ServiceUser();
     User u = su.login(email, password);
-
+        System.out.println(u.isIsBanned());
     if (u == null) {
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("Error Message");
         alert.setHeaderText(null);
         alert.setContentText("Invalid email or password");
         alert.showAndWait();
-    }  else {
+    } else if (!u.isIsBanned()) { // check if user is banned
+        // send SMS notification to user
+        TwilioService.sendSms("+216 97397598", "Your access to the application has been restricted due to a violation of our terms of service.");
         
-    if(u.getRole().equals("ADMIN")) {
-        Parent root = FXMLLoader.load(getClass().getResource("../gui/BackEnd.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    } else if(u.getRole().equals("USER")) {
-        
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Profile.fxml"));
-        Parent root = loader.load();
-        ProfileController acc=loader.getController();
-                        acc.setTextNom(u.getNom());
-                        acc.setTextPrenom(u.getPrenom());
-                        acc.setTextEmail(u.getEmail());
-                        acc.setTextTel(""+u.getTel());
-                        acc.setTextSup(u.getNomSup());
-                        acc.setTextAdresse(u.getAdresseSup());
-                        acc.initData(u);
-                        
-                        tfEmail_Login.getScene().setRoot(root);
-        
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
+        // show error message to user
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Error Message");
+        alert.setHeaderText(null);
+        alert.setContentText("Your access to the application has been restricted due to a violation of our terms of service.");
+        alert.showAndWait();
+    } else {
+        if (u.getRole().equals("ADMIN")) {
+            // redirect to backend page
+            Parent root = FXMLLoader.load(getClass().getResource("../gui/BackEnd.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } else if (u.getRole().equals("USER")) {
+            // redirect to user profile page
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Profile.fxml"));
+            Parent root = loader.load();
+            ProfileController acc = loader.getController();
+            acc.setTextNom(u.getNom());
+            acc.setTextPrenom(u.getPrenom());
+            acc.setTextEmail(u.getEmail());
+            acc.setTextTel("" + u.getTel());
+            acc.setTextSup(u.getNomSup());
+            acc.setTextAdresse(u.getAdresseSup());
+            acc.initData(u);
+
+            tfEmail_Login.getScene().setRoot(root);
+
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        }
     }
-    }
-    }
+}
     @FXML
     private void handleCreateAccountButtonAction(ActionEvent event) throws IOException {
         if (registrationLoader == null) {
@@ -238,12 +249,12 @@ public class Login1Controller implements Initializable {
     Session session = Session.getInstance(properties, new Authenticator() {
         @Override
         protected PasswordAuthentication getPasswordAuthentication() {
-            return new PasswordAuthentication("ghada.souissi@esprit.tn", "ghada24082001");
+            return new PasswordAuthentication("ghadasouissi01@gmail.com", "ypolgyvuskvdhahd");
         }
     });
     try {
         Message message = new MimeMessage(session);
-        message.setFrom(new InternetAddress("ghada.souissi@esprit.tn"));
+        message.setFrom(new InternetAddress("ghadasouissi01@gmail.com"));
         message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
         message.setSubject("Password Reset");
         message.setText("Please click the following link to reset your password:\n\n" +

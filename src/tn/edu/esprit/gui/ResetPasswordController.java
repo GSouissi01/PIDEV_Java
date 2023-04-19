@@ -89,7 +89,7 @@ public class ResetPasswordController implements Initializable {
     
     private String getResetTokenFromURL() {
     // Parse the reset token from the URL of the password reset screen
-    String url = getClass().getResource("/reset-password.fxml").toString();
+    String url = getClass().getResource("../gui/ResetPassword.fxml").toString();
     int tokenIndex = url.indexOf("token=") + 6;
     return url.substring(tokenIndex);
 }

@@ -5,20 +5,31 @@
         <group>
             <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/BackEndController.java</file>
             <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/tests/UserWindow.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/BackReclamController.java</file>
             <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/tests/MainClass.java</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/register.css</file>
             <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/Profile.fxml</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/TestReclamController.java</file>
             <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/Login1Controller.java</file>
             <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/back.css</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/ForgotPassword.fxml</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/ProfileController.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/AddReclam.fxml</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/services/TwilioService.java</file>
             <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/Register1Controller.java</file>
             <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/Register1.fxml</file>
             <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/utils/Database.java</file>
             <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/services/ServiceUser.java</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/ForgotPasswordController.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/entites/User.java</file>
             <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/home.css</file>
             <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/utils/JDBCDao.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/entites/Reclamation.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/BackReclam.fxml</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/register.css</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/com/example/TestReclamController.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/ResetPasswordController.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/AddReclamController.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/services/ServiceReclamation.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/ProfileController.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/BackEnd.fxml</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/TestReclam.fxml</file>
         </group>
     </open-files>
 </project-private>

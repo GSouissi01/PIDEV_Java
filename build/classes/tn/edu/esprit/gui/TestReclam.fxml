@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.TestReclamController">
+    <Label text="Réclamations" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-padding: 10px;"/>
+    <HBox style="-fx-padding: 10px;">
+        <Label text="ID" style="-fx-font-weight: bold; -fx-padding: 0 10px 0 0;"/>
+        <Label text="Objet" style="-fx-font-weight: bold; -fx-padding: 0 10px 0 0;"/>
+        <Label text="Etat" style="-fx-font-weight: bold;"/>
+    </HBox>
+    <StackPane fx:id="stackPane" style="-fx-background-color: #F7F7F7;">
+        <VBox fx:id="vBox" style="-fx-spacing: 10px;"/>
+    </StackPane>
+</VBox>

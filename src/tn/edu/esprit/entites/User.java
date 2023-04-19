@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tn.edu.esprit.entities;
+package tn.edu.esprit.entites;
 
 /**
  *
@@ -20,6 +20,32 @@ public class User {
     private String adresseSup;
     String imagePath; 
     private String role;
+    private boolean isBanned; 
+
+    public boolean isIsBanned() {
+        return isBanned;
+    }
+
+    public void setIsBanned(boolean isBanned) {
+        this.isBanned = isBanned;
+    }
+
+    public User(String email, String nom, String prenom) {
+        this.email = email;
+        this.nom = nom;
+        this.prenom = prenom;
+    }
+
+    public User(int id, String nom, String prenom, String email, int tel, String password, String imagePath) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.tel = tel;
+        this.password = password;
+        this.imagePath = imagePath;
+        this.isBanned = false; // Set isBanned to false by default
+    }
 
     public User() {
     }
@@ -35,15 +61,7 @@ public class User {
         this.imagePath = imagePath;
     }
 
-    public User(int id, String email, String nom, String prenom, int tel, String nomSup, String adresseSup) {
-        this.id = id;
-        this.email = email;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.tel = tel;
-        this.nomSup = nomSup;
-        this.adresseSup = adresseSup;
-    }
+
 
     public User(String email, String nom, String prenom, int tel, String nomSup, String adresseSup) {
         this.email = email;

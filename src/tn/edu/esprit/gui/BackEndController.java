@@ -41,6 +41,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import tn.edu.esprit.entities.User;
 import tn.edu.esprit.services.ServiceUser;
+import tn.edu.esprit.services.TwilioService;
+import static tn.edu.esprit.services.TwilioService.sendSms;
 
 /**
  * FXML Controller class
@@ -81,7 +83,7 @@ public void initialize(URL location, ResourceBundle resources)
         card.setAlignment(Pos.CENTER);
         card.setPrefSize(250, 250);
         card.setStyle("-fx-background-color: #1a569f; -fx-background-radius: 50px; -fx-border-color: #white; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-padding: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);");
-
+        
         ImageView userImage = new ImageView();
         userImage.setFitHeight(150.0);
         userImage.setFitWidth(150.0);
@@ -119,10 +121,21 @@ public void initialize(URL location, ResourceBundle resources)
             container.getChildren().clear();
             initialize(location, resources);
         });
-
+        // Add ban button to card
+        Button banButton = new Button("Ban");
+        banButton.setOnAction(event -> {
+            ServiceUser serviceUser = new ServiceUser();
+            serviceUser.banUser(su.getUserIdByEmail(us.getEmail()));
+            sendSms("+216 97397598", "You have been banned from the system.");
+            // Change background color of cell to red
+            card.setStyle("-fx-background-color: red;");
+            
+            container.getChildren().clear();
+            initialize(location, resources);
+        });
         VBox cardContent = new VBox();
         cardContent.setSpacing(5.0);
-        cardContent.getChildren().addAll(userImage, userName, userEmail, userPrenom, deleteButton);
+        cardContent.getChildren().addAll(userImage, userName, userEmail, userPrenom, deleteButton,banButton);
         card.getChildren().add(cardContent);
 
         cardContainer.getChildren().add(card);
