@@ -66,7 +66,7 @@ public class ModifierDepenseController implements Initializable {
     public void setDepense(Depense depense) {
         this.depense = depense;
         // set the fields with the values of the selected depense
-        txtLibelle.setText(depense.getEtat());
+        txtLibelle.setText(depense.getdescription());
         txtMontant.setText(String.valueOf(depense.getPrix()));
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S"); // specify the date format with time part
         LocalDateTime dateTime = LocalDateTime.parse(depense.getDate(), formatter); // parse the date with the formatter

@@ -1,0 +1,13 @@
+/* Stylesheet for the PieChart */
+.PieChart {
+    -fx-pie-label-visible: false;
+    -fx-border-width: 5px;
+    -fx-border-color: #2f4f4f;
+ }
+ 
+ /* Stylesheet for the Label */
+ .titleLabel {
+    -fx-text-fill: #2f4f4f;
+    -fx-font-weight: bold;
+ }
+ 

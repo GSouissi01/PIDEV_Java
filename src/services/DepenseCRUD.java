@@ -103,8 +103,9 @@ public boolean modifierDepense(Depense d) {
                 d.setTotal_par_mois(RS.getFloat(6));
                 d.setdescription(RS.getString(5));
                 list.add(d);
-                System.out.println(d);
+                
             }
+            System.out.println(list);
         } catch (SQLException ex) {
             System.out.println("Erreur lors de l'affichage des dépenses : " + ex.getMessage());
         }
@@ -115,4 +116,23 @@ public boolean modifierDepense(Depense d) {
     public List<Depense> afficherDepensesParMois(String mois) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public float calculerTotalDepensesParEtat(String etat) {
+        float total = 0;
+        try {
+            String req = "SELECT SUM(`prix`) FROM `depense` WHERE `etat`=?";
+            PreparedStatement ps = conn.prepareStatement(req);
+            ps.setString(1, etat);
+            ResultSet RS = ps.executeQuery();
+            while(RS.next()){
+                total = RS.getFloat(1);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erreur lors du calcul du total des dépenses : " + ex.getMessage());
+        }
+        return total;
+    }
+
+  
 }

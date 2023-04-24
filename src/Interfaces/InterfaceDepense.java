@@ -17,6 +17,7 @@ public interface InterfaceDepense {
     public void supprimerDepense(int id);
     public List<Depense> afficherDepenses();
     public List<Depense> afficherDepensesParMois(String mois);
+    public float calculerTotalDepensesParEtat(String etat);
     
 }
 

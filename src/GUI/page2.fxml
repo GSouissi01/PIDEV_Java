@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Page2Controller">
+      <stylesheets>
+        <URL value="@tableview.css" />
+    </stylesheets>
    <children>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="depense" textAlignment="CENTER">
          <style>
@@ -18,35 +23,53 @@
       </Text>
       <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
          <children>
-            <TableView fx:id="tableDepenses" layoutX="52.0" layoutY="59.0" prefHeight="249.0" prefWidth="496.0">
-               <columns>
-                  <TableColumn fx:id="colLibelle" prefWidth="215.0" text="id">
-                     <cellValueFactory>
-                        <PropertyValueFactory property="id" />
-                     </cellValueFactory>
-                  </TableColumn>
-                  <TableColumn fx:id="colMontant" prefWidth="90.0" text="Prix">
-                     <cellValueFactory>
-                        <PropertyValueFactory property="prix" />
-                     </cellValueFactory>
-                  </TableColumn>
-                  <TableColumn fx:id="colDate" prefWidth="90.0" text="Date">
-                     <cellValueFactory>
-                        <PropertyValueFactory property="date" />
-                     </cellValueFactory>
-                  </TableColumn>
-                  <TableColumn fx:id="colPaye" prefWidth="101.0" text="ETAT">
-                     <cellValueFactory>
-                        <PropertyValueFactory property="etat" />
-                     </cellValueFactory>
-                  </TableColumn>
-               </columns>
+             <Button fx:id="btnAjouter" layoutX="105.0" layoutY="351.0" mnemonicParsing="false" onAction="#ajouterDepense" stylesheets="@page2.css" text="Ajouter" />
+      <Button fx:id="btnModifier" layoutX="199.0" layoutY="351.0" mnemonicParsing="false" onAction="#modifierDepense" text="Modifier" />
+            <TableView fx:id="tableDepenses" layoutX="52.0" layoutY="79.0" prefHeight="247.0" prefWidth="490.0">
+              <columns>
+                <TableColumn id="desc" fx:id="coldesc" prefWidth="134.4000244140625" text="ID" />
+                <TableColumn id="mt" fx:id="colMontant" prefWidth="124.0" text="montat" />
+                  <TableColumn id="ttt" fx:id="colDate" prefWidth="136.79998779296875" text="Date" />
+                  <TableColumn id="etat" fx:id="colPaye" minWidth="0.0" prefWidth="94.4000244140625" text="Etat" />
+                  <TableColumn id="etat" fx:id="colPaye1" minWidth="0.0" prefWidth="94.4000244140625" text="mt totale" />
+              </columns>
             </TableView>
-             <Button fx:id="btnAjouter" layoutX="52.0" layoutY="329.0" mnemonicParsing="false" onAction="#ajouterDepense" text="Ajouter" />
-      <Button fx:id="btnSupprimer" layoutX="217.0" layoutY="329.0" mnemonicParsing="false" onAction="#supprimerDepense" text="Supprimer" />
-      <Button fx:id="btnModifier" layoutX="371.0" layoutY="329.0" mnemonicParsing="false" onAction="#modifierDepense" text="Modifier" />
-
+   <HBox alignment="CENTER_LEFT" layoutX="34.0" layoutY="8.0" prefHeight="76.0" prefWidth="200.0">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="232.0" text="le montant totale de Depence payé :">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+      </HBox>
+            <Button fx:id="d" layoutX="421.0" layoutY="349.0" mnemonicParsing="false" onAction="#imprimer" text="Print" />
+            <Button fx:id="stat" layoutX="542.0" layoutY="65.0" mnemonicParsing="false" onAction="#stat" text="stat" textFill="#d90000">
+               <font>
+                  <Font name="Bell MT" size="15.0" />
+               </font>
+            </Button>
+            <Label fx:id="mtpaye" layoutX="230.0" layoutY="37.0" text="mtpaye">
+               <font>
+                  <Font name="Bodoni MT" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="295.0" layoutY="38.0" text="le montant totale de Depence payé :">
+               <font>
+                  <Font name="Arial" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="mtNpaye" layoutX="517.0" layoutY="37.0" text="mtNpaye">
+               <font>
+                  <Font name="Bodoni MT" size="15.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnSupprimer" layoutX="295.0" layoutY="351.0" mnemonicParsing="false" onAction="#supprimerDepense" text="supprimer" />
+     
          </children>
+  
+ 
+           
       </AnchorPane>
    </children>
 </HBox>

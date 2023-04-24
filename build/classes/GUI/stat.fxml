@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.StatController">
+   <children>
+      <PieChart fx:id="pie" layoutX="114.0" layoutY="56.0" prefHeight="288.0" prefWidth="371.0" />
+      <Label layoutX="143.0" layoutY="14.0" prefHeight="28.0" prefWidth="298.0" text="Nombre de depence par etat">
+         <font>
+            <Font name="Colonna MT" size="22.0" />
+         </font>
+      </Label>
+    
+   </children>
+     
+</AnchorPane>
