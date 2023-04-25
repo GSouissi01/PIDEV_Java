@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="610.0" prefWidth="460.0" stylesheets="@MainWindowStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.edu.esprit.gui.calculatorController">
+<AnchorPane prefHeight="610.0" prefWidth="460.0" stylesheets="@MainWindowStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.edu.esprit.gui.calculatorController">
    <children>
       <Pane layoutX="6.0" layoutY="37.0" prefHeight="567.0" prefWidth="449.0" styleClass="mainPane">
          <children>
@@ -166,7 +166,7 @@
             </Pane>
          </children>
       </Pane>
-      <Pane fx:id="titlePane" prefHeight="37.0" prefWidth="460.0">
+      <Pane fx:id="titlePane" layoutY="38.0" prefHeight="0.0" prefWidth="411.0">
          <children>
             <ImageView fx:id="btnClose" fitHeight="16.0" fitWidth="16.0" layoutX="424.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -178,7 +178,6 @@
                   <Image url="@../images/hide.png" />
                </image>
             </ImageView>
-            <Label layoutX="49.0" layoutY="11.0" text="Calculator" textFill="WHITE" />
             <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="24.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/icon.png" />
@@ -186,5 +185,6 @@
             </ImageView>
          </children>
       </Pane>
+      <Label layoutX="25.0" layoutY="5.0" text="Calculator" textFill="WHITE" />
    </children>
 </AnchorPane>

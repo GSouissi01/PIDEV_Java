@@ -12,45 +12,40 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="492.0" prefWidth="1160.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.edu.esprit.gui.HomeController">
+<AnchorPane id="AnchorPane" prefHeight="547.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.edu.esprit.gui.HomeController">
    <children>
-      <TextField fx:id="URLImage" layoutX="343.0" layoutY="326.0" />
-      <ImageView fitHeight="540.0" fitWidth="961.0" layoutX="210.0" layoutY="7.0">
+      <ImageView fitHeight="547.0" fitWidth="841.0" layoutX="212.0">
          <image>
-            <Image url="file:/C:/Users/azizb/Downloads/aaaa.png" />
+           <Image url="file:///C:/Users/azizb/Downloads/dark1.png" />
          </image>
       </ImageView>
-      <TextField fx:id="tfLibelle" layoutX="343.0" layoutY="85.0" promptText="libelle" />
-      <TextField fx:id="tfStock" layoutX="342.0" layoutY="120.0" promptText="stock" />
-      <TextField fx:id="tfPrix" layoutX="342.0" layoutY="159.0" promptText="prix" />
-      <TextField fx:id="tfPrixAchat" layoutX="342.0" layoutY="248.0" promptText="prix achat" />
-      <Button fx:id="tfAdd" layoutX="367.0" layoutY="480.0" mnemonicParsing="false" onAction="#saveUser" text="AJOUTER" textFill="#5fc21d">
+      <TextField fx:id="URLImage" layoutX="343.0" layoutY="326.0" />
+      <Button fx:id="tfAdd" layoutX="367.0" layoutY="480.0" mnemonicParsing="false" onAction="#saveUser" text="AJOUTER" textFill="#5fc21d" visible="false">
          <font>
             <Font name="Arial Rounded MT Bold" size="19.0" />
          </font>
       </Button>
-      <DatePicker fx:id="tfDateExp" layoutX="338.0" layoutY="199.0" />
-      <Label layoutX="226.0" layoutY="85.0" text="LIBELLE">
+      <Label layoutX="226.0" layoutY="85.0" text="LIBELLE" visible="false">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="228.0" layoutY="123.0" text="STOCK">
+      <Label layoutX="228.0" layoutY="123.0" text="STOCK" visible="false">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="226.0" layoutY="162.0" text="PRIX">
+      <Label layoutX="226.0" layoutY="162.0" text="PRIX" visible="false">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="214.0" layoutY="202.0" text="DATE_EXPIRATION">
+      <Label layoutX="214.0" layoutY="202.0" text="DATE_EXPIRATION" visible="false">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="222.0" layoutY="251.0" text="PRIX ACHAT">
+      <Label layoutX="222.0" layoutY="251.0" text="PRIX ACHAT" visible="false">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -60,22 +55,20 @@
             <Font name="Georgia Pro Italic" size="27.0" />
          </font>
       </Label>
-      <Button fx:id="btnAddImage" layoutX="234.0" layoutY="373.0" mnemonicParsing="false" onAction="#AddImage" text="IMAGE" />
-      <ImageView fx:id="Image" fitHeight="128.0" fitWidth="176.0" layoutX="338.0" layoutY="326.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="924.0" layoutY="431.0" mnemonicParsing="false" onAction="#delete" text="SUPPRIMER" textFill="#5fc21d">
+      <Button fx:id="btnAddImage" layoutX="234.0" layoutY="373.0" mnemonicParsing="false" onAction="#AddImage" text="IMAGE" visible="false" />
+      <Button layoutX="929.0" layoutY="431.0" mnemonicParsing="false" onAction="#delete" text="SUPPRIMER" textFill="#5fc21d" visible="false">
          <font>
             <Font name="Arial Rounded MT Bold" size="17.0" />
          </font></Button>
-      <Button layoutX="809.0" layoutY="431.0" mnemonicParsing="false" onAction="#modifier" text="MODIFIER" textFill="#5fc21d">
+      <Button layoutX="815.0" layoutY="431.0" mnemonicParsing="false" onAction="#modifier" text="MODIFIER" textFill="#5fc21d" visible="false">
          <font>
             <Font name="Arial Rounded MT Bold" size="17.0" />
          </font></Button>
-      <Button fx:id="afficher" layoutX="1061.0" layoutY="431.0" mnemonicParsing="false" onAction="#afficher" text="AFFICHER" textFill="#5fc21d">
+      <Button fx:id="afficher" layoutX="948.0" layoutY="38.0" mnemonicParsing="false" onAction="#afficher" prefHeight="31.0" prefWidth="30.0" style="-fx-background-image: ‪C:\Users\azizb\Downloads\dark.png;" textFill="#5fc21d">
          <font>
             <Font name="Arial Rounded MT Bold" size="17.0" />
          </font></Button>
-      <ComboBox fx:id="combo" layoutX="341.0" layoutY="290.0" prefWidth="150.0" />
-      <Label layoutX="220.0" layoutY="293.0" text="PROMOTION" textFill="#232223">
+      <Label layoutX="220.0" layoutY="293.0" text="PROMOTION" textFill="#232223" visible="false">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -109,25 +102,46 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <Label layoutX="234.0" layoutY="27.0" text="AJOUTER PRODUIT" textFill="#5fc21d">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="31.0" />
-         </font>
-      </Label>
-      <Button fx:id="stat" layoutX="638.0" layoutY="431.0" mnemonicParsing="false" onAction="#stat" text="STATISTIQUE" textFill="#5fc21d">
+      <Button fx:id="stat" layoutX="301.0" layoutY="480.0" mnemonicParsing="false" onAction="#stat" prefHeight="50.0" prefWidth="46.0" textFill="#5fc21d">
          <font>
             <Font name="Arial Rounded MT Bold" size="16.0" />
          </font>
       </Button>
-      <TableView fx:id="TableProduit" layoutX="599.0" layoutY="19.0" prefHeight="403.0" prefWidth="558.0">
+      <TableView fx:id="TableProduit" layoutX="241.0" layoutY="85.0" prefHeight="382.0" prefWidth="751.0">
          <columns>
-            <TableColumn fx:id="libelle" prefWidth="97.60003662109375" text="libelle" />
-            <TableColumn fx:id="stock" prefWidth="76.79998779296875" text="stock" />
-            <TableColumn fx:id="prix" prefWidth="84.79998779296875" text="prix" />
+            <TableColumn fx:id="img" prefWidth="97.60003662109375" text="image" />
+            <TableColumn fx:id="libelle" prefWidth="104.0" text="libelle" />
+            <TableColumn fx:id="prix" prefWidth="57.5999755859375" text="prix" />
             <TableColumn fx:id="date" prefWidth="112.0" text="date expiration" />
-            <TableColumn fx:id="prixachat" prefWidth="91.199951171875" text="prix achat" />
-            <TableColumn fx:id="img" prefWidth="91.199951171875" text="image" />
+            <TableColumn fx:id="prixachat" prefWidth="108.0" text="prix achat" />
+            <TableColumn fx:id="stock" prefWidth="99.2000732421875" text="stock" />
          </columns>
       </TableView>
+      <Button fx:id="pdf" layoutX="243.0" layoutY="480.0" mnemonicParsing="false" onAction="#pdf" prefHeight="50.0" prefWidth="42.0" textFill="#5fc21d">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="16.0" />
+         </font>
+      </Button>
+      <AnchorPane fx:id="anchorPane" layoutX="312.0" layoutY="49.0" prefHeight="304.0" prefWidth="227.0" visible="false">
+         <children>
+            <TextField fx:id="tfLibelle" layoutX="13.0" layoutY="48.0" promptText="libelle" visible="false" />
+            <TextField fx:id="tfStock" layoutX="5.0" layoutY="89.0" promptText="stock" visible="false" />
+            <ImageView fx:id="Image" fitHeight="159.0" fitWidth="176.0" layoutX="52.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true" visible="false" />
+            <TextField fx:id="tfPrix" layoutX="5.0" layoutY="141.0" promptText="prix" visible="false" />
+            <TextField fx:id="tfPrixAchat" layoutX="5.0" layoutY="231.0" promptText="prix achat" visible="false" />
+            <DatePicker fx:id="tfDateExp" layoutY="188.0" visible="false" />
+            <ComboBox fx:id="combo" layoutX="4.0" layoutY="282.0" prefWidth="150.0" visible="false" />
+         </children>
+      </AnchorPane>
+  
+          <Button fx:id="test" layoutX="234.0" layoutY="36.0" mnemonicParsing="false" onAction="#test" prefHeight="35.0" prefWidth="30.0" />
+      <Label layoutX="324.0" layoutY="19.0" text="LISTE DES PRODUITS" textFill="#5dc21d">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="49.0" />
+         </font>
+      </Label>
+      <Button fx:id="close" layoutX="1028.0" layoutY="1.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="24.0" />
+
+
    </children>
 </AnchorPane>

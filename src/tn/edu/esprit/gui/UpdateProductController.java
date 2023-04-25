@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
@@ -26,6 +27,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -39,40 +41,70 @@ import tn.edu.esprit.services.ServiceProduct;
  *
  * @author azizbramli
  */
+
+
 public class UpdateProductController implements Initializable {
+    
+    
 
     @FXML
-    private TextField tfLibelle;
+     TextField tflibelleUpdate;
     @FXML
-    private TextField tfStock;
+     TextField tfStockUpdate;
     @FXML
-    private TextField tfPrix;
+     TextField tfPrixUpdate;
     @FXML
-    private TextField tfPrixAchat;
+     TextField tfPrixAchatUpdate;
     @FXML
     private Button tfAdd;
     @FXML
-    private DatePicker tfDateExp;
+     DatePicker tfDateExpUpdate;
     @FXML
     private Button btnAddImage;
-    @FXML
-    private ImageView Image;
+ 
     @FXML
     private TextField URLImage;
-    private void clearFields() {
-    tfLibelle.clear();
-    tfStock.clear();
-    tfPrix.clear();
-    tfPrixAchat.clear();
-    tfDateExp.setValue(null);
-    URLImage.clear();
-}
+  
+    @FXML
+     ImageView ImageUpdate;
+   
+
+  public void setProduit(Produit produit) {
+       
+      
+        tflibelleUpdate.setText(produit.getLibelle());
+        tfStockUpdate.setText(String.valueOf(produit.getStock()));
+        tfPrixAchatUpdate.setText(String.valueOf(produit.getPrixachat()));
+        tfPrixUpdate.setText(String.valueOf(produit.getPrix()));
+        String date = "" + produit.getDateexpiration();
+        LocalDate localDate_s = LocalDate.parse(date);
+
+        tfDateExpUpdate.setValue(localDate_s);
+         String path = "C:\\xampp\\htdocs\\produit_final\\produit\\public\\images\\product\\" + produit.getImageFile();
+         String path1 =  produit.getImageFile();
+        File file = new File(path);
+        URLImage.setText(path1);
+        Image img = new Image(file.toURI().toString());
+        ImageUpdate.setImage(img);
+    }
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+         btnAddImage.setStyle("-fx-background-image: url('file:///C:/Users/azizb/Downloads/cap.jpg');-fx-background-size: 100% 100%;");
+           tfAdd.setStyle("-fx-background-image: url('file:///C:/Users/azizb/Downloads/tick1.png');-fx-background-size: 100% 100%;");
+
+        
+        tflibelleUpdate.getStylesheets().add("file:///C:/Users/azizb/Downloads/field.css");
+         tfStockUpdate.getStylesheets().add("file:///C:/Users/azizb/Downloads/field.css");
+          tfPrixUpdate.getStylesheets().add("file:///C:/Users/azizb/Downloads/field.css");
+           tfPrixAchatUpdate.getStylesheets().add("file:///C:/Users/azizb/Downloads/field.css");
+            tfDateExpUpdate.getStylesheets().add("file:///C:/Users/azizb/Downloads/field.css");
+         
+        
         // TODO
     }    
 
@@ -102,7 +134,7 @@ public class UpdateProductController implements Initializable {
         res = path.substring(47,len);
         System.out.println(res);
         Image img = new Image(file.toURI().toString());
-        Image.setImage(img);
+        ImageUpdate.setImage(img);
         URLImage.setText(res);
         int b = 0;
         while (b != -1) {
@@ -118,30 +150,29 @@ public class UpdateProductController implements Initializable {
 }
     
 
-    @FXML
     private void updateUser(ActionEvent event) {
        
 
-    String libelle = tfLibelle.getText();
-    String stockString = tfStock.getText();
+    String libelle = tflibelleUpdate.getText();
+    String stockString = tfStockUpdate.getText();
     int stock = 0;
     if (!stockString.isEmpty()) {
         stock = Integer.parseInt(stockString);
     }
-    String prixString = tfPrix.getText();
+    String prixString = tfPrixUpdate.getText();
     float prix = 0;
     if (!prixString.isEmpty()) {
         prix = Float.parseFloat(prixString);
     }
 
-    String prixAchatString = tfPrixAchat.getText();
+    String prixAchatString = tfPrixAchatUpdate.getText();
     float prixAchat = 0;
     if (!prixAchatString.isEmpty()) {
         prixAchat = Float.parseFloat(prixAchatString);
     }
 
     Alert alert;
-    if (libelle.isEmpty() || stockString.isEmpty() || prixString.isEmpty() || Objects.isNull(tfDateExp.getValue()) || prixAchatString.isEmpty() ) {
+    if (libelle.isEmpty() || stockString.isEmpty() || prixString.isEmpty() || Objects.isNull(tfDateExpUpdate.getValue()) || prixAchatString.isEmpty() ) {
         alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error Message");
         alert.setHeaderText(null);
@@ -151,7 +182,7 @@ public class UpdateProductController implements Initializable {
         try {
             // Change the format of the date returned by the DatePicker to match the format expected by the database
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            String dateStr = sdf.format(java.sql.Date.valueOf(tfDateExp.getValue()));
+            String dateStr = sdf.format(java.sql.Date.valueOf(tfDateExpUpdate.getValue()));
 
             // Check if the user has selected a row in the table view to update
            Produit p = new Produit(libelle, stock, prix, sdf.parse(dateStr), prixAchat, URLImage.getText());
@@ -179,7 +210,7 @@ public class UpdateProductController implements Initializable {
             alert.showAndWait();
 
             // Reset the input fields and the selectedProduit variable
-            clearFields();
+         
        
 
         } catch (NumberFormatException e) {
@@ -202,5 +233,9 @@ public class UpdateProductController implements Initializable {
     }
     
 }
+    }
+
+    @FXML
+    private void saveUser(ActionEvent event) {
     }
 }

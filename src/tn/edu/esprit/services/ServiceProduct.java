@@ -127,17 +127,19 @@ public class ServiceProduct implements IProduct<Produit>{
 @Override
 public void modifier(Produit p) {
     try {
-        String req = "UPDATE `produit` SET `libelle` = ?, `stock` = ?, `prix` = ?, `dateexpiration` = ?, `promotion_id` = ?, `prixAchat` = ?, `image_file` = ? WHERE `produit`.`id` = ?";
+        String req = "UPDATE `produit` SET `libelle` = ?, `stock` = ?, `prix` = ?, `dateexpiration` = ?,  `prixAchat` = ?, `image_file` = ? WHERE id = ?";
         PreparedStatement st = cnx.prepareStatement(req);
         st.setString(1, p.getLibelle());
         st.setInt(2, p.getStock());
         st.setDouble(3, p.getPrix());
         st.setDate(4, new java.sql.Date(p.getDateexpiration().getTime()));
-        st.setInt(5, p.getPromotion().getIdpromo());
-        st.setDouble(6, p.getPrixachat());
-        st.setString(7, p.getImageFile());
-        st.setInt(8, p.getId());
+     
+        st.setDouble(5, p.getPrixachat());
+        st.setString(6, p.getImageFile());
+      
+        st.setInt(7, p.getId());
         st.executeUpdate();
+       
         System.out.println("Produit updated !");
     } catch (SQLException ex) {
         System.out.println(ex.getMessage());
@@ -164,6 +166,7 @@ public List<Produit> getAll() {
             p.setPrix(rs.getInt("prix"));
             p.setDateexpiration(rs.getDate("dateexpiration"));
             promo.setPourcentage(rs.getInt("pourcentage"));
+            promo.setStatus(rs.getString("status"));
             p.setPromotion(promo);
             p.setPrixachat(rs.getInt("prixachat"));
             p.setImageFile(rs.getString("image_file"));

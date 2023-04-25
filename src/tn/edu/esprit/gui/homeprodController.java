@@ -71,6 +71,8 @@ public class homeprodController implements Initializable {
 private int currentImageIndex = 0;
     @FXML
     private ImageView background;
+    @FXML
+    private Button close;
 
 private void animateBackground() {
     javafx.util.Duration duration = new javafx.util.Duration(2000);
@@ -92,6 +94,14 @@ private void animateBackground() {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+       
+      close.setStyle("-fx-background-image: url('file:///C:/Users/azizb/Downloads/close.png');-fx-background-size: 100% 100%;");
+
+    close.setOnAction(event -> {
+    Stage stage = (Stage) close.getScene().getWindow();
+    stage.close();
+});
+
         
     animateBackground();
         // Charger le fichier audio dans un Media
@@ -168,5 +178,9 @@ private void animateBackground() {
         e.printStackTrace();
     }
     }
+    
+   
+ 
+
     
 }

@@ -87,11 +87,20 @@ private DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
     private TextField tftitre;
     @FXML
     private TableColumn<Promotion, String> titre;
+    @FXML
+    private Button close;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+          close.setStyle("-fx-background-image: url('file:///C:/Users/azizb/Downloads/close.png');-fx-background-size: 100% 100%;");
+
+    close.setOnAction(event -> {
+    Stage stage = (Stage) close.getScene().getWindow();
+    stage.close();
+});
+
         TablePromotion.setStyle("-fx-font-family: Arial; -fx-selection-bar: lightblue;");
 
 // Charger un fichier CSS externe

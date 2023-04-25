@@ -29,6 +29,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import tn.edu.esprit.entities.Produit;
 import tn.edu.esprit.entities.Promotion;
@@ -64,6 +65,17 @@ private DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+           btnAddImage.setStyle("-fx-background-image: url('file:///C:/Users/azizb/Downloads/cap.jpg');-fx-background-size: 100% 100%;");
+           tfAdd.setStyle("-fx-background-image: url('file:///C:/Users/azizb/Downloads/tick1.png');-fx-background-size: 100% 100%;");
+
+        
+        tfLibelle.getStylesheets().add("file:///C:/Users/azizb/Downloads/field.css");
+         tfStock.getStylesheets().add("file:///C:/Users/azizb/Downloads/field.css");
+          tfPrix.getStylesheets().add("file:///C:/Users/azizb/Downloads/field.css");
+           tfPrixAchat.getStylesheets().add("file:///C:/Users/azizb/Downloads/field.css");
+            tfDateExp.getStylesheets().add("file:///C:/Users/azizb/Downloads/field.css");
+             combo.getStylesheets().add("file:///C:/Users/azizb/Downloads/field.css");
+
          List<Promotion> promotions = listdata.getPromotion();
 ObservableList<String> observableList = FXCollections.observableArrayList();
 for (Promotion categoriePromotion : promotions) {
@@ -74,47 +86,46 @@ combo.setItems(observableList);
     }
     
     
-
-      @FXML
+ @FXML
     private void AddImage(ActionEvent event) throws FileNotFoundException, IOException {
-    Random rand = new Random();
-    int x = rand.nextInt(1000);
-    FileChooser fileChooser = new FileChooser();
-    fileChooser.setTitle("Upload File Path");
-    fileChooser.getExtensionFilters().addAll(
-            new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif", "*.jpeg"));
-    File file = fileChooser.showOpenDialog(null);
-    String DBPath = "" + x + ".jpg";
+        Random rand = new Random();
+        int x = rand.nextInt(1000);
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Upload File Path");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif", "*.jpeg"));
+        File file = fileChooser.showOpenDialog(null);
+        String DBPath = "" + x + ".jpg";
 
-    if (file != null) {
-        FileInputStream Fsource = new FileInputStream(file.getAbsolutePath());
-        FileOutputStream Fdestination = new FileOutputStream(DBPath);
-        BufferedInputStream bin = new BufferedInputStream(Fsource);
-        BufferedOutputStream bou = new BufferedOutputStream(Fdestination);
-        System.out.println(file.getAbsoluteFile());
-        String path = file.getAbsolutePath();
-        String res;
-        int len;
-        len=path.length();
+        if (file != null) {
+            FileInputStream Fsource = new FileInputStream(file.getAbsolutePath());
+            FileOutputStream Fdestination = new FileOutputStream(DBPath);
+            BufferedInputStream bin = new BufferedInputStream(Fsource);
+            BufferedOutputStream bou = new BufferedOutputStream(Fdestination);
+            System.out.println(file.getAbsoluteFile());
+            String path = file.getName();
+            String res;
+            int len;
+            len = path.length();
+            res = path;
+            //   res = path.substring(47,len);
+            //    System.out.println(res);
+            Image img = new Image(file.toURI().toString());
+            Image.setImage(img);
+            URLImage.setText(res);
+            int b = 0;
+            while (b != -1) {
+                b = bin.read();
+                bou.write(b);
+            }
+            bin.close();
+            bou.close();
 
-        res = path.substring(47,len);
-        System.out.println(res);
-        Image img = new Image(file.toURI().toString());
-        Image.setImage(img);
-        URLImage.setText(res);
-        int b = 0;
-        while (b != -1) {
-            b = bin.read();
-            bou.write(b);
+        } else {
+            System.out.println("error");
         }
-        bin.close();
-        bou.close();
-
-    } else {
-        System.out.println("error");
     }
-}
-    
+
     
     
    @FXML

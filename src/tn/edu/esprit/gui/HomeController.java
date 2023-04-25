@@ -62,7 +62,15 @@ import tn.edu.esprit.services.ServicePromotion;
 import javafx.embed.swing.SwingFXUtils;
 import java.awt.TrayIcon;
 import java.awt.image.BufferedImage;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
+import javafx.stage.Popup;
+import javafx.util.Callback;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 
 /**
@@ -123,6 +131,16 @@ public class HomeController implements Initializable {
     private Button promotion;
     @FXML
     private Button stat;
+    @FXML
+    private Button pdf;
+    @FXML
+    private AnchorPane anchorPane;
+    @FXML
+    private Button test;
+    @FXML
+    private Button close;
+    
+    
 
 
     /**
@@ -130,6 +148,55 @@ public class HomeController implements Initializable {
      */
     @Override
 public void initialize(URL url, ResourceBundle rb) {
+    
+
+pdf.setStyle("-fx-background-color: transparent; -fx-background-image: url('file:///C:/Users/azizb/Downloads/pdf.png'); -fx-background-size: 100% 100%;");
+
+
+stat.setStyle("-fx-background-color: transparent; -fx-background-image: url('file:///C:/Users/azizb/Downloads/stat1.png'); -fx-background-size: 100% 100%;");
+afficher.setStyle("-fx-background-color: transparent; -fx-background-image: url('file:///C:/Users/azizb/Downloads/afficher.png'); -fx-background-size: 100% 100%;");
+test.setStyle("-fx-background-color: transparent; -fx-background-image: url('file:///C:/Users/azizb/Downloads/add.png'); -fx-background-size: 100% 100%;");
+   close.setStyle("-fx-background-image: url('file:///C:/Users/azizb/Downloads/close.png');-fx-background-size: 100% 100%;");
+
+    close.setOnAction(event -> {
+    Stage stage = (Stage) close.getScene().getWindow();
+    stage.close();
+});
+
+
+
+
+
+    
+    
+    try {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("UpdateProduct.fxml"));
+    Parent root = loader.load();
+    UpdateProductController updateController = loader.getController();
+
+    tfLibelle.setText(updateController.tflibelleUpdate.getText());
+    tfStock.setText(updateController.tfStockUpdate.getText());
+    tfPrix.setText(updateController.tfPrixUpdate.getText());
+    tfPrixAchat.setText(updateController.tfPrixAchatUpdate.getText());
+    tfDateExp.setValue(updateController.tfDateExpUpdate.getValue());
+    Image.setImage(updateController.ImageUpdate.getImage());
+} catch (IOException e) {
+    e.printStackTrace();
+}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     Media media = new Media(new File("C:\\Users\\azizb\\Downloads\\sound.mp3").toURI().toString());
 
     // Add a mouse event to play the sound when hovering over the "menu_btn" button
@@ -185,11 +252,13 @@ public void initialize(URL url, ResourceBundle rb) {
                 if (item < 10) {
                     
                     
+                   
                     try {
                         displayNotification("Low Stock", "The stock for " + ((Produit) getTableRow().getItem()).getLibelle() + " is running low ("+((Produit) getTableRow().getItem()).getStock()+"Kg)" );
                     } catch (IOException ex) {
                         Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                    
                    
                    
                 }
@@ -209,6 +278,111 @@ public void initialize(URL url, ResourceBundle rb) {
         imageView.setFitHeight(50);
         return new SimpleObjectProperty<>(imageView);
     });
+    
+    TableColumn<Produit, Void> modifierColonne = new TableColumn<>("Modifier");
+
+
+// Créez une cellule de bouton pour la colonne Modifier
+Callback<TableColumn<Produit, Void>, TableCell<Produit, Void>> celluleModifierFactory = new Callback<TableColumn<Produit, Void>, TableCell<Produit, Void>>() {
+    @Override
+    public TableCell<Produit, Void> call(final TableColumn<Produit, Void> param) {
+        final TableCell<Produit, Void> cellule = new TableCell<Produit, Void>() {
+        private final Button bouton = new Button();
+
+{
+bouton.setStyle("-fx-background-color: transparent; -fx-background-image: url('file:///C:/Users/azizb/Downloads/edit.png'); -fx-background-size: 100% 100%;");
+
+    bouton.setOnAction((ActionEvent event) -> {
+        Produit produit = getTableView().getItems().get(getIndex());
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("UpdateProduct.fxml"));
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        UpdateProductController controller = loader.getController();
+        controller.setProduit(produit);
+
+        Popup popup = new Popup();
+        popup.getContent().add(root);
+
+        // Add a close button with an "X" symbol
+        Button closeButton = new Button("X");
+        closeButton.setStyle("-fx-background-color: red; -fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold; -fx-padding: 10px;");
+        closeButton.setOnAction(closeEvent -> {
+            if (popup != null) {
+                popup.hide();
+            }
+        });
+        closeButton.setOnMouseClicked(closeEvent -> popup.hide());
+        ((AnchorPane) root).getChildren().add(closeButton);
+
+        popup.show(bouton.getScene().getWindow());
+    });
+}
+
+
+            @Override
+            public void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(bouton);
+                }
+            }
+        };
+        return cellule;
+    }
+};
+
+
+// Créez une cellule de bouton pour la colonne Supprimer
+final TableColumn<Produit, Void> actionsColumn = new TableColumn<>("Supprimer");
+Callback<TableColumn<Produit, Void>, TableCell<Produit, Void>> cellFactory = new Callback<TableColumn<Produit, Void>, TableCell<Produit, Void>>() {
+    @Override
+    public TableCell<Produit, Void> call(final TableColumn<Produit, Void> param) {
+        final TableCell<Produit, Void> cell = new TableCell<Produit, Void>() {
+            private final Button supprimerButton = new Button();
+
+            {
+                          supprimerButton.setStyle("-fx-background-image: url('file:///C:/Users/azizb/Downloads/trash.png');-fx-background-size: 100% 100%;");
+
+                supprimerButton.setOnAction((ActionEvent event) -> {
+                    Produit produit = getTableView().getItems().get(getIndex());
+                    ServiceProduct p = new ServiceProduct();
+                    p.supprimer(produit.getId());
+                    getTableView().getItems().remove(produit);
+                });
+            }
+
+            @Override
+            public void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(supprimerButton);
+                }
+            }
+        };
+        return cell;
+    }
+};
+actionsColumn.setCellFactory(cellFactory);
+TableProduit.getColumns().add(actionsColumn);
+
+
+// Associez les cellules de bouton aux colonnes correspondantes
+modifierColonne.setCellFactory(celluleModifierFactory);
+
+
+// Ajoutez les colonnes Modifier et Supprimer à votre TableView
+TableProduit.getColumns().addAll(modifierColonne);
+
 
     // Load the data into the table
 }
@@ -219,13 +393,11 @@ private void displayNotification(String title, String message) throws IOExceptio
     }
 
     SystemTray tray = SystemTray.getSystemTray();
-   BufferedImage bufferedImage = ImageIO.read(new File("C:\\Users\\azizb\\Downloads\\alert.png"));
+    BufferedImage bufferedImage = ImageIO.read(new File("C:/Users/azizb/Downloads/tick1.png"));
+   
+JLabel label = new JLabel(new ImageIcon(bufferedImage));
 
-    Image image = SwingFXUtils.toFXImage(bufferedImage, null);
-
-    // Create an ImageIcon from the JavaFX Image
-    ImageIcon icon = new ImageIcon(SwingFXUtils.fromFXImage(image, null));
-    TrayIcon trayIcon = new TrayIcon(icon.getImage(), "Product Manager");
+    TrayIcon trayIcon = new TrayIcon(bufferedImage, "Product Manager");
 
     trayIcon.setImageAutoSize(true);
     trayIcon.setToolTip("Product Manager");
@@ -237,6 +409,7 @@ private void displayNotification(String title, String message) throws IOExceptio
         e.printStackTrace();
     }
 }
+
 
     
     
@@ -282,6 +455,9 @@ private void displayNotification(String title, String message) throws IOExceptio
 
     @FXML
     private void saveUser(ActionEvent event) throws IOException {
+        
+ 
+
 
         String promo = (String) combo.getValue();
         ServicePromotion pser = new ServicePromotion();
@@ -609,4 +785,59 @@ private void modifier(ActionEvent event) {
         }
     }
 
+@FXML
+private void pdf(ActionEvent event) {
+    List<Produit> produits = TableProduit.getItems();
+    PDFGenerator pd = new PDFGenerator();
+    try {
+        pd.generatePdf("liste_produits", produits);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("PDF");
+        alert.setHeaderText(null);
+        alert.setContentText("!!!PDF exported!!!");
+        alert.showAndWait();
+        System.out.println("impression done");
+    } catch (Exception ex) {
+        Logger.getLogger(ServiceProduct.class.getName()).log(Level.SEVERE, null, ex);
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Alert");
+        alert.setHeaderText(null);
+        alert.setContentText("!!!No product selected!!!");
+        alert.showAndWait();
+    }
 }
+
+  @FXML
+private void test(ActionEvent event) {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddProduct.fxml"));
+        AnchorPane popupContent = loader.load();
+
+        Popup popup = new Popup();
+        popup.getContent().add(popupContent);
+
+        // Add a close button with an "X" symbol
+        Button closeButton = new Button("X");
+        closeButton.setStyle("-fx-background-color: red; -fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold; -fx-padding: 10px;");
+        closeButton.setOnAction(closeEvent -> {
+            if (popup != null) {
+                popup.hide();
+            }
+        });
+        closeButton.setOnMouseClicked(closeEvent -> popup.hide());
+        popupContent.getChildren().add(closeButton);
+
+        popup.show(test.getScene().getWindow());
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
+
+
+}
+
+
+                
+
+

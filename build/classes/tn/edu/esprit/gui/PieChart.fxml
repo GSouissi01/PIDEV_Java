@@ -10,14 +10,14 @@
 
 <AnchorPane id="AnchorPane" prefHeight="708.0" prefWidth="898.0" stylesheets="@file:///C:/Users/azizb/Downloads/styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.edu.esprit.gui.PieChartController">
    <children>
-      <ImageView fitHeight="696.0" fitWidth="723.0" layoutX="223.0" layoutY="12.0" opacity="0.61">
+      <ImageView fitHeight="696.0" fitWidth="729.0" layoutX="211.0" layoutY="6.0" opacity="0.61">
          <image>
            
             <Image url="file:///C:/Users/azizb/Downloads/pie.jpg" />
          </image>
       </ImageView>
       <PieChart fx:id="pieChart" layoutX="238.0" layoutY="111.0" prefHeight="405.0" prefWidth="531.0" />
-      <AnchorPane fx:id="side_menu" layoutX="10.0" layoutY="12.0" prefHeight="696.0" prefWidth="211.0" styleClass="side_menu" stylesheets="@home.css">
+      <AnchorPane fx:id="side_menu" layoutY="6.0" prefHeight="696.0" prefWidth="211.0" styleClass="side_menu" stylesheets="@home.css">
          <children>
             <Label fx:id="username" alignment="CENTER" layoutX="79.0" layoutY="212.0" textFill="WHITE">
                <font>
@@ -51,9 +51,10 @@
             <Font name="Arial Rounded MT Bold" size="28.0" />
          </font>
       </Label>
-      <Button layoutX="776.0" layoutY="623.0" mnemonicParsing="false" onAction="#calculator" prefHeight="34.0" prefWidth="106.0" style="-fx-background-color: #7A238A;" text="CALCULATOR" textFill="#efe0c4">
+      <Button fx:id="calc" layoutX="870.0" layoutY="619.0" mnemonicParsing="false" onAction="#calculator" prefHeight="43.0" prefWidth="38.0" textFill="#efe0c4">
          <font>
             <Font name="Arial Rounded MT Bold" size="12.0" />
          </font></Button>
+      <Button fx:id="close" layoutX="915.0" layoutY="6.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="24.0" />
    </children>
 </AnchorPane>
