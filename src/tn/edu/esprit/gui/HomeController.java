@@ -349,7 +349,7 @@ Callback<TableColumn<Produit, Void>, TableCell<Produit, Void>> cellFactory = new
             private final Button supprimerButton = new Button();
 
             {
-                          supprimerButton.setStyle("-fx-background-image: url('file:///C:/Users/azizb/Downloads/trash.png');-fx-background-size: 100% 100%;");
+supprimerButton.setStyle("-fx-background-color: transparent; -fx-background-image: url('file:///C:/Users/azizb/Downloads/remove.png'); -fx-background-size: 100% 100%;");
 
                 supprimerButton.setOnAction((ActionEvent event) -> {
                     Produit produit = getTableView().getItems().get(getIndex());

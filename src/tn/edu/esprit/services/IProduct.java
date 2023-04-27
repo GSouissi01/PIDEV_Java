@@ -15,6 +15,7 @@ import java.util.List;
 public interface IProduct <T>{
     public void ajouter(T p) throws SQLException;
     public void modifier(T p) throws SQLException;
+     public void stock(T p) throws SQLException;
     public void supprimer(int id) throws SQLException;
     public List<T> getAll() throws SQLException;
      public T displayById(int id);

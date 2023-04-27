@@ -253,7 +253,22 @@ public ObservableList<PieChart.Data> getPrixProduits() throws SQLException {
 }
 
     
-    
+
+@Override
+public void stock(Produit p) {
+    try {
+        String req = "UPDATE `produit` SET `stock` = ? WHERE id = ?";
+        PreparedStatement st = cnx.prepareStatement(req);
+        st.setInt(1, p.getStock());
+        st.setInt(2, p.getId());
+        st.executeUpdate();
+        System.out.println("Stock updated !");
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+}
+
+
     
     
     

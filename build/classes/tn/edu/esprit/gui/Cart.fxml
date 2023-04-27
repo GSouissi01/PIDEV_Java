@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane fx:id="cartGridPane" xmlns:fx="http://javafx.com/fxml" fx:controller="tn.edu.esprit.gui.CartController">
+
+
+
+    <Label text="Product Name" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+    <Label text="Price" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+    <Label text="Quantity" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+    <Label text="Remove" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+    <Label text="Add" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+    <Label text="Subtract" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+
+    <VBox fx:id="cartBox" GridPane.columnSpan="6" GridPane.rowIndex="1">
+        <Label text="Le panier est vide." />
+    </VBox>
+
+    <Label text="Total:" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+    <Label fx:id="totalPriceLabel" text="0.00 €" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+
+    <Button text="Vider le panier" fx:id="clearCartButton" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+</GridPane>

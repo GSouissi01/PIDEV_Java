@@ -4,9 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/MaAnimation.java</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/PieChart.fxml</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/entities/CartItem.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/home.css</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/entities/Promotion.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/build.xml</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/ListProduct.fxml</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/PDFGenerator.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/entities/Produit.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/services/ipromotion.java</file>
@@ -16,13 +19,17 @@
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/homeprodController.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/tests/ProductWindow.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/utils/Database.java</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/CartController.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/PieChartController.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/JavaFX_QRCodeWriter.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/calculatorController.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/ListProductController.java</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/entities/Cart.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/services/ServicePromotion.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/AddPromotionController.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/HomeController.java</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/home.fxml</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/field.css</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/AddProductController.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/AppSecretProofGenerator.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/services/IProduct.java</file>
