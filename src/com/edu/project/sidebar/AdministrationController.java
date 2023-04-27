@@ -13,9 +13,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
@@ -26,16 +29,25 @@ import javafx.scene.shape.Circle;
  */
 public class AdministrationController implements Initializable {
 
-    @FXML
     private BorderPane BorderPane;
     @FXML
-    private Button btnfournisseur;
+    private HBox root;
     @FXML
-    private Button btnaddfournisseur;
+    private AnchorPane side_menu;
     @FXML
-    private Button btnpub;
+    private ImageView logo;
     @FXML
-    private Button btnshowpub;
+    private Button menu_btn;
+    @FXML
+    private ImageView profilePic;
+    @FXML
+    private Label username;
+    @FXML
+    private Button menu_btn1;
+    @FXML
+    private Button menu_btn2;
+    @FXML
+    private AnchorPane anchoreview;
 
     /**
      * Initializes the controller class.
@@ -49,7 +61,8 @@ public class AdministrationController implements Initializable {
     private void MainPage() {
         try {
             AnchorPane view = FXMLLoader.load(getClass().getResource("../fournisseur/fournisseur.fxml"));
-            BorderPane.setCenter(view);
+            anchoreview.getChildren().clear();
+            anchoreview.getChildren().add(view);
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
@@ -59,7 +72,8 @@ public class AdministrationController implements Initializable {
     private void btnfournisseur(ActionEvent event) {
         try {
             AnchorPane view = FXMLLoader.load(getClass().getResource("../fournisseur/fournisseur.fxml"));
-            BorderPane.setCenter(view);
+            anchoreview.getChildren().clear();
+            anchoreview.getChildren().add(view);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -69,7 +83,8 @@ public class AdministrationController implements Initializable {
     private void btnaddfournisseur(ActionEvent event) {
         try {
             AnchorPane view = FXMLLoader.load(getClass().getResource("../fournisseur/fournisseuradd.fxml"));
-            BorderPane.setCenter(view);
+            anchoreview.getChildren().clear();
+            anchoreview.getChildren().add(view);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -78,8 +93,9 @@ public class AdministrationController implements Initializable {
     @FXML
     private void btnpub(ActionEvent event) {
         try {
-            AnchorPane view = FXMLLoader.load(getClass().getResource("../publicite/publicite.fxml"));
-            BorderPane.setCenter(view);
+            AnchorPane view = FXMLLoader.load(getClass().getResource("../publicite/publiciteadd.fxml"));
+            anchoreview.getChildren().clear();
+            anchoreview.getChildren().add(view);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -87,12 +103,21 @@ public class AdministrationController implements Initializable {
 
     @FXML
     private void btnshowpub(ActionEvent event) {
-                try {
-            AnchorPane view = FXMLLoader.load(getClass().getResource("../publicite/publiciteadd.fxml"));
-            BorderPane.setCenter(view);
+        try {
+            AnchorPane view = FXMLLoader.load(getClass().getResource("../publicite/publicite.fxml"));
+            anchoreview.getChildren().clear();
+            anchoreview.getChildren().add(view);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
 
+    public void setView(AnchorPane view) {
+        anchoreview.getChildren().setAll(view.getChildren());
+        AnchorPane.setTopAnchor(view, 0.0);
+        AnchorPane.setRightAnchor(view, 0.0);
+        AnchorPane.setBottomAnchor(view, 0.0);
+        AnchorPane.setLeftAnchor(view, 0.0);
+        anchoreview.getChildren().add(view);
+    }
 }

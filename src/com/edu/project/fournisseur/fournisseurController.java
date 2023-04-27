@@ -9,10 +9,21 @@ import DBCnx.MyConnection;
 import static DBCnx.MyConnection.MyConnection;
 import com.edu.project.entities.fournisseur;
 import com.edu.project.entities.fournisseur;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -21,6 +32,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
@@ -30,6 +42,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -38,6 +51,8 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -45,6 +60,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.util.Callback;
 
 
@@ -71,8 +89,6 @@ public class fournisseurController implements Initializable {
     @FXML
     private Button updatebutton;
  
-    @FXML
-    private TableColumn<fournisseur, String> actions;
 
     @FXML
     private TextField societetf;
@@ -80,14 +96,15 @@ public class fournisseurController implements Initializable {
     private TextField teltf;
     @FXML
     private TextField respotf;
-    @FXML
     private TableView<fournisseur> tabfourni;
     @FXML
-    private TableColumn<fournisseur, String> colsociete;
+    private Button updatebutton1;
     @FXML
-    private TableColumn<fournisseur, Integer> coltel;
+    private ListView<fournisseur> listfourni;
     @FXML
-    private TableColumn<fournisseur, String> colrespo;
+    private TextField searchtf;
+    @FXML
+    private Button searchbtn;
 
     /**
      * Initializes the controller class.
@@ -142,104 +159,113 @@ public class fournisseurController implements Initializable {
     }
 
 
-    public void showfournisseurs() {
-        ObservableList<fournisseur> list = getfournisseurList();
-        colsociete.setCellValueFactory(new PropertyValueFactory<>("societe"));
-        coltel.setCellValueFactory(new PropertyValueFactory<>("numtel"));
-        colrespo.setCellValueFactory(new PropertyValueFactory<>("nomrespo"));
-  
-        
+  public void showfournisseurs() {
+  listfourni.setStyle("-fx-background-color: transparent;");
+    try {
+        listfourni.getItems().clear();
+        Connection conn = MyConnection();
+        ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM fournisseur");
 
-        tabfourni.setItems(list);
-        Callback<TableColumn<fournisseur, String>, TableCell<fournisseur, String>> cellFoctory = (TableColumn<fournisseur, String> param) -> {
-            // make cell containing buttons
-            final TableCell<fournisseur, String> cell = new TableCell<fournisseur, String>() {
-                @Override
-                public void updateItem(String item, boolean empty) {
-
-                    fournisseur fournisseur = null;
-                    super.updateItem(item, empty);
-                    if (empty) {
-                        setGraphic(null);
-                        setText(null);
-
-                    } else {
-                        FontAwesomeIconView deleteIcon = new FontAwesomeIconView(FontAwesomeIcon.TRASH);
-                        FontAwesomeIconView editIcon = new FontAwesomeIconView(FontAwesomeIcon.PENCIL_SQUARE);
-
-                        deleteIcon.setStyle(
-                                " -fx-cursor: hand ;"
-                                + "-glyph-size:28px;"
-                                + "-fx-fill:#ff1744;"
-                        );
-                        editIcon.setStyle(
-                                " -fx-cursor: hand ;"
-                                + "-glyph-size:28px;"
-                                + "-fx-fill:#00E676;"
-                        );
-                        deleteIcon.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                            @Override
-                            public void handle(MouseEvent event) {
-                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                                alert.setTitle("Alert!");
-                                alert.setContentText("This is an alert");
-                                Optional<ButtonType> result = alert.showAndWait();
-                                if (result.get() == ButtonType.OK) {
-                                    
-                                
-                                try {
-                                    PreparedStatement ps = null;
-                                    fournisseur fournisseurs;
-                                    fournisseurs = tabfourni.getSelectionModel().getSelectedItem();
-                                    String query = "DELETE FROM `fournisseur` WHERE id =" + fournisseurs.getId();
-                                    Connection conn = MyConnection();
-                                    ps = conn.prepareStatement(query);
-                                    ps.execute();
-                                    showfournisseurs();
-
-                                } catch (SQLException ex) {
-                                    Logger.getLogger(fournisseurController.class.getName()).log(Level.SEVERE, null, ex);
-                                }
-                                } else if (result.get() == ButtonType.CANCEL) {
-                                    showfournisseurs();
-                                }
-                            }
-                        });
-
-                        editIcon.setOnMouseClicked((new EventHandler<MouseEvent>() {
-                            @Override
-                            public void handle(MouseEvent event) {
-
-                                fournisseur fournisseurs = tabfourni.getSelectionModel().getSelectedItem();
-                                
-                                societetf.setText(String.valueOf(fournisseurs.getSociete()));
-                                teltf.setText(String.valueOf(fournisseurs.getNumtel()));
-                                 respotf.setText(String.valueOf(fournisseurs.getNomrespo()));
-                           
-                                
-                                
-
-                            }
-
-                        }));
-                        HBox managebtn = new HBox(editIcon, deleteIcon);
-                        managebtn.setStyle("-fx-alignment:center");
-                        HBox.setMargin(deleteIcon, new Insets(2, 2, 0, 3));
-                        HBox.setMargin(editIcon, new Insets(2, 3, 0, 2));
-
-                        setGraphic(managebtn);
-
-                        setText(null);
-                    }
-                }
-
-            };
-            return cell;
+        // Define a predicate to filter the ResultSet
+        Predicate<fournisseur> filterPredicate = fournisseur -> {
+            String searchText = searchtf.getText().toLowerCase();
+            if (searchText.isEmpty()) {
+                // No search text, so all fournisseurs match
+                return true;
+            } else {
+                // Check if the search text is contained in any of the fournisseur properties
+                return fournisseur.getSociete().toLowerCase().contains(searchText)
+                        || Integer.toString(fournisseur.getNumtel()).contains(searchText)
+                        || fournisseur.getNomrespo().toLowerCase().contains(searchText)
+                        || Integer.toString(fournisseur.getRating()).contains(searchText);
+            }
         };
-        actions.setCellFactory(cellFoctory);
-        tabfourni.setItems(list);
 
+        while (rs.next()) {
+            fournisseur currentFournisseur = new fournisseur(rs.getInt("id"), rs.getInt("numtel"), rs.getInt("rating"), rs.getString("societe"), rs.getString("nomrespo"));
+            if (filterPredicate.test(currentFournisseur)) {
+                listfourni.getItems().add(currentFournisseur);
+            }
+        }
+
+        listfourni.setCellFactory(new Callback<ListView<fournisseur>, ListCell<fournisseur>>() {
+            @Override
+            public ListCell<fournisseur> call(ListView<fournisseur> param) {
+                return new ListCell<fournisseur>() {
+                    @Override
+                    protected void updateItem(fournisseur item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item != null) {
+                            // Create a VBox to hold the content of the card
+                            VBox card = new VBox();
+                            card.setAlignment(Pos.CENTER);
+                            card.setPadding(new Insets(10));
+                            card.setSpacing(10);
+
+                            // Create labels to display the fournisseur properties
+                            Label societeLabel = new Label("Societe: " + item.getSociete());
+                            Label telLabel = new Label("Telephone: " + item.getNumtel());
+                            Label respoLabel = new Label("Nom Responsable: " + item.getNomrespo());
+                            Label ratingLabel = new Label("Rating: " + item.getRating());
+                            VBox ratingVBox = getRatingVBox(item);
+                            // Add the labels to the card
+                            card.getChildren().addAll(societeLabel, telLabel, respoLabel,ratingLabel,ratingVBox);
+
+                            // Create a HBox to hold the edit and delete buttons
+                            HBox buttonsBox = new HBox();
+                            buttonsBox.setAlignment(Pos.CENTER);
+                            buttonsBox.setSpacing(10);
+
+                            // Create the edit button
+                            Button editButton = new Button("Edit");
+                            editButton.setOnAction(event -> {
+                                societetf.setText(String.valueOf(item.getSociete()));
+                                teltf.setText(String.valueOf(item.getNumtel()));
+                                respotf.setText(String.valueOf(item.getNomrespo()));
+                            });
+
+                            // Create the delete button
+                            Button deleteButton = new Button("Delete");
+                            deleteButton.setOnAction(event -> {
+                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                alert.setTitle("Confirmation");
+                                alert.setContentText("Are you sure you want to delete this fournisseur?");
+                                Optional<ButtonType> result = alert.showAndWait();
+                                if (result.isPresent() && result.get() == ButtonType.OK) {
+                                    try {
+                                        PreparedStatement ps = null;
+                                        String query = "DELETE FROM `fournisseur` WHERE id =" + item.getId();
+                                        Connection conn = MyConnection();
+                                        ps = conn.prepareStatement(query);
+                                        ps.execute();
+                                        listfourni.getItems().remove(item);
+                                    } catch (SQLException ex) {
+                                        Logger.getLogger(fournisseurController.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                }
+                            });
+
+                            // Add the buttons to the HBox
+                            buttonsBox.getChildren().addAll(editButton, deleteButton);
+
+                            // Add the HBox to the card
+                            card.getChildren().add(buttonsBox);
+
+                            // Set the cell content to the card
+                            setGraphic(card);
+                        } else {
+                            setGraphic(null);
+                        }
+                    }
+                };
+            }
+        });
+
+    } catch (Exception ex) {
+        ex.printStackTrace();
     }
+}
+
 
   
     private void showAlert(String title, String message) {
@@ -262,7 +288,7 @@ public class fournisseurController implements Initializable {
         String respo = respotf.getText();
      
         
-            fournisseur fournisseur = tabfourni.getSelectionModel().getSelectedItem();
+            fournisseur fournisseur = listfourni.getSelectionModel().getSelectedItem();
             String query = "UPDATE fournisseur SET societe = '" + societe + "' ,  numtel = '" + tel + "' , nomrespo = '" + respo + "'  WHERE id='" + fournisseur.getId() + "' ";
             executeQuery(query);
             showfournisseurs();
@@ -282,6 +308,124 @@ public class fournisseurController implements Initializable {
         }
 
     }
+@FXML
+private void handle(ActionEvent event) {
+    Document document = new Document();
+    try {
+        // Create a temporary file with a unique name to store the PDF
+        File tempFile = File.createTempFile("table", ".pdf");
 
+        // Set the file to be deleted on exit
+        tempFile.deleteOnExit();
+
+        // Write the PDF to the temporary file
+        PdfWriter.getInstance(document, new FileOutputStream(tempFile));
+        document.open();
+
+        // Add a title to the PDF
+        Paragraph title = new Paragraph("Fournisseur Data");
+        title.setAlignment(Element.ALIGN_CENTER);
+        document.add(title);
+
+        PdfPTable pdfTable = new PdfPTable(4);
+        addTableHeader(pdfTable);
+        addRows(pdfTable, listfourni);
+        document.add(pdfTable);
+        document.close();
+
+        // Create a new FileChooser to allow the user to choose where to save the file
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialFileName("table.pdf");
+
+        // Set the initial directory for the FileChooser to the user's home directory
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+
+        // Show the FileChooser and wait for the user to select a file
+        File file = fileChooser.showSaveDialog(listfourni.getScene().getWindow());
+
+        // If the user selected a file, copy the contents of the temporary file to the selected file
+        if (file != null) {
+            Files.copy(tempFile.toPath(), file.toPath(), StandardCopyOption.REPLACE_EXISTING);
+        }
+    } catch (IOException | DocumentException e) {
+        e.printStackTrace();
+    }
+}
+
+private void addTableHeader(PdfPTable pdfTable) {
+    pdfTable.addCell("ID");
+    pdfTable.addCell("Societe");
+    pdfTable.addCell("Numtel");
+    pdfTable.addCell("Nomrespo");
+}
+
+private void addRows(PdfPTable pdfTable, ListView<fournisseur> listView) {
+    ObservableList<fournisseur> items = listView.getItems();
+    for (fournisseur item : items) {
+        pdfTable.addCell(String.valueOf(item.getId()));
+        pdfTable.addCell(item.getSociete());
+        pdfTable.addCell(String.valueOf (item.getNumtel()));
+        pdfTable.addCell(item.getNomrespo());
+    }
+}
+    private void setRating(HBox ratingBox, int rating) {
+        for (int i = 0; i < ratingBox.getChildren().size(); i++) {
+            FontAwesomeIconView star = (FontAwesomeIconView) ratingBox.getChildren().get(i);
+            if (i < rating) {
+                star.setFill(javafx.scene.paint.Color.GOLD);
+            } else {
+                star.setFill(javafx.scene.paint.Color.GRAY);
+            }
+        }
+    }
+
+    public VBox getRatingVBox(fournisseur f) {
+    // Create the rating VBox
+    VBox ratingVBox = new VBox();
+    ratingVBox.setAlignment(Pos.CENTER);
+    ratingVBox.setSpacing(10);
+
+    // Add the rating stars
+    HBox ratingBox = new HBox();
+    ratingBox.setAlignment(Pos.CENTER);
+    ratingBox.setSpacing(5);
+    for (int K = 0; K < 5; K++) {
+        FontAwesomeIconView star = new FontAwesomeIconView(FontAwesomeIcon.STAR);
+        star.setFill(Color.GRAY);
+        star.setSize("2em");
+        int index = K;
+        star.setOnMouseClicked(event -> {
+            int newRating = index + 1;
+            try {
+                PreparedStatement ps = null;
+                String query = "UPDATE `fournisseur` SET `rating` = ? WHERE `id` = ?";
+                Connection conn = MyConnection();
+                ps = conn.prepareStatement(query);
+                ps.setInt(1, newRating);
+                ps.setInt(2, f.getId());
+                ps.executeUpdate();
+                f.setRating(newRating);
+                setRating(ratingBox, newRating);
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Rating Submitted");
+                alert.setContentText("Thank you for your rating!");
+                alert.showAndWait();
+                showfournisseurs();
+            } catch (SQLException ex) {
+                Logger.getLogger(fournisseurController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        ratingBox.getChildren().add(star);
+    }
+    ratingVBox.getChildren().add(ratingBox);
+
+    // Add the checkbox
+    return ratingVBox;
+}
+
+    @FXML
+    private void search(ActionEvent event) {
+        showfournisseurs(); 
+    }
 
 }

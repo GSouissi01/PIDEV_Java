@@ -24,10 +24,10 @@ public class khalilmain extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {
-         Parent root =FXMLLoader.load(getClass().getResource("../com/edu/project/sidebar/Administration.fxml"));
+         Parent root =FXMLLoader.load(getClass().getResource("../com/edu/project/sidebar/test.fxml"));
            //Parent root =FXMLLoader.load(getClass().getResource("../gui/frontOffice/home/home.fxml"));
             Scene scene = new Scene(root);
-            primaryStage.setTitle("Administration");
+            primaryStage.setTitle("getions des pub");
         
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);

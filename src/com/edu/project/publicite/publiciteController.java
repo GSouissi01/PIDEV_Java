@@ -91,6 +91,10 @@ public class publiciteController implements Initializable {
     private TableColumn<publicite, String> colimage;
     @FXML
     private TableColumn<publicite, Integer> colfourni;
+    @FXML
+    private Label dateDebut;
+    @FXML
+    private Label DateFin;
 
     /**
      * Initializes the controller class.

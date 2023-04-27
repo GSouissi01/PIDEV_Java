@@ -13,11 +13,17 @@ import java.util.List;
  * @author pc
  */
 public class fournisseur {
-    Integer id, numtel ;   
+    Integer id, numtel , rating ;   
     String societe , nomrespo ;
     
  private List<publicite> publicites = new ArrayList<>();
-    public fournisseur() {
+
+    public fournisseur(Integer id, Integer numtel, Integer rating, String societe, String nomrespo) {
+        this.id = id;
+        this.numtel = numtel;
+        this.rating = rating;
+        this.societe = societe;
+        this.nomrespo = nomrespo;
     }
 
     public fournisseur(Integer id, String societe) {
@@ -25,17 +31,14 @@ public class fournisseur {
         this.societe = societe;
     }
 
-    public fournisseur(Integer id, Integer numtel, String societe, String nomrespo) {
-        this.id = id;
+    public fournisseur(Integer numtel, Integer rating, String societe, String nomrespo) {
         this.numtel = numtel;
+        this.rating = rating;
         this.societe = societe;
         this.nomrespo = nomrespo;
     }
 
-    public fournisseur(Integer numtel, String societe, String nomrespo) {
-        this.numtel = numtel;
-        this.societe = societe;
-        this.nomrespo = nomrespo;
+    public fournisseur() {
     }
 
     public Integer getId() {
@@ -54,6 +57,14 @@ public class fournisseur {
         this.numtel = numtel;
     }
 
+    public Integer getRating() {
+        return rating;
+    }
+
+    public void setRating(Integer rating) {
+        this.rating = rating;
+    }
+
     public String getSociete() {
         return societe;
     }
@@ -70,10 +81,19 @@ public class fournisseur {
         this.nomrespo = nomrespo;
     }
 
+    public List<publicite> getPublicites() {
+        return publicites;
+    }
+
+    public void setPublicites(List<publicite> publicites) {
+        this.publicites = publicites;
+    }
+
     @Override
     public String toString() {
-        return "fournisseur{" + "id=" + id + ", numtel=" + numtel + ", societe=" + societe + ", nomrespo=" + nomrespo + '}';
+        return "fournisseur{" + "id=" + id + ", numtel=" + numtel + ", rating=" + rating + ", societe=" + societe + ", nomrespo=" + nomrespo + ", publicites=" + publicites + '}';
     }
+    
     
 
     
