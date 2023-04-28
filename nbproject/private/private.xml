@@ -3,33 +3,39 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/BackEndController.java</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/tests/UserWindow.java</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/BackReclamController.java</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/tests/MainClass.java</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/Profile.fxml</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/TestReclamController.java</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/Login1Controller.java</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/back.css</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/AddReclam.fxml</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/services/TwilioService.java</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/Register1Controller.java</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/Register1.fxml</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/utils/Database.java</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/services/ServiceUser.java</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/entites/User.java</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/home.css</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/utils/JDBCDao.java</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/entites/Reclamation.java</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/BackReclam.fxml</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/register.css</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/com/example/TestReclamController.java</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/ResetPasswordController.java</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/AddReclamController.java</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/services/ServiceReclamation.java</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/ProfileController.java</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/BackEnd.fxml</file>
-            <file>file:/C:/Users/SOUISSI/Downloads/PIDEV_Java-user/PIDEV_Java-user/src/tn/edu/esprit/gui/TestReclam.fxml</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/entites/Reclamation.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/gui/UserController.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/gui/BackEnd.fxml</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/gui/Server.fxml</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/tests/UserWindow.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/services/ServiceFacebook.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/tests/ClientApp.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/entites/OAuthAuthenticator.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/tests/ClientExec.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/entites/Facebook.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/gui/Register1Controller.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/tests/MainClass.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/gui/Client.fxml</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/gui/Login1Controller.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/entites/Server.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/tests/ServerApp.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/services/IUser.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/gui/back.css</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/services/ServiceUser.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/entites/User.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/gui/ClientController.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/tests/FacebookAuth.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/gui/ProfileController.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/gui/home.css</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/gui/ServerController.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/entites/OAuthFacebookAuthenticator.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/entites/Client.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/gui/Profile.fxml</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/services/IFacebook.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/gui/Login1.fxml</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/tests/ServerExec.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/services/ServiceReclamation.java</file>
+            <file>file:/C:/Users/SOUISSI/Downloads/User%20+%20forgit%20password%20(incomplete)/PIDEV_Java-user/src/tn/edu/esprit/gui/BackEndController.java</file>
         </group>
     </open-files>
 </project-private>

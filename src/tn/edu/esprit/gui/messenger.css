@@ -1,0 +1,88 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 27 avr. 2023, 21:28:22
+    Author     : SOUISSI
+*/
+
+.dialog-pane {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #ECEFF1;
+    -fx-border-width: 1px;
+}
+
+.dialog-pane > .header-panel {
+    -fx-background-color: #F5F5F5;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-border-color: #ECEFF1;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 5px;
+}
+
+.dialog-pane > .header-panel > .label {
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.dialog-pane > .content {
+    -fx-padding: 10px;
+}
+
+.dialog-pane > .button-bar {
+    -fx-background-color: #F5F5F5;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-border-color: #ECEFF1;
+    -fx-border-width: 1px 0 0 0;
+    -fx-padding: 5px 10px;
+}
+
+.dialog-pane > .button-bar > .button {
+    -fx-background-color: #4CAF50;
+    -fx-background-insets: 0;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-padding: 5px 10px;
+}
+
+.dialog-pane > .button-bar > .button:hover {
+    -fx-background-color: #388E3C;
+}
+
+.dialog-pane > .button-bar > .button:pressed {
+    -fx-background-color: #1B5E20;
+}
+
+.dialog-pane .message-list .message {
+    -fx-padding: 10px;
+}
+
+.dialog-pane .message-list .message .message-bubble {
+    -fx-background-color: #ECEFF1;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px 10px;
+}
+
+.dialog-pane .message-list .message .message-bubble .text {
+    -fx-font-size: 12px;
+    -fx-fill: #333333;
+}
+
+.dialog-pane .message-list .message .message-bubble.me {
+    -fx-background-color: #DCF8C6;
+}
+
+.dialog-pane .message-list .message .message-bubble.me .text {
+    -fx-fill: #333333;
+}
+
+.dialog-pane .message-list .message .message-bubble.friend {
+    -fx-background-color: #FFFFFF;
+}
+
+.dialog-pane .message-list .message .message-bubble.friend .text {
+    -fx-fill: #333333;
+}

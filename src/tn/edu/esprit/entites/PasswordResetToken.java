@@ -5,114 +5,57 @@
  */
 package tn.edu.esprit.entites;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Calendar;
-import java.util.Date;
-import tn.edu.esprit.entities.User;
-import tn.edu.esprit.utils.Database;
 
 /**
  *
  * @author SOUISSI
  */
 public class PasswordResetToken {
-
-    private static final int EXPIRATION_TIME_IN_MINUTES = 60 * 24; // 24 hours
-
-    private Long id;
-
+    private int id;
+    private int userId;
     private String token;
+    private LocalDateTime timestamp;
 
-    private User user;
-
-    private LocalDateTime expiryDate;
-
-    // Constructors, getters, and setters omitted for brevity
-
-   
-    
-    public PasswordResetToken(User user, String token) {
-        this.user = user;
-        this.token = token;
-        Date expiryDate = calculateExpiryDate(EXPIRATION_TIME_IN_MINUTES);
-        LocalDateTime localDateTime = expiryDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-        this.expiryDate = localDateTime;
-    }
-
-    public PasswordResetToken() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private Date calculateExpiryDate(int expiryTimeInMinutes) {
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(new Timestamp(cal.getTime().getTime()));
-        cal.add(Calendar.MINUTE, expiryTimeInMinutes);
-        return new Date(cal.getTime().getTime());
-    }
-    
-
-    public boolean isExpired() {
-        return LocalDateTime.now().isAfter(this.expiryDate);
-    }
-
-    // Other utility methods omitted for brevity
-
-public void setId(long id) {
+    public PasswordResetToken(int id, int userId, String token, LocalDateTime timestamp) {
         this.id = id;
+        this.userId = userId;
+        this.token = token;
+        this.timestamp = timestamp;
+    }
+
+    public PasswordResetToken() {//To change body of generated methods, choose Tools | Templates.
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public String getToken() {
+        return token;
     }
 
     public void setToken(String token) {
         this.token = token;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public LocalDateTime getTimestamp() {
+        return timestamp;
     }
 
-    public void setExpiryDate(LocalDateTime expiryDate) {
-        this.expiryDate = expiryDate;
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
     }
-
-    public int getUserId() {
-        return user.getId();
-    }
-public String getUserId(String resetToken) {
-        Connection cnx = Database.getInstance().getCnx();
-
-    PreparedStatement stmt = null;
-    ResultSet rs = null;
-    String userId = null;
-    try {
-        
-        stmt = cnx.prepareStatement("SELECT user_id FROM password_reset_tokens WHERE token = ?");
-        stmt.setString(1, resetToken);
-        rs = stmt.executeQuery();
-        if (rs.next()) {
-            userId = rs.getString("user_id");
-        }
-    } catch (SQLException e) {
-        e.printStackTrace();
-    } finally {
-        try {
-            if (rs != null) {
-                rs.close();
-            }
-            if (stmt != null) {
-                stmt.close();
-            }
-            if (cnx != null) {
-                cnx.close();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-    return userId;
-}
 }

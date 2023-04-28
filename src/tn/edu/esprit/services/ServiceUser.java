@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package tn.edu.esprit.services;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -13,36 +14,67 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
+import static sun.rmi.transport.TransportConstants.Version;
+import tn.edu.esprit.entites.PasswordHasher;
 import tn.edu.esprit.entites.PasswordResetToken;
-import tn.edu.esprit.entities.User;
+import tn.edu.esprit.entites.User;
 import tn.edu.esprit.utils.Database;
+
 /**
  *
  * @author ghada
  */
-public class ServiceUser implements IUser<User>{
+public class ServiceUser implements IUser<User> {
+
     Connection cnx = Database.getInstance().getCnx();
-    
-    public void setProfilePic(User user) {
-    try {
-        String email = user.getEmail();
-        String imagePath = user.getImagePath();
-        String req = "UPDATE user SET imagePath = ? WHERE email = ?";
-        PreparedStatement ps = cnx.prepareStatement(req);
-        ps.setString(1, imagePath);
-        ps.setString(2, email);
-        ps.executeUpdate();
-        System.out.println("Profile picture updated!");
-    } catch (SQLException ex) {
-        System.out.println(ex.getMessage());
+
+    public User findByEmail(String email) {
+        User user = null;
+        try {
+            PreparedStatement statement = cnx.prepareStatement(
+                    "SELECT * FROM user WHERE email = ?");
+            statement.setString(1, email);
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                user = new User();
+                user.setId(rs.getInt("id"));
+                user.setEmail(rs.getString("email"));
+                user.setPassword(rs.getString("password"));
+                user.setNom(rs.getString("nom"));
+                user.setPrenom(rs.getString("prenom"));
+                user.setTel(rs.getInt("tel"));
+                user.setNomSup(rs.getString("nom_sup"));
+                user.setAdresseSup(rs.getString("adresse_sup"));
+                user.setImagePath(rs.getString("imagePath"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return user;
     }
-}
+
+    public void setProfilePic(User user) {
+        try {
+            String email = user.getEmail();
+            String imagePath = user.getImagePath();
+            String req = "UPDATE user SET imagePath = ? WHERE email = ?";
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setString(1, imagePath);
+            ps.setString(2, email);
+            ps.executeUpdate();
+            System.out.println("Profile picture updated!");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
     public Image getProfilePic(String imagePath) {
         Image image = null;
         try {
@@ -53,10 +85,13 @@ public class ServiceUser implements IUser<User>{
         }
         return image;
     }
-    @Override
+
     public void ajouter(User u) {
         try {
-            String req = "INSERT INTO user (email, password,tel, nom,prenom, nom_sup, adresse_sup,imagePath) VALUES ('"+u.getEmail()+"', '"+u.getPassword()+"','"+u.getTel()+"','"+u.getNom()+"','"+u.getPrenom()+"','"+u.getNomSup()+"','"+u.getAdresseSup()+"','"+u.getImagePath()+"')";
+            // Hash the password
+            String hashedPassword = PasswordHasher.hashPassword(u.getPassword());
+            
+            String req = "INSERT INTO user (email, password, tel, nom, prenom, nom_sup, adresse_sup, imagePath) VALUES ('" + u.getEmail() + "', '" + hashedPassword + "','" + u.getTel() + "','" + u.getNom() + "','" + u.getPrenom() + "','" + u.getNomSup() + "','" + u.getAdresseSup() + "','" + u.getImagePath() + "')";
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
             System.out.println("user created !");
@@ -64,53 +99,62 @@ public class ServiceUser implements IUser<User>{
             System.out.println(ex.getMessage());
         }
     }
-    
+
     public void supprimerBack(User user) {
-    try {
-        String query = "DELETE FROM user WHERE id = ?";
-        PreparedStatement ps = cnx.prepareStatement(query);
-        ps.setInt(1, user.getId());
-        ps.executeUpdate();
-        System.out.println("Utilisateur supprimé avec succès !");
-    } catch (SQLException ex) {
-        System.out.println("Une erreur s'est produite lors de la suppression de l'utilisateur: " + ex.getMessage());
-    }
-}
-    public void supprimer(User u) {
-    try {
-        String req = "DELETE FROM user WHERE id=" + u.getId();
-        Statement st = cnx.createStatement();
-        st.executeUpdate(req);
-        System.out.println("user deleted !");
-    } catch (SQLException ex) {
-        System.out.println(ex.getMessage());
-    }
-}
-    public boolean userExists(String email) throws SQLException {
-    String query = "SELECT * FROM user WHERE email = ?";
-    try (PreparedStatement statement = cnx.prepareStatement(query)) {
-        statement.setString(1, email);
-        try (ResultSet resultSet = statement.executeQuery()) {
-            return resultSet.next();
+        try {
+            String query = "DELETE FROM user WHERE id = ?";
+            PreparedStatement ps = cnx.prepareStatement(query);
+            ps.setInt(1, user.getId());
+            ps.executeUpdate();
+            System.out.println("Utilisateur supprimé avec succès !");
+        } catch (SQLException ex) {
+            System.out.println("Une erreur s'est produite lors de la suppression de l'utilisateur: " + ex.getMessage());
         }
     }
-}
-    public void banUser(int userId) {
-    String query = "UPDATE user SET is_banned = ? WHERE id = ?";
-    try (PreparedStatement stmt = cnx.prepareStatement(query)) {
-        stmt.setBoolean(1, true);
-        stmt.setInt(2, userId);
-        stmt.executeUpdate();
-        System.out.println("user Banned !");
-    } catch (SQLException ex) {
-        ex.printStackTrace();
+
+    public int checkexistance(String email) throws SQLException {
+        Statement st = cnx.createStatement();
+        String req = "select email from user where (email='" + email + "')";
+        ResultSet rs = st.executeQuery(req);
+        while (rs.next()) {
+            return 1;
+        }
+        return 0;
     }
-}
-    
+
+    public List<String> rechercherUtilisateurs(String texteRecherche) {
+        List<String> suggestions = new ArrayList<>();
+        try (PreparedStatement stmt = cnx.prepareStatement(
+                        "SELECT nom, prenom FROM user WHERE nom LIKE ? OR prenom LIKE ?")) {
+            stmt.setString(1, texteRecherche + "%");
+            stmt.setString(2, texteRecherche + "%");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                String nom = rs.getString("nom");
+                String prenom = rs.getString("prenom");
+                suggestions.add(nom + " " + prenom);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return suggestions;
+    }
+
+    public void supprimer(User u) {
+        try {
+            String req = "DELETE FROM user WHERE id=" + u.getId();
+            Statement st = cnx.createStatement();
+            st.executeUpdate(req);
+            System.out.println("user deleted !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
     public void supprimeruser(User us) {
         try {
             String req = "DELETE FROM user WHERE id = ?";
-            PreparedStatement ste=cnx.prepareStatement(req);
+            PreparedStatement ste = cnx.prepareStatement(req);
             ste.setInt(1, us.getId());
             ste.executeUpdate();
             System.out.println("user supprimé !");
@@ -118,13 +162,15 @@ public class ServiceUser implements IUser<User>{
             System.out.println(ex.getMessage());
         }
     }
-    
-    @Override
+
     public User login(String email, String password) {
     try {
-        String req = "SELECT * FROM user WHERE email = '" + email + "' AND password = '" + password + "'";
-        Statement st = cnx.createStatement();
-        ResultSet rs = st.executeQuery(req);
+        String hashedPassword = PasswordHasher.hashPassword(password);
+        String req = "SELECT * FROM user WHERE email = ? AND password = ?";
+        PreparedStatement stmt = cnx.prepareStatement(req);
+        stmt.setString(1, email);
+        stmt.setString(2, hashedPassword);
+        ResultSet rs = stmt.executeQuery();
         if (rs.next()) {
             User u = new User();
             u.setId(rs.getInt("id"));
@@ -144,11 +190,23 @@ public class ServiceUser implements IUser<User>{
     }
     return null;
 }
+
+
+    public void banUser(int userId) {
+        String query = "UPDATE user SET is_banned = ? WHERE id = ?";
+        try (PreparedStatement stmt = cnx.prepareStatement(query)) {
+            stmt.setBoolean(1, true);
+            stmt.setInt(2, userId);
+            stmt.executeUpdate();
+            System.out.println("user Banned !");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     @Override
-    public void modifier(User u) 
-    {
-        try 
-        {
+    public void modifier(User u) {
+        try {
             String req = "UPDATE user SET email=?, password=?, tel=?, nom=?, prenom=?, nom_sup=?, adresse_sup=? WHERE email=?";
             PreparedStatement st = cnx.prepareStatement(req);
             st.setString(1, u.getEmail());
@@ -162,92 +220,49 @@ public class ServiceUser implements IUser<User>{
             st.executeUpdate();
             System.out.println("user updated !");
         } catch (SQLException ex) {
-        System.out.println(ex.getMessage());
-    }
-}
-  public int getUserIdByEmail(String email) {
-    int userId = -1; // default value if user is not found
-    try {
-        String query = "SELECT id FROM user WHERE email = ?";
-        PreparedStatement ps = cnx.prepareStatement(query);
-        ps.setString(1, email);
-        ResultSet rs = ps.executeQuery();
-        if (rs.next()) {
-            userId = rs.getInt("id");
+            System.out.println(ex.getMessage());
         }
-    } catch (SQLException ex) {
-        System.out.println(ex.getMessage());
     }
-    return userId;
-}  
-  public int getUserTelByEmail(String email) {
-    int userTel = -1; // default value if user is not found
-    try {
-        String query = "SELECT tel FROM user WHERE email = ?";
-        PreparedStatement ps = cnx.prepareStatement(query);
-        ps.setString(1, email);
-        ResultSet rs = ps.executeQuery();
-        if (rs.next()) {
-            userTel = rs.getInt("tel");
-        }
-    } catch (SQLException ex) {
-        System.out.println(ex.getMessage());
-    }
-    return userTel;
-}  
-  public User getUserByEmail(String email) {
-    try {
-        
-        PreparedStatement stmt = cnx.prepareStatement("SELECT * FROM user WHERE email = ?");
-        stmt.setString(1, email);
-        ResultSet rs = stmt.executeQuery();
 
-        if (rs.next()) {
-            int id = rs.getInt("id");
-            String username = rs.getString("username");
-            String password = rs.getString("password");
-            String nom = rs.getString("nom");
-            String prenom = rs.getString("prenom");
-            String tel = rs.getString("tel");
-            String nom_sup = rs.getString("nom_sup");
-            String adresse_sup = rs.getString("adresse_sup");
-            String imagePath = rs.getString("imagePath");
-            return new User(id, username, email, password, nom, prenom, tel, nom_sup, adresse_sup, imagePath);
-        } else {
-            return null;
-        }
-    } catch (SQLException e) {
-        e.printStackTrace();
-        return null;
-    }
-}
-
-  
-  public void updateUserPassword(String userId, String newPassword)
-  {
-    
-    PreparedStatement stmt = null;
-    try {
-        stmt = cnx.prepareStatement("UPDATE user SET password = ? WHERE id = ?");
-        stmt.setString(1, newPassword);
-        stmt.setString(2, userId);
-        stmt.executeUpdate();
-    } catch (SQLException e) {
-        e.printStackTrace();
-    } finally {
+    public int getUserIdByEmail(String email) {
+        int userId = -1; // default value if user is not found
         try {
-            if (stmt != null) {
-                stmt.close();
+            String query = "SELECT id FROM user WHERE email = ?";
+            PreparedStatement ps = cnx.prepareStatement(query);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                userId = rs.getInt("id");
             }
-            if (cnx != null) {
-                cnx.close();
-            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return userId;
+    }
+
+    public void updateUserPassword(int userId, String newPassword) {
+
+        PreparedStatement stmt = null;
+        try {
+            stmt = cnx.prepareStatement("UPDATE user SET password = ? WHERE id = ?");
+            stmt.setString(1, newPassword);
+            stmt.setInt(2, userId);
+            stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (cnx != null) {
+                    cnx.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
-}
-
 
     public void register(User u) {
         try {
@@ -265,104 +280,105 @@ public class ServiceUser implements IUser<User>{
             System.out.println(ex.getMessage());
         }
     }
-    
+
     public User getUserByEmail(String email) {
     try {
-        String req = "SELECT * FROM user WHERE email=?";
-        PreparedStatement ps = cnx.prepareStatement(req);
-        ps.setString(1, email);
-        ResultSet rs = ps.executeQuery();
+        PreparedStatement stmt = cnx.prepareStatement("SELECT * FROM user WHERE email = ?");
+        stmt.setString(1, email);
+        ResultSet rs = stmt.executeQuery();
+
         if (rs.next()) {
+            int id = rs.getInt("id");
+            String username = rs.getString("email");
             String password = rs.getString("password");
-            int tel = rs.getInt("tel");
             String nom = rs.getString("nom");
             String prenom = rs.getString("prenom");
-            String nomSup = rs.getString("nom_sup");
-            String adresseSup = rs.getString("adresse_sup");
-            User u = new User(email, password, nom, prenom, tel, nomSup, adresseSup);
-            return u;
+            int tel = rs.getInt("tel");
+            String nom_sup = rs.getString("nom_sup");
+            String adresse_sup = rs.getString("adresse_sup");
+            String imagePath = rs.getString("imagePath");
+            return new User(id, username, password, nom, prenom, tel, nom_sup, adresse_sup, imagePath);
         } else {
             return null;
         }
-    } catch (SQLException ex) {
-        System.out.println(ex.getMessage());
+    } catch (SQLException e) {
+        e.printStackTrace();
         return null;
     }
 }
+
+
     public void insertPasswordResetToken(int userId, String token, long timestamp) {
-    try {
-        String req = "INSERT INTO password_reset_tokens (user_id, token, created_at) VALUES (?, ?, ?)";
-        PreparedStatement ps = cnx.prepareStatement(req);
-        ps.setInt(1, userId);
-        ps.setString(2, token);
-        ps.setTimestamp(3, new Timestamp(timestamp));
-
-        ps.executeUpdate();
-    } catch (SQLException ex) {
-        // Handle the exception
+        try {
+            PreparedStatement stmt = cnx.prepareStatement("INSERT INTO password_reset_token(user_id, token, timestamp) VALUES (?, ?, ?)");
+            stmt.setInt(1, userId);
+            stmt.setString(2, token);
+            stmt.setTimestamp(3, new Timestamp(timestamp));
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // handle the exception as appropriate for your application
+        }
     }
-}
+
     public PasswordResetToken getPasswordResetToken(String token) {
-    Connection conn = null;
-    PreparedStatement stmt = null;
-    ResultSet rs = null;
-    PasswordResetToken passwordResetToken = null;
+        try {
+            PreparedStatement statement = cnx.prepareStatement("SELECT * FROM password_reset_token WHERE token = ?");
+            statement.setString(1, token);
+            ResultSet resultSet = statement.executeQuery();
+            PasswordResetToken passwordResetToken = null;
 
-    try {
-        stmt = cnx.prepareStatement("SELECT * FROM password_reset_token WHERE token = ?");
-        stmt.setString(1, token);
-        rs = stmt.executeQuery();
+            if (resultSet.next()) {
+                passwordResetToken = new PasswordResetToken();
+                passwordResetToken.setToken(resultSet.getString("token"));
+                passwordResetToken.setUserId(resultSet.getInt("user_id"));
+                Timestamp timestamp = resultSet.getTimestamp("timestamp");
+                LocalDateTime localDateTime = timestamp.toLocalDateTime();
+                passwordResetToken.setTimestamp(localDateTime);
 
-        if (rs.next()) {
-            passwordResetToken = new PasswordResetToken();
-            passwordResetToken.setId(rs.getLong("id"));
-            passwordResetToken.setToken(rs.getString("token"));
-            passwordResetToken.setUser(getUserById(rs.getLong("user_id")));
-            passwordResetToken.setExpiryDate(rs.getTimestamp("expiry_date").toLocalDateTime());
+            }
+            resultSet.close();
+            statement.close();
+            return passwordResetToken;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
         }
-    } catch (SQLException ex) {
-        // handle exception
-    } finally {
-        // close resources
     }
 
-    return passwordResetToken;
-}
-    
-    
     public User getUserById(Long id) {
-    PreparedStatement stmt = null;
-    ResultSet rs = null;
-    User user = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        User user = null;
 
-    try {
-        
-        stmt = cnx.prepareStatement("SELECT * FROM user WHERE id = ?");
-        stmt.setLong(1, id);
-        rs = stmt.executeQuery();
+        try {
 
-        if (rs.next()) {
-            User u = new User();
-            u.setNom(rs.getString("nom")); 
-            u.setEmail(rs.getString("email"));
-            u.setPrenom(rs.getString("prenom"));
-            u.setTel(rs.getInt("tel"));
-            u.setNomSup(rs.getString("nom_sup"));  
-            u.setAdresseSup(rs.getString("adresse_sup"));
-            u.setImagePath(rs.getString("imagePath"));
+            stmt = cnx.prepareStatement("SELECT * FROM user WHERE id = ?");
+            stmt.setLong(1, id);
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                User u = new User();
+                u.setNom(rs.getString("nom"));
+                u.setEmail(rs.getString("email"));
+                u.setPrenom(rs.getString("prenom"));
+                u.setTel(rs.getInt("tel"));
+                u.setNomSup(rs.getString("nom_sup"));
+                u.setAdresseSup(rs.getString("adresse_sup"));
+                u.setImagePath(rs.getString("imagePath"));
+            }
+        } catch (SQLException ex) {
+            // handle exception
+        } finally {
+            // close resources
         }
-    } catch (SQLException ex) {
-        // handle exception
-    } finally {
-        // close resources
+
+        return user;
     }
 
-    return user;
-}
-    
     public void login() {
-        try{
-            String req="SELECT email,password FROM user where email = ? and password = ? ";
+        try {
+            String req = "SELECT email,password FROM user where email = ? and password = ? ";
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
             System.out.println("Authorized Access !");
@@ -370,7 +386,7 @@ public class ServiceUser implements IUser<User>{
             System.out.println(ex.getMessage());
         }
     }
-    
+
     @Override
     public void supprimerUser(int id) {
         try {
@@ -383,19 +399,16 @@ public class ServiceUser implements IUser<User>{
         }
     }
 
-    
-public ObservableList<User> afficherusers() {
-       ObservableList<User> myList= FXCollections.observableArrayList();
-        
-    
-        try 
-        {
-            String sql = "SELECT email, nom, prenom, tel, nom_sup, adresse_sup, imagePath FROM user WHERE role = 'User'";
-            Statement ste=cnx.createStatement();
-            ResultSet rs= ste.executeQuery(sql);
-            while(rs.next()){
+    public ObservableList<User> afficherusers() {
+        ObservableList<User> myList = FXCollections.observableArrayList();
+
+        try {
+            String sql = "SELECT email, nom, prenom, tel, nom_sup, adresse_sup, imagePath FROM user WHERE role = 'USER'";
+            Statement ste = cnx.createStatement();
+            ResultSet rs = ste.executeQuery(sql);
+            while (rs.next()) {
                 User u = new User();
-                u.setNom(rs.getString("nom")); 
+                u.setNom(rs.getString("nom"));
                 u.setEmail(rs.getString("email"));
                 u.setPrenom(rs.getString("prenom"));
                 u.setTel(rs.getInt("tel"));
@@ -410,4 +423,57 @@ public ObservableList<User> afficherusers() {
         return myList;
     }
 
+    public void updatePassword(int userId, String newPassword) {
+    try {
+        // Hash the new password
+        String hashedPassword = PasswordHasher.hashPassword(newPassword);
+        
+        String req = "UPDATE user SET password=? WHERE id=?";
+        PreparedStatement stmt = cnx.prepareStatement(req);
+        stmt.setString(1, hashedPassword);
+        stmt.setInt(2, userId);
+        stmt.executeUpdate();
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+    }
+}
+
+    /*
+    public void registerWithFacebook(String accessToken) {
+        DefaultFacebookClient client = new DefaultFacebookClient(accessToken, Version.LATEST);
+        User me = client.fetchObject("me", User.class, Parameter.with("fields", "email,name,picture"));
+
+        // Create a new user object and populate it with the Facebook information
+        User user = new User();
+        user.setEmail(me.getEmail());
+        user.setNom(me.getName());
+        user.setImagePath(me.getPicture().getUrl());
+
+        // Insert the new user into the database
+        Connection connection = null;
+        PreparedStatement statement = null;
+
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydatabase", "root", "password");
+            statement = connection.prepareStatement("INSERT INTO user (email, nom, imagePath) VALUES (?, ?, ?)");
+            statement.setString(1, user.getEmail());
+            statement.setString(2, user.getNom());
+            statement.setString(3, user.getImagePath());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+     */
 }

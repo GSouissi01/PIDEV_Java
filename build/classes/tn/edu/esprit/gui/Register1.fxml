@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -15,14 +14,9 @@
    <children>
       <BorderPane fx:id="register_form" prefHeight="599.0" prefWidth="878.0">
          <left>
-            <AnchorPane prefHeight="599.0" prefWidth="419.0" styleClass="other-form" stylesheets="@register.css" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="602.0" prefWidth="170.0" styleClass="other-form" stylesheets="@register.css" BorderPane.alignment="CENTER">
                <children>
-                  <Label layoutX="43.0" layoutY="489.0" text="Vous avez déja un compte ?" textFill="WHITE">
-                     <font>
-                        <Font name="Candara" size="25.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="tfLogin_btn" layoutX="129.0" layoutY="537.0" mnemonicParsing="false" onAction="#handleLoginButtonAction" prefHeight="27.0" prefWidth="131.0" styleClass="login-btn" text="Login">
+                  <Button fx:id="tfLogin_btn" layoutX="117.0" layoutY="542.0" mnemonicParsing="false" onAction="#handleLoginButtonAction" prefHeight="27.0" prefWidth="131.0" styleClass="login-btn" text="Login">
                      <font>
                         <Font name="Candara Light" size="14.0" />
                      </font>
@@ -31,9 +25,7 @@
                      <image>
                         <Image url="file:/C:/Users/SOUISSI/Downloads/logo.png" />
                      </image>
-                     <cursor>
-                        <Cursor fx:constant="DEFAULT" />
-                     </cursor>
+                        
                   </ImageView>
                </children>
             </AnchorPane>
@@ -42,12 +34,12 @@
             <AnchorPane prefHeight="599.0" prefWidth="445.0" styleClass="white-form" stylesheets="@register.css" BorderPane.alignment="CENTER">
                <children>
                   <Label fx:id="URLImage" layoutX="30.0" layoutY="46.0" prefWidth="191.0" text="Label" />
-                  <ImageView fitHeight="608.0" fitWidth="465.0" layoutX="-18.0" layoutY="-6.0">
+                  <ImageView fitHeight="622.0" fitWidth="517.0" layoutX="-70.0" layoutY="-1.0">
                      <image>
                         <Image url="file:/C:/Users/SOUISSI/Downloads/supermarket1.jpg" />
                      </image>
                   </ImageView>
-                  <Button fx:id="tfCreateAcc_btn" layoutX="137.0" layoutY="565.0" mnemonicParsing="false" onAction="#saveUser" prefHeight="27.0" prefWidth="163.0" styleClass="create-btn" stylesheets="@register.css" text="Create Account" textFill="WHITE">
+                  <Button fx:id="tfCreateAcc_btn" layoutX="140.0" layoutY="580.0" mnemonicParsing="false" onAction="#saveUser" prefHeight="27.0" prefWidth="163.0" styleClass="create-btn" stylesheets="@register.css" text="Create Account" textFill="WHITE">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -60,7 +52,7 @@
                      <font>
                         <Font name="Candara Light Italic" size="17.0" />
                      </font></TextField>
-                  <TextField fx:id="tfEmail" layoutX="95.0" layoutY="254.0" prefHeight="2.0" prefWidth="246.0" promptText="Email">
+                  <TextField fx:id="tfEmail" layoutX="95.0" layoutY="251.0" prefHeight="2.0" prefWidth="246.0" promptText="Email">
                      <font>
                         <Font name="Candara Light Italic" size="17.0" />
                      </font></TextField>
@@ -81,13 +73,24 @@
                         <Font name="Candara Light Italic" size="17.0" />
                      </font>
                   </PasswordField>
-                  <ImageView fx:id="profileImageView" fitHeight="124.0" fitWidth="166.0" layoutX="132.0" layoutY="20.0" onMouseClicked="#chooseImage" pickOnBounds="true" preserveRatio="true" styleClass="imageView" />
+                  <ImageView fx:id="profileImageView" fitHeight="124.0" fitWidth="166.0" layoutX="147.0" layoutY="30.0" onMouseClicked="#chooseImage" pickOnBounds="true" preserveRatio="true" styleClass="imageView" />
                   <PasswordField fx:id="tfConfirmPassword" layoutX="96.0" layoutY="349.0" prefHeight="2.0" prefWidth="246.0" promptText="Confirm Password">
                      <font>
                         <Font name="Candara Light Italic" size="17.0" />
                      </font>
                   </PasswordField>
-                  <Button layoutX="153.0" layoutY="532.0" mnemonicParsing="false" onAction="#uploadImage" text="Choose Profile Picture" />
+                  <Button layoutX="59.0" layoutY="540.0" mnemonicParsing="false" onAction="#uploadImage" prefHeight="53.0" prefWidth="62.0" style="-fx-background-color: transparent;" stylesheets="@register.css" />
+                  <Button fx:id="takePhoto_btn" layoutX="324.0" layoutY="540.0" mnemonicParsing="false" onAction="#TakePhoto" prefHeight="62.0" prefWidth="72.0" style="-fx-background-color: transparent;" stylesheets="@register.css" />
+                  <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="60.0" layoutY="534.0">
+                     <image>
+                        <Image url="file:/C:/Users/SOUISSI/Downloads/png-transparent-font-awesome-upload-computer-icons-font-computers-blue-text-logo-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="69.0" fitWidth="68.0" layoutX="323.0" layoutY="538.0">
+                     <image>
+                        <Image url="file:/C:/Users/SOUISSI/Downloads/téléchargement__3_-removebg-preview.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
          </right>

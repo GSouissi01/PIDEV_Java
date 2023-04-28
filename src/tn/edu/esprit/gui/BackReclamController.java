@@ -78,6 +78,7 @@ Connection cnx = Database.getInstance().getCnx();
     cardContainer.setPrefWidth(600);
 
     for (Reclamation recl : listreclam) {
+        int idRecl=recl.getId();
         StackPane card = new StackPane();
         card.setAlignment(Pos.CENTER);
         card.setPrefSize(250, 250);
@@ -102,8 +103,9 @@ Connection cnx = Database.getInstance().getCnx();
         accepterBtn.setStyle("-fx-background-color: #00FF00;");
         accepterBtn.setOnAction(event -> {
             recl.setStatus("demande acceptée");
+            
            try {
-                sr.updateReclamation(cnx, 5, "Demande acceptée");
+                sr.updateReclamation(idRecl,"Demande acceptée");
                 status.setText("Status: Demande acceptée");
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -113,8 +115,9 @@ Connection cnx = Database.getInstance().getCnx();
         Button refuserBtn = new Button("Refuser");
         refuserBtn.setStyle("-fx-background-color: #FF0000;");
         refuserBtn.setOnAction(event -> {
+            
             try {
-        sr.updateReclamation(cnx, 3, "Demande refusée");
+        sr.updateReclamation(idRecl,"Demande refusée");
         status.setText("Status: Demande refusée");
          String sms="Bonjour cher client, nous vous envoyons cet sms pour vous informer que votre demande de récupération de votre compte a été refusée.";
          TwilioService.sendSms("+216 97397598", sms);

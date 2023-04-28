@@ -74,14 +74,13 @@ public class ServiceReclamation {
                 reclamations.add(reclamation);
             }
             statement.close();
-            cnx.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return reclamations;
     }
     
-   public void updateReclamation(Connection cnx,int id, String newStatus) throws SQLException {
+   public void updateReclamation(int id,String newStatus) throws SQLException {
     try {
         String sql = "UPDATE reclamation SET status = ? WHERE id = ?";
         PreparedStatement statement = cnx.prepareStatement(sql);

@@ -39,9 +39,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import tn.edu.esprit.entities.User;
+import tn.edu.esprit.entites.User;
 import tn.edu.esprit.services.ServiceUser;
-import tn.edu.esprit.services.TwilioService;
 import static tn.edu.esprit.services.TwilioService.sendSms;
 
 /**

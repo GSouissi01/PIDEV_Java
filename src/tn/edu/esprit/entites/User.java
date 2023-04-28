@@ -10,18 +10,21 @@ package tn.edu.esprit.entites;
  * @author ghada
  */
 public class User {
-    private int id; 
+
+    private int id;
     private String email;
     private String password;
     private String nom;
     private String prenom;
-    private int tel; 
+    private int tel;
     private String nomSup;
     private String adresseSup;
-    String imagePath; 
+    String imagePath;
     private String role;
-    private boolean isBanned; 
+    private byte[] face;
+    private boolean isBanned;
 
+    
     public boolean isIsBanned() {
         return isBanned;
     }
@@ -30,24 +33,40 @@ public class User {
         this.isBanned = isBanned;
     }
 
-    public User(String email, String nom, String prenom) {
-        this.email = email;
-        this.nom = nom;
-        this.prenom = prenom;
-    }
-
-    public User(int id, String nom, String prenom, String email, int tel, String password, String imagePath) {
+    public User(int id, String email, String password, String nom, String prenom, int tel, String nomSup, String adresseSup, String imagePath) {
         this.id = id;
+        this.email = email;
+        this.password = password;
         this.nom = nom;
         this.prenom = prenom;
-        this.email = email;
         this.tel = tel;
-        this.password = password;
+        this.nomSup = nomSup;
+        this.adresseSup = adresseSup;
         this.imagePath = imagePath;
-        this.isBanned = false; // Set isBanned to false by default
     }
+    
 
     public User() {
+    }
+
+    public User(String email, String password, String nom, String prenom, int tel, String nomSup, String adresseSup, String imagePath, String role, byte[] face) {
+        this.email = email;
+        this.password = password;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.tel = tel;
+        this.nomSup = nomSup;
+        this.adresseSup = adresseSup;
+        this.imagePath = imagePath;
+        this.role = role;
+        this.face = face;
+    }
+
+    User(String name, String password, String email) {
+
+        this.nom = name;
+        this.password = password;
+        this.email = email;
     }
 
     public User(String email, String password, String nom, String prenom, int tel, String nomSup, String adresseSup, String imagePath) {
@@ -61,9 +80,8 @@ public class User {
         this.imagePath = imagePath;
     }
 
-
-
-    public User(String email, String nom, String prenom, int tel, String nomSup, String adresseSup) {
+    public User(int id, String email, String nom, String prenom, int tel, String nomSup, String adresseSup) {
+        this.id = id;
         this.email = email;
         this.nom = nom;
         this.prenom = prenom;
@@ -71,6 +89,15 @@ public class User {
         this.nomSup = nomSup;
         this.adresseSup = adresseSup;
     }
+
+    public User(int id, String email, String nom, String prenom) {
+        this.id = id;
+        this.email = email;
+        this.nom = nom;
+        this.prenom = prenom;
+    }
+
+    
 
     public User(int id, String email, String password, String nom, String prenom, int tel, String nomSup, String adresseSup) {
         this.id = id;
@@ -108,7 +135,7 @@ public class User {
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
-    
+
     public void setProfilePic(String imagePath) {
         this.imagePath = imagePath;
     }
@@ -177,11 +204,17 @@ public class User {
         this.adresseSup = adresseSup;
     }
 
+    public byte[] getFace() {
+        return face;
+    }
+
+    public void setFace(byte[] face) {
+        this.face = face;
+    }
+
     @Override
     public String toString() {
         return "User{" + "email=" + email + ", password=" + password + ", nom=" + nom + ", prenom=" + prenom + ", tel=" + tel + ", nomSup=" + nomSup + ", adresseSup=" + adresseSup + '}';
     }
-    
-    
-    
+
 }

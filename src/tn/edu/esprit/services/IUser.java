@@ -7,7 +7,7 @@ package tn.edu.esprit.services;
 
 import java.sql.SQLException;
 import java.util.List;
-import tn.edu.esprit.entities.User;
+import tn.edu.esprit.entites.User;
 /**
  *
  * @author ghada

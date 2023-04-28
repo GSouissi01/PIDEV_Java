@@ -6,9 +6,14 @@
 package tn.edu.esprit.gui;
 
 import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.net.URL;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,13 +24,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.ListView;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import tn.edu.esprit.entites.Client;
+import tn.edu.esprit.entites.Server;
 import tn.edu.esprit.entites.User;
 import tn.edu.esprit.services.ServiceUser;
 
@@ -36,17 +44,24 @@ import tn.edu.esprit.services.ServiceUser;
  */
 public class ProfileController implements Initializable {
 
+    @FXML
     private TextField NomAcc;
+    @FXML
     private TextField AdresseAcc;
+    @FXML
     private TextField PrenomAcc;
+    @FXML
     private TextField TelAcc;
+    @FXML
     private TextField EmailAcc;
+    @FXML
     private TextField SupAcc;
     @FXML
     private ImageView profilePic;
+    @FXML
     private Button btnSupprimer;
     @FXML
-    private ColumnConstraints gridPane1;
+    private ComboBox<String> rechercheComboBox;
 
     /**
      * Initializes the controller class.
@@ -54,66 +69,93 @@ public class ProfileController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    } 
-    
-    public void setTextNom(String message){
+        ServiceUser serviceUser = new ServiceUser();
+        rechercheComboBox.setEditable(true);
+        rechercheComboBox.setButtonCell(new ListCell<>());
+        rechercheComboBox.setOnKeyReleased(event -> {
+            String recherche = rechercheComboBox.getEditor().getText().trim();
+            List<String> suggestions = serviceUser.rechercherUtilisateurs(recherche);
+            rechercheComboBox.getItems().clear();
+            ObservableList<String> items = FXCollections.observableArrayList();
+            items.addAll(suggestions);
+            rechercheComboBox.setItems(items);
+
+            rechercheComboBox.show();
+        });
+
+    }
+
+    public void setTextNom(String message) {
         this.NomAcc.setText(message);
     }
-    public void setTextPrenom(String message){
+
+    public void setTextPrenom(String message) {
         this.PrenomAcc.setText(message);
     }
-    public void setTextEmail(String message){
+
+    public void setTextEmail(String message) {
         this.EmailAcc.setText(message);
     }
-    public void setTextTel(String message){
+
+    public void setTextTel(String message) {
         this.TelAcc.setText(message);
     }
-    public void setTextSup(String message){
+
+    public void setTextSup(String message) {
         this.SupAcc.setText(message);
     }
-    public void setTextAdresse(String message){
-        this.AdresseAcc.setText(message);   
+
+    public void setTextAdresse(String message) {
+        this.AdresseAcc.setText(message);
     }
-    
+
     private User user;
+
     public void initData(User user) {
-    this.user = user;
+        this.user = user;
 
-    ServiceUser su = new ServiceUser();
+        ServiceUser su = new ServiceUser();
 
-    // Get the user's information
-    String nom = user.getNom();
-    String prenom = user.getPrenom();
-    String email = user.getEmail();
-    if (email != null && !email.isEmpty()) {
+        // Get the user's information
+        String nom = user.getNom();
+        String prenom = user.getPrenom();
+        String email = user.getEmail();
+        if (email != null && !email.isEmpty()) {
+            EmailAcc.setText(email);
+        } else {
+            EmailAcc.setText("No email found");
+        }
+
+        int tel = user.getTel();
+        String nomSup = user.getNomSup();
+        String adresseSup = user.getAdresseSup();
+        String imagePath = user.getImagePath();
+
+        // Set the values of the text fields
+        NomAcc.setText(nom);
+        PrenomAcc.setText(prenom);
         EmailAcc.setText(email);
-    } else {
-        EmailAcc.setText("No email found");
-    }
-
-    int tel = user.getTel();
-    String nomSup = user.getNomSup();
-    String adresseSup = user.getAdresseSup();
-    String imagePath = user.getImagePath();
-
-    // Set the values of the text fields
-    NomAcc.setText(nom);
-    PrenomAcc.setText(prenom);
-    EmailAcc.setText(email);
-    TelAcc.setText(Integer.toString(tel));
-    SupAcc.setText(nomSup);
-    AdresseAcc.setText(adresseSup);
+        TelAcc.setText(Integer.toString(tel));
+        SupAcc.setText(nomSup);
+        AdresseAcc.setText(adresseSup);
 
         // Set the profile picture
         Image profilePicture = su.getProfilePic(imagePath);
         if (profilePicture != null) {
             this.profilePic.setImage(profilePicture);
+            double radius = 50.0;
+                Circle clip = new Circle(radius, radius, radius);
+                clip.setFill(Color.WHITE);
+                profilePic.setClip(clip);
         }
-}
+    }
 
     @FXML
     public void handleLogOutBtn(ActionEvent event) {
         try {
+            UserController uc = new UserController();
+            uc.logout();
+
             // Load the FXML file
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Register1.fxml"));
             Parent root = loader.load();
@@ -126,37 +168,39 @@ public class ProfileController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-}
-    
-   void ModifierUser(ActionEvent event) {
-    ServiceUser su = new ServiceUser();
-        
-    String email = EmailAcc.getText();
-    String nom = NomAcc.getText();
-    String prenom = PrenomAcc.getText();
-    Integer tel = Integer.parseInt(TelAcc.getText());
-    String nomSup = SupAcc.getText();
-    String adresseSup = AdresseAcc.getText();
+    }
 
-    // Get the current user from the database
-    User currentUser = su.findByEmail(email);
+    @FXML
+    void ModifierUser(ActionEvent event) {
+        ServiceUser su = new ServiceUser();
 
-    // Create a new user object with the updated data
-    User updatedUser = new User(currentUser.getId(),email,currentUser.getPassword(),nom,prenom,tel,nomSup,adresseSup);
+        String email = EmailAcc.getText();
+        String nom = NomAcc.getText();
+        String prenom = PrenomAcc.getText();
+        Integer tel = Integer.parseInt(TelAcc.getText());
+        String nomSup = SupAcc.getText();
+        String adresseSup = AdresseAcc.getText();
 
-    // Update the user in the database
-    su.modifier(updatedUser);
+        // Get the current user from the database
+        User currentUser = su.findByEmail(email);
 
-    // Show a confirmation message to the user
-    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-    alert.setTitle("ComptaMerveille :: Success Message");
-    alert.setHeaderText(null);
-    alert.setContentText("Utilisateur modifié");
-    alert.showAndWait();
-}
-   void supprimerCompte(ActionEvent event)
-    {
-        
+        // Create a new user object with the updated data
+        User updatedUser = new User(currentUser.getId(), email, currentUser.getPassword(), nom, prenom, tel, nomSup, adresseSup);
+
+        // Update the user in the database
+        su.modifier(updatedUser);
+
+        // Show a confirmation message to the user
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("ComptaMerveille :: Success Message");
+        alert.setHeaderText(null);
+        alert.setContentText("Utilisateur modifié");
+        alert.showAndWait();
+    }
+
+    @FXML
+    void supprimerCompte(ActionEvent event) {
+
         // Demander confirmation à l'utilisateur avant de supprimer le compte
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
@@ -164,13 +208,13 @@ public class ProfileController implements Initializable {
         alert.setContentText("Cette action est irréversible. Veuillez confirmer.");
 
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
+        if (result.get() == ButtonType.OK) {
             // Supprimer le compte utilisateur
             ServiceUser su = new ServiceUser();
             su.supprimer(user);
 
             // Afficher un message de confirmation
-            Alert alert2 = new Alert(Alert. AlertType.INFORMATION);
+            Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
             alert2.setTitle("Compte supprimé");
             alert2.setHeaderText(null);
             alert2.setContentText("Votre compte a été supprimé avec succès.");
@@ -184,10 +228,49 @@ public class ProfileController implements Initializable {
             System.out.println("Suppression annulée par l'utilisateur.");
         }
     }
-   
 
+    @FXML
+    void sendMsg(ActionEvent event) {
 
-  
+        // Demander confirmation à l'utilisateur avant de supprimer le compte
+        try {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Notez-bien");
+            alert.setHeaderText(null);
+            alert.setContentText("Nous souhaitons porter à votre connaissance que vos messages ne seront présents que jusqu'à la fin de votre session. Aucun message ne sera enregistré ");
+            // Load the FXML file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Client.fxml"));
+            Parent root = loader.load();
+
+            // Create a new scene and display it
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @FXML
+    void sendMsg2(ActionEvent event) {
+
+        try {
+
+            // Load the FXML file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Client.fxml"));
+            Parent root = loader.load();
+
+            // Create a new scene and display it
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }
-    
-
