@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="308.0" prefWidth="611.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ModifierCreditController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="-7.0" prefHeight="320.0" prefWidth="633.0" style="-fx-background-color: #9E0E40;">
+         <children>
+            <Label layoutX="99.0" layoutY="9.0" text="Credit" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Line endX="-100.70709228515625" endY="267.01416015625" layoutX="129.0" layoutY="20.0" startX="-100.0" startY="3.2928848266601562" />
+            <Line endX="-45.79998779296875" endY="0.7928829193115234" layoutX="137.0" layoutY="22.0" startX="-107.5" startY="0.7928848266601562" />
+            <Line endX="261.50006103515625" endY="-2.2071151733398438" layoutX="303.0" layoutY="26.0" startX="-144.5999755859375" startY="-2.2071170806884766" />
+            <Line endX="434.29290771484375" endY="0.30706787109375" layoutX="129.0" layoutY="286.0" startX="-100.0" />
+            <Line endX="-101.0" endY="266.01416015625" layoutX="665.0" layoutY="21.0" startX="-100.0" startY="3.2928848266601562" />
+            <Label layoutX="49.0" layoutY="55.0" text="CLIENT :" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="55.0" layoutY="105.0" text="DATE :" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="47.0" layoutY="168.0" text="VALEUR :" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="date" layoutX="162.0" layoutY="99.0" prefHeight="30.0" prefWidth="363.0" promptText="yyyy-xx-zz" />
+            <ComboBox fx:id="inputCLIENT" layoutX="162.0" layoutY="51.0" prefHeight="18.0" prefWidth="363.0" promptText="CLIENT" />
+            <TextField fx:id="inputvaleur" accessibleRole="INCREMENT_BUTTON" layoutX="162.0" layoutY="161.0" prefHeight="30.0" prefWidth="363.0" promptText="5555555" />
+            <Button fx:id="ajouter" layoutX="227.0" layoutY="242.0" mnemonicParsing="false" onAction="#insert" prefHeight="20.0" prefWidth="101.0" style="-fx-background-color: #1E7FCB; -fx-border-radius: 50; -fx-background-radius: 50;" text="Modifier" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Label fx:id="labelid" layoutX="110.0" layoutY="228.0" textFill="WHITE" visible="false">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
