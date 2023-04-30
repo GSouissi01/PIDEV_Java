@@ -117,14 +117,14 @@
                         <Font name="Candara Bold" size="16.0" />
                      </font>
                   </Button>
-                  <ImageView fx:id="profilePic" fitHeight="120.0" fitWidth="166.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" />
-                  <ComboBox fx:id="rechercheComboBox" layoutX="299.0" layoutY="15.0" prefHeight="26.0" prefWidth="329.0" style="-fx-background-color: #afdfbd;" stylesheets="@home.css" />
+                  <ImageView fx:id="profilePic" fitHeight="120.0" fitWidth="166.0" layoutX="33.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
+                  <ComboBox fx:id="rechercheComboBox" layoutX="299.0" layoutY="15.0" prefHeight="26.0" prefWidth="329.0" styleClass="msg-btn" stylesheets="@home.css" />
                   <ImageView fitHeight="30.0" fitWidth="34.0" layoutX="594.0" layoutY="14.0">
                      <image>
                         <Image url="file:/C:/Users/SOUISSI/Downloads/téléchargement%20(2).png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="556.0" layoutY="15.0" mnemonicParsing="false" onAction="#sendMsg" prefHeight="26.0" prefWidth="78.0" style="-fx-background-color: transparent;" />
+                  <Button layoutX="554.0" layoutY="15.0" mnemonicParsing="false" onAction="#sendMsg" prefHeight="26.0" prefWidth="78.0" style="-fx-background-color: transparent;" />
                </children>
             </AnchorPane>
          </children>

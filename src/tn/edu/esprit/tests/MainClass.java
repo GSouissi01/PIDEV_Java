@@ -14,5 +14,6 @@ import tn.edu.esprit.utils.Database;
 public class MainClass {
     public static void main(String[] args){
         Database cnx=new Database();
+       
     }
 }

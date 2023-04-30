@@ -24,27 +24,27 @@
                               <Image url="file:/C:/Users/SOUISSI/Downloads/logo.png" />
                            </image>
                         </ImageView>
-                        <Button layoutX="12.0" layoutY="312.0" mnemonicParsing="false" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Users List" textFill="#1a569f">
+                        <Button layoutX="12.0" layoutY="255.0" mnemonicParsing="false" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Users List" textFill="WHITE">
                            <font>
-                              <Font name="Arial Rounded MT Bold" size="13.0" />
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font>
                         </Button>
-                        <Button layoutX="14.0" layoutY="358.0" mnemonicParsing="false" prefWidth="178.0" styleClass="menu-btn" text="Products List" textFill="#1a569f">
+                        <Button layoutX="14.0" layoutY="308.0" mnemonicParsing="false" prefWidth="178.0" styleClass="menu-btn" text="Products List" textFill="WHITE">
                            <font>
-                              <Font name="Arial Rounded MT Bold" size="13.0" />
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font>
                         </Button>
-                        <Button layoutX="12.0" layoutY="403.0" mnemonicParsing="false" prefWidth="178.0" styleClass="menu-btn" text="Suppliers List" textFill="#1a569f">
+                        <Button layoutX="15.0" layoutY="360.0" mnemonicParsing="false" prefWidth="178.0" styleClass="menu-btn" text="Suppliers List" textFill="WHITE">
                            <font>
-                              <Font name="Arial Rounded MT Bold" size="13.0" />
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font>
                         </Button>
-                        <Button layoutX="14.0" layoutY="450.0" mnemonicParsing="false" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Ads List" textFill="#1a569f">
+                        <Button layoutX="12.0" layoutY="412.0" mnemonicParsing="false" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Ads List" textFill="WHITE">
                            <font>
-                              <Font name="Arial Rounded MT Bold" size="13.0" />
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font>
                         </Button>
-                        <Button layoutX="47.0" layoutY="521.0" mnemonicParsing="false" onAction="#handleLogOutBtn" prefHeight="24.0" prefWidth="115.0" styleClass="menu3-btn" stylesheets="@back.css" text="Log out" textFill="WHITE" />
+                        <Button layoutX="43.0" layoutY="548.0" mnemonicParsing="false" onAction="#handleLogOutBtn" prefHeight="24.0" prefWidth="115.0" styleClass="menu3-btn" stylesheets="@back.css" text="Log out" textFill="WHITE" />
                      </children>
                   </AnchorPane>
                </children>
@@ -56,14 +56,14 @@
                         <Image url="file:/C:/Users/SOUISSI/Downloads/laundry+detergent+aisle+Charlotte+North+Carolina+South+Carolina.jpg" />
                      </image>
                   </ImageView>
-                  <GridPane fx:id="gridPane" layoutX="30.0" layoutY="81.0" prefHeight="90.0" prefWidth="88.0">
+                  <GridPane fx:id="gridPane" layoutX="36.0" layoutY="73.0" prefHeight="502.0" prefWidth="638.0" stylesheets="C:\Users\SOUISSI\Downloads\User + forgit password (incomplete)\PIDEV_Java-user\src\tn\edu\esprit\gui\back.css">
                     <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>

@@ -68,6 +68,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -118,6 +119,8 @@ public class Login1Controller implements Initializable {
     int timeLeft = 6 * 60 * 60;
     @FXML
     private Label timerLabel;
+    @FXML
+    private ToggleButton toggleButton;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -126,6 +129,18 @@ public class Login1Controller implements Initializable {
         webView = new WebView();
     }
     private int loginAttempts = 0;
+
+    @FXML
+    private void onShowPasswordToggle(ActionEvent event) {
+        pfPassword_Login.setVisible(!toggleButton.isSelected());
+
+        // If the password field is showing, set its text to the actual password
+        if (pfPassword_Login.isVisible()) {
+            pfPassword_Login.setText(pfPassword_Login.getUserData().toString());
+        } else {
+            pfPassword_Login.setText("");
+        }
+    }
 
     @FXML
     private void handleLogin(ActionEvent event) throws IOException {
@@ -183,8 +198,6 @@ public class Login1Controller implements Initializable {
                 File outputFile = new File("user_photo.png");
                 ImageIO.write(image, "png", outputFile);
 
-                
-
                 // Show error message to user
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Error Message");
@@ -234,7 +247,7 @@ public class Login1Controller implements Initializable {
 
                 tfEmail_Login.getScene().setRoot(root);
 
-                Scene scene = new Scene(root);
+                Scene scene = new Scene(root, 78, 26);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 stage.show();

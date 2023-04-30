@@ -31,6 +31,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
@@ -59,31 +60,40 @@ public class BackEndController implements Initializable {
     @Override
 public void initialize(URL location, ResourceBundle resources)
 {
+    VBox cardContent = new VBox();
     
-    VBox container = new VBox();
-    container.setSpacing(10);
-    container.setAlignment(Pos.CENTER);
-    container.setPadding(new Insets(20, 0, 0, 0)); // Add 20 pixels of padding to the top
-    gridPane.getChildren().add(container);
+    Font cardTitleFont = new Font("System Bold", 18.0);
+    Font cardSubtitleFont = new Font("System", 14.0);
+    Font cardBodyFont = new Font("System", 12.0);
 
+    gridPane.setHgap(20); // ajouter de l'espace horizontal entre les cartes
+    gridPane.setVgap(20); // ajouter de l'espace vertical entre les cartes
+    gridPane.setAlignment(Pos.CENTER);
+
+    int row = 0;
+    int col = 0;
     ServiceUser su = new ServiceUser();
     ObservableList<User> listuser = su.afficherusers();
+ 
+for (User us : listuser) {
+    
+    
+    StackPane card = new StackPane();
+    card.setAlignment(Pos.CENTER);
+    card.setPrefSize(250.0, 300.0);
+    card.setStyle("-fx-background-color: #3ed3ea; -fx-background-radius: 50px;"); // Carte avec un fond noir
+    card.setOnMouseEntered(event -> {
+        card.setStyle("-fx-background-color: #181962;-fx-background-radius: 50px;");
+    });
 
-    TilePane cardContainer = new TilePane();
-    cardContainer.setPrefColumns(2);
-    cardContainer.setTileAlignment(Pos.CENTER);
-    cardContainer.setHgap(10);
-    cardContainer.setVgap(10);
-    cardContainer.setPadding(new Insets(20, 0, 0, 0)); 
-    cardContainer.setPrefWidth(600);
+    // Réinitialiser le style lorsque la souris quitte la carte
+    card.setOnMouseExited(event -> {
+        card.setStyle("-fx-background-color: #3ed3ea;-fx-background-radius: 50px;");
+    });
+    
+   
 
-    for (User us : listuser) {
-        StackPane card = new StackPane();
-        card.setAlignment(Pos.CENTER);
-        card.setPrefSize(250, 250);
-        card.setStyle("-fx-background-color: #1a569f; -fx-background-radius: 50px; -fx-border-color: #white; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-padding: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);");
-        
-        ImageView userImage = new ImageView();
+    ImageView userImage = new ImageView();
         userImage.setFitHeight(150.0);
         userImage.setFitWidth(150.0);
         userImage.setClip(new Circle(75, 75, 75));
@@ -99,49 +109,73 @@ public void initialize(URL location, ResourceBundle resources)
 
         userImage.setImage(image);
 
-        Text userName = new Text("Nom: " + us.getNom());
-        userName.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        userName.setFill(javafx.scene.paint.Color.WHITE);
-            Font cardSubtitleFont = null;
-        userName.setFont(cardSubtitleFont);
+        
+    Text userName = new Text("Username: " +us.getEmail());
+    userName.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+    userName.setFill(javafx.scene.paint.Color.WHITE);
+    userName.setFont(cardTitleFont);
+    
+    Text userPrenom = new Text("Pénom: " + us.getPrenom());
+    userPrenom.setFill(javafx.scene.paint.Color.WHITE);
+    userPrenom.setFont(cardTitleFont);
 
-        Text userEmail = new Text("Email: " + us.getEmail());
-        userEmail.setFill(javafx.scene.paint.Color.WHITE);
-        userEmail.setFont(cardSubtitleFont);
-
-        Text userPrenom = new Text("Prénom: " + us.getPrenom());
-        userPrenom.setFill(javafx.scene.paint.Color.WHITE);
-        userPrenom.setWrappingWidth(175.0);
-        int idUser=su.getUserIdByEmail(us.getEmail());
+    Text userNom = new Text("Nom: " + us.getNom());
+    userNom.setFill(javafx.scene.paint.Color.WHITE);
+    userPrenom.setFont(cardTitleFont);
+    userNom.setWrappingWidth(175.0);
+           
+	int idUser=su.getUserIdByEmail(us.getEmail());
         Button deleteButton = new Button("Delete");
-        deleteButton.setOnAction(event -> {
-            ServiceUser serviceUser = new ServiceUser();
-            serviceUser.supprimerUser(idUser);
-            container.getChildren().clear();
-            initialize(location, resources);
-        });
-        // Add ban button to card
-        Button banButton = new Button("Ban");
-        banButton.setOnAction(event -> {
-            ServiceUser serviceUser = new ServiceUser();
-            serviceUser.banUser(su.getUserIdByEmail(us.getEmail()));
-            sendSms("+216 97397598", "You have been banned from the system.");
-            // Change background color of cell to red
-            card.setStyle("-fx-background-color: red;");
-            
-            container.getChildren().clear();
-            initialize(location, resources);
-        });
-        VBox cardContent = new VBox();
-        cardContent.setSpacing(5.0);
-        cardContent.getChildren().addAll(userImage, userName, userEmail, userPrenom, deleteButton,banButton);
-        card.getChildren().add(cardContent);
+        deleteButton.getStyleClass().add("round-button");
+deleteButton.setOnAction(event -> {
+    ServiceUser serviceUser = new ServiceUser();
+    serviceUser.supprimerUser(idUser);
+    
+    card.setStyle("-fx-background-color: transparent;");
+    cardContent.getChildren().clear();
+    initialize(location, resources);
+});
 
-        cardContainer.getChildren().add(card);
-    }
+Button banButton = new Button("Ban");
+banButton.getStyleClass().add("round-button");
+banButton.getStyleClass().add("blue-button");
+banButton.setOnAction(event -> {
+    ServiceUser serviceUser = new ServiceUser();
+    serviceUser.banUser(su.getUserIdByEmail(us.getEmail()));
+    sendSms("+216 97397598", "You have been banned from the system.");
+    cardContent.getChildren().clear();
+    initialize(location, resources);
+});
 
-    container.getChildren().add(cardContainer);
-    }
+Button unbanButton = new Button("Unban");
+unbanButton.getStyleClass().add("round-button");
+unbanButton.getStyleClass().add("green-button");
+unbanButton.setOnAction(event -> {
+    ServiceUser serviceUser = new ServiceUser();
+    serviceUser.unbanUser(su.getUserIdByEmail(us.getEmail()));
+    sendSms("+216 97397598", "Your account has been restored");
+    card.setStyle("-fx-background-color: green;");
+    cardContent.getChildren().clear();
+    initialize(location, resources);
+});
+
+
+HBox buttonBox = new HBox(deleteButton, banButton, unbanButton);
+buttonBox.setSpacing(10);
+buttonBox.setAlignment(Pos.CENTER);
+
+cardContent.getChildren().addAll(userImage,userName, userPrenom, userNom, buttonBox);
+card.getChildren().add(cardContent);
+
+
+gridPane.add(card, col, row);
+
+        col++;
+        if (col == 4) {
+            col = 0;
+            row++;
+        }       
+    }}
 
     @FXML
     public void handleLogOutBtn(ActionEvent event) {

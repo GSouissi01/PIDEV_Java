@@ -203,6 +203,18 @@ public class ServiceUser implements IUser<User> {
             ex.printStackTrace();
         }
     }
+    
+    public void unbanUser(int userId) {
+        String query = "UPDATE user SET is_banned = ? WHERE id = ?";
+        try (PreparedStatement stmt = cnx.prepareStatement(query)) {
+            stmt.setBoolean(1, false);
+            stmt.setInt(2, userId);
+            stmt.executeUpdate();
+            System.out.println("user unbanned !");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
 
     @Override
     public void modifier(User u) {
