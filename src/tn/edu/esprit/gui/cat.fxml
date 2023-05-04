@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="564.0" prefWidth="1234.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.edu.esprit.gui.catController">
+    <children>
+        <HBox prefHeight="614.0" prefWidth="1286.0">
+            <children>
+                <VBox prefHeight="602.0" prefWidth="216.0" styleClass="side_menu" stylesheets="@back.css">
+                    <children>
+                        <AnchorPane prefHeight="632.0" prefWidth="210.0">
+                            <children>
+                        <ImageView fitHeight="95.0" fitWidth="200.0" layoutY="14.0">
+                           <image>
+                              <Image url="file:/C:/Users/azizb/Downloads/logo (2).png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="contrat" layoutX="7.0" layoutY="343.0" mnemonicParsing="false" onAction="#contrat" prefWidth="178.0" styleClass="menu-btn" text="Contrats" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="typecontrat" layoutX="7.0" layoutY="378.0" mnemonicParsing="false" onAction="#typecontrat" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Type Contrats" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="47.0" layoutY="592.0" mnemonicParsing="false" onAction="#handleLogOutBtn" prefHeight="24.0" prefWidth="115.0" styleClass="menu3-btn" stylesheets="@back.css" text="Log out" textFill="WHITE" />
+                        <Button fx:id="promotion" layoutX="10.0" layoutY="268.0" mnemonicParsing="false" onAction="#promotion" prefWidth="178.0" styleClass="menu-btn" text="Promotions" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="reclamation" layoutX="10.0" layoutY="306.0" mnemonicParsing="false" onAction="#reclamation" prefWidth="178.0" styleClass="menu-btn" text="Reclamations" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="user" layoutX="8.0" layoutY="194.0" mnemonicParsing="false" onAction="#user" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Users " textFill="WHITE">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="product" layoutX="8.0" layoutY="231.0" mnemonicParsing="false" onAction="#product" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Products" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="fournisseur" layoutX="9.0" layoutY="413.0" mnemonicParsing="false" onAction="#fournisseur" prefWidth="178.0" styleClass="menu-btn" text="Fournisseurs" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="publicite" layoutX="9.0" layoutY="449.0" mnemonicParsing="false" onAction="#publicite" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Publicites" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="home" layoutX="5.0" layoutY="156.0" mnemonicParsing="false" onAction="#home" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Home" textFill="#07ff62">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="depense" layoutX="8.0" layoutY="488.0" mnemonicParsing="false" onAction="#depense" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Depenses" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="categorie" layoutX="6.0" layoutY="529.0" mnemonicParsing="false" onAction="#categorie" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Categories" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font>
+                        </Button>
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </VBox>
+                <AnchorPane prefHeight="634.0" prefWidth="1066.0">
+                    <children>
+                        <ImageView fitHeight="638.0" fitWidth="1065.0" layoutY="-2.0">
+                     <image>
+                        <Image url="file:/C:/Users/azizb/Downloads/budget1.jpg" />
+                     </image>
+                        </ImageView>
+                        <AnchorPane layoutX="5.0" layoutY="106.0" prefHeight="432.0" prefWidth="350.0" styleClass="box1" stylesheets="@Style.css">
+                            <children>
+                                <AnchorPane layoutX="22.0" prefHeight="43.0" prefWidth="293.0" styleClass="box1" stylesheets="@Style.css">
+                                    <children>
+                                        <Label layoutX="79.0" layoutY="7.0" text="Caterogies" textFill="#3b3838">
+                                            <font>
+                                                <Font name="Broadway" size="24.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </AnchorPane>
+                                <Button fx:id="updatebutton" layoutX="129.0" layoutY="348.0" mnemonicParsing="false" style="-fx-background-color: ff8600; -fx-background-radius: 20; -fx-border-color: 7187E;" text="Update">
+                                    <font>
+                                        <Font size="20.0" />
+                                    </font>
+                                </Button>
+                                <Label layoutX="3.0" layoutY="111.0" prefHeight="17.0" prefWidth="67.0" text="Depense" />
+                                <Label layoutX="2.0" layoutY="147.0" prefHeight="17.0" prefWidth="40.0" text="Nom:" />
+                                <Label fx:id="DateFin" layoutX="2.0" layoutY="248.0" prefHeight="18.0" prefWidth="47.0" text="image" />
+                                <TextField fx:id="nomcat" layoutX="67.0" layoutY="143.0" prefHeight="26.0" prefWidth="274.0" />
+                                <ComboBox fx:id="nomDep" layoutX="69.0" layoutY="108.0" prefHeight="25.0" prefWidth="267.0" promptText="choisir Depense" />
+                                <TextField fx:id="img" layoutX="63.0" layoutY="253.0" prefHeight="26.0" prefWidth="274.0" />
+                                <Button fx:id="btnbrowse" layoutX="245.0" layoutY="285.0" mnemonicParsing="false" style="-fx-background-color: ff8600; -fx-background-radius: 20; -fx-border-color: 7187E;" text="browse">
+                                    <font>
+                                        <Font size="20.0" />
+                                    </font>
+                                </Button>
+                                <Label layoutX="2.0" layoutY="183.0" text="Description" />
+                                <TextField fx:id="desccat" layoutX="68.0" layoutY="178.0" prefHeight="26.0" prefWidth="274.0" />
+                                <Label layoutX="3.0" layoutY="214.0" text="Code :" />
+                                <TextField fx:id="codecat" layoutX="63.0" layoutY="212.0" prefHeight="26.0" prefWidth="274.0" />
+                                <Button fx:id="add" layoutX="42.0" layoutY="348.0" mnemonicParsing="false" style="-fx-background-color: ff8600; -fx-background-radius: 20; -fx-border-color: 7187E;" text="Add">
+                                    <font>
+                                        <Font size="20.0" />
+                                    </font>
+                                </Button>
+                                <Button fx:id="export" layoutX="245.0" layoutY="348.0" mnemonicParsing="false" style="-fx-background-color: ff8600; -fx-background-radius: 20; -fx-border-color: 7187E;" text="export">
+                                    <font>
+                                        <Font size="20.0" />
+                                    </font>
+                                </Button>
+                            </children>
+                        </AnchorPane>
+                        <TableView fx:id="tabcat" layoutX="365.0" layoutY="131.0" prefHeight="381.0" prefWidth="699.0" style="-fx-background-color: ffffff;">
+                            <columns>
+                                <TableColumn fx:id="colnom" prefWidth="155.0" text="nom categorie" />
+                                <TableColumn fx:id="colcode" prefWidth="188.0" text="code" />
+                                <TableColumn fx:id="actions" prefWidth="173.0" text="Actions" />
+                            </columns>
+                        </TableView>
+                        <TextField fx:id="searchField" layoutX="14.0" layoutY="27.0" prefHeight="26.0" prefWidth="493.0" />
+                        <ImageView fitHeight="26.0" fitWidth="47.0" layoutX="532.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" styleClass="box1">
+                            <image>
+                                <Image url="@magnifying-glass%20(1).png" />
+                            </image>
+                        </ImageView>
+                  <Button fx:id="close" layoutX="1040.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="24.0" />
+                    </children>
+                </AnchorPane>
+                <ListView fx:id="listdep" layoutX="419.0" layoutY="99.0" prefHeight="486.0" prefWidth="575.0" stylesheets="@listcss.css" />
+            </children>
+</HBox>
+</children>
+</AnchorPane>

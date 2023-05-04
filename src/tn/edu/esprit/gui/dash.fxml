@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.media.MediaView?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="622.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.edu.esprit.gui.DashController">
+   <children>
+      <VBox prefHeight="621.0" prefWidth="227.0" styleClass="side_menu" stylesheets="@back.css">
+         <children>
+            <AnchorPane prefHeight="617.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="95.0" fitWidth="200.0" layoutX="11.0" layoutY="7.0">
+                     <image>
+                        <Image url="file:/C:/Users/azizb/Downloads/logo (2).png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="contrat" layoutX="18.0" layoutY="336.0" mnemonicParsing="false" onAction="#contrat" prefWidth="178.0" styleClass="menu-btn" text="Contrats" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="typecontrat" layoutX="18.0" layoutY="371.0" mnemonicParsing="false" onAction="#typecontrat" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Type Contrats" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="58.0" layoutY="585.0" mnemonicParsing="false" onAction="#handleLogOutBtn" prefHeight="24.0" prefWidth="115.0" styleClass="menu3-btn" stylesheets="@back.css" text="Log out" textFill="WHITE" />
+                  <Button fx:id="promotion" layoutX="21.0" layoutY="261.0" mnemonicParsing="false" onAction="#promotion" prefWidth="178.0" styleClass="menu-btn" text="Promotions" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="reclamation" layoutX="21.0" layoutY="299.0" mnemonicParsing="false" onAction="#reclamation" prefWidth="178.0" styleClass="menu-btn" text="Reclamations" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="user" layoutX="19.0" layoutY="187.0" mnemonicParsing="false" onAction="#user" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Users " textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="product" layoutX="19.0" layoutY="224.0" mnemonicParsing="false" onAction="#product" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Products" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="fournisseur" layoutX="20.0" layoutY="406.0" mnemonicParsing="false" onAction="#fournisseur" prefWidth="178.0" styleClass="menu-btn" text="Fournisseurs" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="publicite" layoutX="20.0" layoutY="442.0" mnemonicParsing="false" onAction="#publicite" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Publicites" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="home" layoutX="16.0" layoutY="149.0" mnemonicParsing="false" onAction="#home" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Home" textFill="#07ff62">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="depense" layoutX="19.0" layoutY="481.0" mnemonicParsing="false" onAction="#depense" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Depenses" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="categorie" layoutX="17.0" layoutY="522.0" mnemonicParsing="false" onAction="#categorie" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Categories" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+      <ImageView fitHeight="622.0" fitWidth="621.0" layoutX="227.0">
+         <image>
+            <Image url="file:/C:/Users/azizb/Downloads/backo.png" />
+         </image>
+      </ImageView>
+      <MediaView fx:id="mediaview" fitHeight="200.0" fitWidth="200.0" layoutX="286.0" layoutY="153.0" />
+      <Button fx:id="close" layoutX="824.0" layoutY="1.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="24.0" />
+   </children>
+</AnchorPane>

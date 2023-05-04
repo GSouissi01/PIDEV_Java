@@ -18,43 +18,82 @@
          <children>
             <VBox prefHeight="508.0" prefWidth="205.0">
                <children>
-                  <AnchorPane prefHeight="576.0" prefWidth="210.0" styleClass="side_menu" stylesheets="@back.css">
+                  <AnchorPane prefHeight="579.0" prefWidth="207.0" styleClass="side_menu" stylesheets="@back.css">
                      <children>
-                        <Button layoutX="10.0" layoutY="240.0" mnemonicParsing="false" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Users List" textFill="#1a569f">
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="13.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="10.0" layoutY="280.0" mnemonicParsing="false" prefWidth="178.0" styleClass="menu-btn" text="Reclamation List" textFill="#1a569f">
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="13.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="10.0" layoutY="320.0" mnemonicParsing="false" prefWidth="178.0" styleClass="menu-btn" text="Suppliers List" textFill="#1a569f">
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="13.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="10.0" layoutY="366.0" mnemonicParsing="false" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Ads List" textFill="#1a569f">
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="13.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="47.0" layoutY="521.0" mnemonicParsing="false" onAction="#handleLogOutBtn" prefHeight="24.0" prefWidth="115.0" styleClass="menu3-btn" stylesheets="@back.css" text="Log out" textFill="WHITE" />
-                        <ImageView fitHeight="95.0" fitWidth="200.0" layoutX="-7.0" layoutY="59.0">
-                           <image>
-                              <Image url="file:/C:/Users/SOUISSI/Downloads/logo.png" />
-                           </image>
-                        </ImageView>
+                        <AnchorPane layoutX="2.0" prefHeight="617.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="95.0" fitWidth="200.0" layoutX="-6.0" layoutY="3.0">
+                                 <image>
+                                    <Image url="file:/C:/Users/azizb/Downloads/logo (2).png" />
+                                 </image>
+                              </ImageView>
+                              <Button fx:id="contrat" layoutX="1.0" layoutY="332.0" mnemonicParsing="false" onAction="#contrat" prefWidth="178.0" styleClass="menu-btn" text="Contrats" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="17.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="typecontrat" layoutX="1.0" layoutY="367.0" mnemonicParsing="false" onAction="#typecontrat" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Type Contrats" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="17.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="41.0" layoutY="581.0" mnemonicParsing="false" onAction="#handleLogOutBtn" prefHeight="24.0" prefWidth="115.0" styleClass="menu3-btn" stylesheets="@back.css" text="Log out" textFill="WHITE" />
+                              <Button fx:id="promotion" layoutX="4.0" layoutY="257.0" mnemonicParsing="false" onAction="#promotion" prefWidth="178.0" styleClass="menu-btn" text="Promotions" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="17.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="reclamation" layoutX="4.0" layoutY="295.0" mnemonicParsing="false" onAction="#reclamation" prefWidth="178.0" styleClass="menu-btn" text="Reclamations" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="17.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="user" layoutX="2.0" layoutY="183.0" mnemonicParsing="false" onAction="#user" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Users " textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="17.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="product" layoutX="2.0" layoutY="220.0" mnemonicParsing="false" onAction="#product" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Products" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="17.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="fournisseur" layoutX="3.0" layoutY="402.0" mnemonicParsing="false" onAction="#fournisseur" prefWidth="178.0" styleClass="menu-btn" text="Fournisseurs" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="17.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="publicite" layoutX="3.0" layoutY="438.0" mnemonicParsing="false" onAction="#publicite" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Publicites" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="17.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="home" layoutX="-1.0" layoutY="145.0" mnemonicParsing="false" onAction="#home" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Home" textFill="#07ff62">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="17.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="depense" layoutX="2.0" layoutY="477.0" mnemonicParsing="false" onAction="#depense" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Depenses" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="17.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="categorie" layoutY="518.0" mnemonicParsing="false" onAction="#categorie" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Categories" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="17.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
                      </children>
                   </AnchorPane>
                </children>
             </VBox>
             <AnchorPane prefHeight="508.0" prefWidth="614.0">
                <children>
-                  <ImageView fitHeight="558.0" fitWidth="608.0" layoutX="-1.0" layoutY="-2.0">
+                  <ImageView fitHeight="622.0" fitWidth="608.0" layoutX="-1.0" layoutY="-2.0">
                      <image>
-                        <Image url="file:/C:/Users/SOUISSI/Downloads/laundry+detergent+aisle+Charlotte+North+Carolina+South+Carolina.jpg" />
+                        <Image url="file:/C:/Users/azizb/Downloads/back.jpg" />
                      </image>
                   </ImageView>
                   <Label layoutX="197.0" layoutY="196.0" text="Label" />
@@ -69,6 +108,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                   </GridPane>
+                  <Button fx:id="close" layoutX="583.0" layoutY="1.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="24.0" />
                </children>
             </AnchorPane>
          </children>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="473.0" prefWidth="700.0" styleClass="box1" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.edu.esprit.gui.contratAddController">
+   <children>
+      <ImageView fitHeight="476.0" fitWidth="700.0" layoutY="-1.0">
+         <image>
+            <Image url="file:///C:/Users/azizb/Downloads/dark2.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnajouter" layoutX="241.0" layoutY="395.0" mnemonicParsing="false" onAction="#OnCreate" style="-fx-background-color: ff8600; -fx-background-radius: 20; -fx-border-color: 7187E;" stylesheets="@ticket.css" text="add">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Label layoutX="38.0" layoutY="154.0" prefHeight="22.0" prefWidth="145.0" text="date expiration" textFill="#5dc21d">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="18.0" />
+         </font></Label>
+      <Label layoutX="51.0" layoutY="271.0" prefHeight="22.0" prefWidth="98.0" text="montant" textFill="#5dc21d">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="18.0" />
+         </font></Label>
+      <TextField fx:id="montanttf" layoutX="223.0" layoutY="269.0" prefHeight="26.0" prefWidth="274.0" />
+      <Label layoutX="51.0" layoutY="340.0" prefHeight="17.0" prefWidth="71.0" text="image" textFill="#5dc21d">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="18.0" />
+         </font></Label>
+      <TextField fx:id="imagetf" layoutX="223.0" layoutY="327.0" prefHeight="26.0" prefWidth="274.0" />
+      <DatePicker fx:id="datesignaturetf" layoutX="221.0" layoutY="91.0" prefHeight="25.0" prefWidth="281.0" />
+      <DatePicker fx:id="dateexpirationtf" layoutX="221.0" layoutY="152.0" prefHeight="25.0" prefWidth="281.0" />
+      <Label layoutX="38.0" layoutY="93.0" prefHeight="17.0" prefWidth="129.0" text="date signature" textFill="#5dc21d">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="18.0" />
+         </font></Label>
+      <Button fx:id="btnbrowse" layoutX="350.0" layoutY="395.0" mnemonicParsing="false" onAction="#browse" style="-fx-background-color: ff8600; -fx-background-radius: 20; -fx-border-color: 7187E;" stylesheets="@ticket.css" text="browse">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <TextField fx:id="nomcontrattf" layoutX="223.0" layoutY="217.0" prefHeight="26.0" prefWidth="274.0" />
+      <Label layoutX="47.0" layoutY="219.0" prefHeight="22.0" prefWidth="118.0" text="nom Contrat" textFill="#5dc21d">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="18.0" />
+         </font></Label>
+      <Label layoutX="110.0" layoutY="24.0" text="AJOUTER UN CONTRAT" textFill="#5dc21d">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="35.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="42.0" fitWidth="104.0" layoutX="582.0" layoutY="14.0">
+         <image>
+            <Image url="file:/C:/xampp/htdocs/produit_final/produit/public/images/logo/1.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

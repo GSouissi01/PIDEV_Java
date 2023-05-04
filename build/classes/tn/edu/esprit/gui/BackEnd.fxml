@@ -11,52 +11,88 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="710.0" prefWidth="1012.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.edu.esprit.gui.BackEndController">
+<AnchorPane id="AnchorPane" prefHeight="582.0" prefWidth="997.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.edu.esprit.gui.BackEndController">
    <children>
-      <HBox prefHeight="710.0" prefWidth="1012.0">
+      <HBox prefHeight="584.0" prefWidth="1012.0">
          <children>
-            <VBox prefHeight="570.0" prefWidth="220.0" styleClass="side_menu" stylesheets="@back.css">
+            <VBox prefHeight="617.0" prefWidth="166.0" styleClass="side_menu" stylesheets="@back.css">
                <children>
-                  <AnchorPane prefHeight="576.0" prefWidth="210.0">
+                  <AnchorPane prefHeight="597.0" prefWidth="162.0" />
+                  <AnchorPane prefHeight="617.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="95.0" fitWidth="200.0" layoutX="3.0" layoutY="28.0">
+                        <ImageView fitHeight="95.0" fitWidth="200.0" layoutX="-6.0" layoutY="3.0">
                            <image>
-                              <Image url="file:/C:/Users/SOUISSI/Downloads/logo.png" />
+                              <Image url="file:/C:/Users/azizb/Downloads/logo (2).png" />
                            </image>
                         </ImageView>
-                        <Button layoutX="12.0" layoutY="255.0" mnemonicParsing="false" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Users List" textFill="WHITE">
+                        <Button fx:id="contrat" layoutX="1.0" layoutY="332.0" mnemonicParsing="false" onAction="#contrat" prefWidth="178.0" styleClass="menu-btn" text="Contrats" textFill="WHITE">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font>
                         </Button>
-                        <Button layoutX="14.0" layoutY="308.0" mnemonicParsing="false" prefWidth="178.0" styleClass="menu-btn" text="Products List" textFill="WHITE">
+                        <Button fx:id="typecontrat" layoutX="1.0" layoutY="367.0" mnemonicParsing="false" onAction="#typecontrat" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Type Contrats" textFill="WHITE">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font>
                         </Button>
-                        <Button layoutX="15.0" layoutY="360.0" mnemonicParsing="false" prefWidth="178.0" styleClass="menu-btn" text="Suppliers List" textFill="WHITE">
+                        <Button layoutX="41.0" layoutY="581.0" mnemonicParsing="false" onAction="#handleLogOutBtn" prefHeight="24.0" prefWidth="115.0" styleClass="menu3-btn" stylesheets="@back.css" text="Log out" textFill="WHITE" />
+                        <Button fx:id="promotion" layoutX="4.0" layoutY="257.0" mnemonicParsing="false" onAction="#promotion" prefWidth="178.0" styleClass="menu-btn" text="Promotions" textFill="WHITE">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font>
                         </Button>
-                        <Button layoutX="12.0" layoutY="412.0" mnemonicParsing="false" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Ads List" textFill="WHITE">
+                        <Button fx:id="reclamation" layoutX="4.0" layoutY="295.0" mnemonicParsing="false" onAction="#reclamation" prefWidth="178.0" styleClass="menu-btn" text="Reclamations" textFill="WHITE">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font>
                         </Button>
-                        <Button layoutX="43.0" layoutY="548.0" mnemonicParsing="false" onAction="#handleLogOutBtn" prefHeight="24.0" prefWidth="115.0" styleClass="menu3-btn" stylesheets="@back.css" text="Log out" textFill="WHITE" />
+                        <Button fx:id="user" layoutX="2.0" layoutY="183.0" mnemonicParsing="false" onAction="#user" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Users " textFill="WHITE">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="product" layoutX="2.0" layoutY="220.0" mnemonicParsing="false" onAction="#product" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Products" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="fournisseur" layoutX="3.0" layoutY="402.0" mnemonicParsing="false" onAction="#fournisseur" prefWidth="178.0" styleClass="menu-btn" text="Fournisseurs" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="publicite" layoutX="3.0" layoutY="438.0" mnemonicParsing="false" onAction="#publicite" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Publicites" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="home" layoutX="-1.0" layoutY="145.0" mnemonicParsing="false" onAction="#home" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Home" textFill="#07ff62">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="depense" layoutX="2.0" layoutY="477.0" mnemonicParsing="false" onAction="#depense" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Depenses" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="categorie" layoutY="518.0" mnemonicParsing="false" onAction="#categorie" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Categories" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font>
+                        </Button>
                      </children>
                   </AnchorPane>
                </children>
             </VBox>
-            <AnchorPane prefHeight="710.0" prefWidth="830.0">
+            <AnchorPane prefHeight="584.0" prefWidth="804.0">
                <children>
-                  <ImageView fitHeight="710.0" fitWidth="804.0" layoutY="-2.0">
+                  <ImageView fitHeight="612.0" fitWidth="804.0" layoutY="-2.0">
                      <image>
-                        <Image url="file:/C:/Users/SOUISSI/Downloads/laundry+detergent+aisle+Charlotte+North+Carolina+South+Carolina.jpg" />
+                        <Image url="file:/C:/Users/azizb/Downloads/back.jpg" />
                      </image>
                   </ImageView>
-                  <GridPane fx:id="gridPane" layoutX="36.0" layoutY="73.0" prefHeight="502.0" prefWidth="638.0" stylesheets="C:\Users\SOUISSI\Downloads\User + forgit password (incomplete)\PIDEV_Java-user\src\tn\edu\esprit\gui\back.css">
+                  <GridPane fx:id="gridPane" layoutX="14.0" layoutY="48.0" prefHeight="502.0" prefWidth="638.0" stylesheets="@back.css">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -68,10 +104,11 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                   </GridPane>
+                  <Button fx:id="close" layoutX="773.0" layoutY="1.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="24.0" />
+                  <Button fx:id="back" layoutX="740.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="24.0" />
                </children>
             </AnchorPane>
          </children>
       </HBox>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

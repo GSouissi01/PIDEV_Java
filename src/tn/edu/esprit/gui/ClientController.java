@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
  *
  * @author SOUISSI
  */
-import tn.edu.esprit.entites.Client;
+import tn.edu.esprit.entities.Client;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

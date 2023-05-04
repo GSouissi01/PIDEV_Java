@@ -12,7 +12,7 @@
    <children>
       <ImageView fitHeight="545.0" fitWidth="434.0" layoutX="-1.0" layoutY="1.0">
          <image>
-            <Image url="file:/C:/Users/SOUISSI/Downloads/360_F_195422106_cNzNOmCmgf0QbxDVfuOoEc2zEl0gYIL0.jpg" />
+            <Image url="file:///C:/Users/azizb/Downloads/chat.jpg" />
          </image>
       </ImageView>
       <ScrollPane fx:id="sp_main" fitToWidth="true" layoutX="40.0" layoutY="41.0" prefHeight="418.0" prefWidth="348.0" style="-fx-background-color: white;">
@@ -24,7 +24,7 @@
       <Button fx:id="button_send" layoutX="347.0" layoutY="461.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="70.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 50;" />
       <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="370.0" layoutY="470.0">
          <image>
-            <Image url="file:/C:/Users/SOUISSI/Downloads/téléchargement%20(2).png" />
+            <Image url="file:///C:/Users/azizb/Downloads/send.png" />
          </image>
       </ImageView>
    </children>

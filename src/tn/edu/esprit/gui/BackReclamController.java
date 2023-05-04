@@ -38,7 +38,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import tn.edu.esprit.entites.Reclamation;
+import tn.edu.esprit.entities.Reclamation;
 import tn.edu.esprit.services.ServiceReclamation;
 import tn.edu.esprit.services.TwilioService;
 import static tn.edu.esprit.services.TwilioService.sendSms;
@@ -53,6 +53,30 @@ public class BackReclamController implements Initializable {
 Connection cnx = Database.getInstance().getCnx();
     @FXML
     private GridPane gridPane;
+    @FXML
+    private Button product;
+    @FXML
+    private Button promotion;
+    @FXML
+    private Button reclamation;
+    @FXML
+    private Button close;
+    @FXML
+    private Button contrat;
+    @FXML
+    private Button typecontrat;
+    @FXML
+    private Button fournisseur;
+    @FXML
+    private Button publicite;
+    @FXML
+    private Button user;
+    @FXML
+    private Button home;
+    @FXML
+    private Button depense;
+    @FXML
+    private Button categorie;
 
     /**
      * Initializes the controller class.
@@ -60,6 +84,15 @@ Connection cnx = Database.getInstance().getCnx();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
+          close.setStyle("-fx-background-image: url('file:///C:/Users/azizb/Downloads/close.png');-fx-background-size: 100% 100%;");
+
+    close.setOnAction(event -> {
+    Stage stage = (Stage) close.getScene().getWindow();
+    stage.close();
+});
+
+        
     VBox container = new VBox();
     container.setSpacing(10);
     container.setAlignment(Pos.CENTER);
@@ -138,7 +171,8 @@ Connection cnx = Database.getInstance().getCnx();
 }
     
 
-    @FXML
+  
+ @FXML
     public void handleLogOutBtn(ActionEvent event) {
         try {
             // Load the FXML file
@@ -154,4 +188,172 @@ Connection cnx = Database.getInstance().getCnx();
             e.printStackTrace();
         }
 }
+
+  @FXML
+    private void product(ActionEvent event) {
+         try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("home.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+// assuming you have a reference to the button object
+        Stage stage = (Stage) product.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    }
+
+    @FXML
+    private void promotion(ActionEvent event) {
+         try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddPromotion.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+// assuming you have a reference to the button object
+        Stage stage = (Stage) promotion.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    }
+
+    @FXML
+    private void reclamation(ActionEvent event) {
+        try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("BackReclam.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+// assuming you have a reference to the button object
+        Stage stage = (Stage) product.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    }
+
+  
+  
+
+     @FXML
+    private void contrat(ActionEvent event) {
+          try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("contrat.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+// assuming you have a reference to the button object
+        Stage stage = (Stage) contrat.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    }
+
+    @FXML
+    private void typecontrat(ActionEvent event) {
+          try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("typecontrat.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+// assuming you have a reference to the button object
+        Stage stage = (Stage) typecontrat.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    }
+
+     @FXML
+    private void fournisseur(ActionEvent event) {
+             try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("fournisseur.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+// assuming you have a reference to the button object
+        Stage stage = (Stage) fournisseur.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    }
+
+    @FXML
+    private void publicite(ActionEvent event) {
+             try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("publicite.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+// assuming you have a reference to the button object
+        Stage stage = (Stage) publicite.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    }
+
+    @FXML
+    private void user(ActionEvent event) {
+              try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("BackEnd.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+// assuming you have a reference to the button object
+        Stage stage = (Stage) user.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    }
+
+    @FXML
+    private void home(ActionEvent event) {
+              try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("dash.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+// assuming you have a reference to the button object
+        Stage stage = (Stage) home.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    }
+
+    @FXML
+    private void depense(ActionEvent event) {
+              try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("depense.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+// assuming you have a reference to the button object
+        Stage stage = (Stage) depense.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    }
+
+    @FXML
+    private void categorie(ActionEvent event) {
+              try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("cat.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+// assuming you have a reference to the button object
+        Stage stage = (Stage) categorie.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    }
 }

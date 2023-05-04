@@ -27,7 +27,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.URL;
 import java.util.ResourceBundle;
-import tn.edu.esprit.entites.Server;
+import tn.edu.esprit.entities.Server;
 
 public class ServerController implements Initializable {
 

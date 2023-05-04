@@ -5,7 +5,7 @@
  */
 package tn.edu.esprit.gui;
 
-import tn.edu.esprit.entites.User;
+import tn.edu.esprit.entities.User;
 import tn.edu.esprit.services.ServiceUser;
 
 /**

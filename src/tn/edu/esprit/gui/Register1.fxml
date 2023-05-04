@@ -23,7 +23,7 @@
                   </Button>
                   <ImageView fitHeight="168.0" fitWidth="360.0" layoutX="11.0" layoutY="184.0" preserveRatio="true">
                      <image>
-                        <Image url="file:/C:/Users/SOUISSI/Downloads/logo.png" />
+                        <Image url="file:/C:/Users/azizb/Downloads/logo (2).png" />
                      </image>
                         
                   </ImageView>
@@ -36,7 +36,7 @@
                   <Label fx:id="URLImage" layoutX="30.0" layoutY="46.0" prefWidth="191.0" text="Label" />
                   <ImageView fitHeight="622.0" fitWidth="517.0" layoutX="-70.0" layoutY="-1.0">
                      <image>
-                        <Image url="file:/C:/Users/SOUISSI/Downloads/supermarket1.jpg" />
+                        <Image url="file:/C:/Users/azizb/Downloads/background (2).jpg" />
                      </image>
                   </ImageView>
                   <Button fx:id="tfCreateAcc_btn" layoutX="140.0" layoutY="580.0" mnemonicParsing="false" onAction="#saveUser" prefHeight="27.0" prefWidth="163.0" styleClass="create-btn" stylesheets="@register.css" text="Create Account" textFill="WHITE">
@@ -83,14 +83,15 @@
                   <Button fx:id="takePhoto_btn" layoutX="324.0" layoutY="540.0" mnemonicParsing="false" onAction="#TakePhoto" prefHeight="62.0" prefWidth="72.0" style="-fx-background-color: transparent;" stylesheets="@register.css" />
                   <ImageView fitHeight="66.0" fitWidth="60.0" layoutX="60.0" layoutY="534.0">
                      <image>
-                        <Image url="file:/C:/Users/SOUISSI/Downloads/png-transparent-font-awesome-upload-computer-icons-font-computers-blue-text-logo-removebg-preview.png" />
+                        <Image url="file:/C:/Users/azizb/Downloads/upload.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="69.0" fitWidth="68.0" layoutX="323.0" layoutY="538.0">
                      <image>
-                        <Image url="file:/C:/Users/SOUISSI/Downloads/téléchargement__3_-removebg-preview.png" />
+                        <Image url="file:/C:/Users/azizb/Downloads/camera.png" />
                      </image>
                   </ImageView>
+                  <Button fx:id="close" layoutX="423.0" layoutY="1.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="24.0" />
                </children>
             </AnchorPane>
          </right>

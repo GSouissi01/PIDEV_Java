@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import tn.edu.esprit.entites.Reclamation;
+import tn.edu.esprit.entities.Reclamation;
 import tn.edu.esprit.utils.Database;
 
 /**

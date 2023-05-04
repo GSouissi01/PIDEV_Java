@@ -38,9 +38,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-import tn.edu.esprit.entites.User;
+import tn.edu.esprit.entities.User;
 import tn.edu.esprit.services.ServiceUser;
-import tn.edu.esprit.utils.JDBCDao;
+
 import javax.mail.Session;
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
@@ -50,7 +50,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.Transport;
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
-import tn.edu.esprit.entites.PasswordResetToken;
+import tn.edu.esprit.entities.PasswordResetToken;
 import tn.edu.esprit.dialog.PasswordDialog;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -83,10 +83,9 @@ import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.objdetect.CascadeClassifier;
 import org.opencv.videoio.VideoCapture;
 import org.openqa.selenium.By;
-import tn.edu.esprit.entites.OAuthAuthenticator;
-import tn.edu.esprit.entites.OAuthFacebookAuthenticator;
+
 import org.opencv.objdetect.CascadeClassifier;
-import tn.edu.esprit.entites.PasswordHasher;
+import tn.edu.esprit.entities.PasswordHasher;
 import tn.edu.esprit.services.TwilioService;
 
 /**
@@ -119,18 +118,24 @@ public class Login1Controller implements Initializable {
     int timeLeft = 6 * 60 * 60;
     @FXML
     private Label timerLabel;
-    @FXML
     private ToggleButton toggleButton;
+    @FXML
+    private Button close;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         forgotPasswordButton.setOnAction(event -> showForgotPasswordDialog());
         webView = new WebView();
+         close.setStyle("-fx-background-image: url('file:///C:/Users/azizb/Downloads/close.png');-fx-background-size: 100% 100%;");
+
+    close.setOnAction(event -> {
+    Stage stage = (Stage) close.getScene().getWindow();
+    stage.close();
+});
     }
     private int loginAttempts = 0;
 
-    @FXML
     private void onShowPasswordToggle(ActionEvent event) {
         pfPassword_Login.setVisible(!toggleButton.isSelected());
 
@@ -142,6 +147,14 @@ public class Login1Controller implements Initializable {
         }
     }
 
+ public String getTextEmail() {
+        return tfEmail_Login.getText();
+    }
+ public String getTextPassword() {
+        return pfPassword_Login.getText();
+    }
+
+    
     @FXML
     private void handleLogin(ActionEvent event) throws IOException {
         String email = tfEmail_Login.getText();
@@ -227,7 +240,7 @@ public class Login1Controller implements Initializable {
 
             if (u.getRole().equals("ADMIN")) {
                 // redirect to backend page
-                Parent root = FXMLLoader.load(getClass().getResource("../gui/BackEnd.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("../gui/dash.fxml"));
                 Scene scene = new Scene(root);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
@@ -251,6 +264,8 @@ public class Login1Controller implements Initializable {
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 stage.show();
+                
+                
             }
         }
     }
@@ -401,17 +416,7 @@ public class Login1Controller implements Initializable {
         camera.release();
     }
      */
-    private void fbloginIsPressed(MouseEvent event) {
-
-        String FACEBOOK_clientID = "200664516085717";
-        String FACEBOOK_redirectUri = "https://localhost:8080/facebook-callback";
-        String FACEBOOK_fieldsString = "name,email";
-        String FACEBOOK_clientSecret = "96aecb01b4efc871a5f13ed859b11e7e";
-
-        OAuthAuthenticator authFB = new OAuthFacebookAuthenticator(FACEBOOK_clientID, FACEBOOK_redirectUri, FACEBOOK_clientSecret, FACEBOOK_fieldsString);
-        authFB.startLogin();
-    }
-
+   
     @FXML
     private void handleCreateAccountButtonAction(ActionEvent event) throws IOException {
         if (registrationLoader == null) {
@@ -428,37 +433,7 @@ public class Login1Controller implements Initializable {
         }
     }
 
-    public void login(ActionEvent event) throws SQLException {
-
-        Window owner = submitButton.getScene().getWindow();
-
-        System.out.println(tfEmail_Login.getText());
-        System.out.println(pfPassword_Login.getText());
-
-        if (tfEmail_Login.getText().isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
-                    "Please enter your email id");
-            return;
-        }
-        if (pfPassword_Login.getText().isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
-                    "Please enter a password");
-            return;
-        }
-
-        String emailId = tfEmail_Login.getText();
-        String password = pfPassword_Login.getText();
-
-        JDBCDao jdbcDao = new JDBCDao();
-        boolean flag = jdbcDao.validate(emailId, password);
-
-        if (!flag) {
-            infoBox("Please enter correct Email and Password", null, "Failed");
-        } else {
-            infoBox("Login Successful!", null, "Failed");
-        }
-    }
-
+  
     public static void infoBox(String infoMessage, String headerText, String title) {
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setContentText(infoMessage);

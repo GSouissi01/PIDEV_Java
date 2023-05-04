@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="374.0" prefWidth="639.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.edu.esprit.gui.UpdateProductController">
+   <children>
+      <ImageView fitHeight="384.0" fitWidth="637.0" layoutY="-7.0">
+         <image>
+            <Image url="file:///C:/Users/azizb/Downloads/dark2.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="URLImage" layoutX="-104.0" layoutY="317.0" visible="false" />
+      <TextField fx:id="tflibelleUpdate" layoutX="155.0" layoutY="74.0" promptText="libelle" />
+      <TextField fx:id="tfStockUpdate" layoutX="155.0" layoutY="122.0" promptText="stock" />
+      <TextField fx:id="tfPrixUpdate" layoutX="155.0" layoutY="174.0" promptText="prix" />
+      <TextField fx:id="tfPrixAchatUpdate" layoutX="155.0" layoutY="267.0" promptText="prix achat" />
+      <Button fx:id="tfAdd" layoutX="558.0" layoutY="308.0" mnemonicParsing="false" onAction="#saveUser" prefHeight="42.0" prefWidth="48.0" textFill="#5dc21d">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="18.0" />
+         </font>
+      </Button>
+      <DatePicker fx:id="tfDateExpUpdate" layoutX="154.0" layoutY="218.0" />
+      <Label layoutX="-259.0" layoutY="128.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="101.0" layoutY="19.0" text="MODIFIER UN PRODUIT" textFill="#5dc21d">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="35.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="42.0" fitWidth="104.0" layoutX="530.0" layoutY="19.0">
+         <image>
+            <Image url="file:/C:/xampp/htdocs/produit_final/produit/public/images/logo/1.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnAddImage" layoutX="432.0" layoutY="231.0" mnemonicParsing="false" onAction="#AddImage" prefHeight="42.0" prefWidth="45.0" />
+      <ImageView fx:id="ImageUpdate" fitHeight="128.0" fitWidth="176.0" layoutX="398.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="33.0" layoutY="80.0" text="LIBELLE" textFill="#5dc21d">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="27.0" layoutY="217.0" text="DATE EXP" textFill="#5dc21d">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="29.0" layoutY="170.0" text="PRIX" textFill="#5dc21d">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="27.0" layoutY="125.0" text="STOCK" textFill="#5dc21d">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="29.0" layoutY="270.0" text="PRIX ACHAT" textFill="#5dc21d">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

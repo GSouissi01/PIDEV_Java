@@ -22,9 +22,9 @@ import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
 import static sun.rmi.transport.TransportConstants.Version;
-import tn.edu.esprit.entites.PasswordHasher;
-import tn.edu.esprit.entites.PasswordResetToken;
-import tn.edu.esprit.entites.User;
+import tn.edu.esprit.entities.PasswordHasher;
+import tn.edu.esprit.entities.PasswordResetToken;
+import tn.edu.esprit.entities.User;
 import tn.edu.esprit.utils.Database;
 
 /**

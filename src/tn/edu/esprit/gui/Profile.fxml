@@ -26,33 +26,33 @@
                      <children>
                         <ImageView fitHeight="58.0" fitWidth="72.0" layoutX="70.0" layoutY="501.0">
                            <image>
-                              <Image url="file:/C:/Users/SOUISSI/Downloads/vector-logout-sign-icon-removebg-preview.png" />
+                              <Image url="file:/C:/Users/azizb/Downloads/logout.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="102.0" fitWidth="224.0" layoutX="-10.0" layoutY="27.0">
                            <image>
-                              <Image url="file:/C:/Users/SOUISSI/Downloads/logo.png" />
+                              <Image url="file:/C:/Users/azizb/Downloads/logo (2).png" />
                            </image>
                         </ImageView>
-                        <Button layoutY="186.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="220.0" styleClass="menu-btn" stylesheets="@register.css" text="Home" textFill="#afdfbd">
-                           <font>
-                              <Font name="Candara Bold" size="16.0" />
-                           </font>
-                        </Button>
-                        <Button layoutX="-1.0" layoutY="236.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="220.0" styleClass="menu-btn" stylesheets="@register.css" text="Compte Utilisateur" textFill="#afdfbd">
-                           <font>
-                              <Font name="Candara Bold" size="16.0" />
-                           </font>
-                        </Button>
-                        <Button layoutY="286.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="220.0" styleClass="menu-btn" stylesheets="@register.css" text="Réclamation" textFill="#afdfbd">
-                           <font>
-                              <Font name="Candara Bold" size="16.0" />
-                           </font>
-                        </Button>
                         <Button layoutX="75.0" layoutY="502.0" mnemonicParsing="false" onAction="#handleLogOutBtn" prefHeight="58.0" prefWidth="63.0" style="-fx-background-color: transparent;" />
-                        <Button layoutY="335.0" mnemonicParsing="false" onAction="#sendMsg2" prefHeight="42.0" prefWidth="220.0" styleClass="menu-btn" stylesheets="@register.css" text="Messagerie" textFill="#afdfbd">
+                        <Button fx:id="menu_btn" layoutX="25.0" layoutY="204.0" mnemonicParsing="false" onAction="#home" prefHeight="43.0" prefWidth="178.0" styleClass="menu-btn" stylesheets="@home.css" text="HOME" textFill="#5dc21d">
                            <font>
-                              <Font name="Candara Bold" size="16.0" />
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="product" layoutX="25.0" layoutY="267.0" mnemonicParsing="false" onAction="#product" prefHeight="43.0" prefWidth="178.0" styleClass="menu-btn" stylesheets="@home.css" text="Products" textFill="#5dc21d">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="user1" layoutX="25.0" layoutY="326.0" mnemonicParsing="false" onAction="#user1" prefHeight="43.0" prefWidth="178.0" styleClass="menu-btn" stylesheets="@home.css" text="User" textFill="#5dc21d">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="messagerie" layoutX="21.0" layoutY="387.0" mnemonicParsing="false" onAction="#messagerie" prefHeight="43.0" prefWidth="178.0" styleClass="menu-btn" stylesheets="@home.css" text="Messagerie" textFill="#5dc21d">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="17.0" />
                            </font>
                         </Button>
                      </children>
@@ -61,9 +61,9 @@
             </VBox>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="570.0" fitWidth="657.0" layoutY="-2.0">
+                  <ImageView fitHeight="570.0" fitWidth="694.0" layoutY="-2.0">
                      <image>
-                        <Image url="file:/C:/Users/SOUISSI/Downloads/gren.jpg" />
+                        <Image url="file:/C:/Users/azizb/Downloads/backprofile.jpg" />
                      </image>
                   </ImageView>
                   <Label layoutX="185.0" layoutY="58.0" text="Votre Compte" textFill="#3ea95e">
@@ -121,10 +121,11 @@
                   <ComboBox fx:id="rechercheComboBox" layoutX="299.0" layoutY="15.0" prefHeight="26.0" prefWidth="329.0" styleClass="msg-btn" stylesheets="@home.css" />
                   <ImageView fitHeight="30.0" fitWidth="34.0" layoutX="594.0" layoutY="14.0">
                      <image>
-                        <Image url="file:/C:/Users/SOUISSI/Downloads/téléchargement%20(2).png" />
+                        <Image url="file:/C:/Users/azizb/Downloads/send.png" />
                      </image>
                   </ImageView>
                   <Button layoutX="554.0" layoutY="15.0" mnemonicParsing="false" onAction="#sendMsg" prefHeight="26.0" prefWidth="78.0" style="-fx-background-color: transparent;" />
+                  <Button fx:id="close" layoutX="670.0" layoutY="2.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="24.0" />
                </children>
             </AnchorPane>
          </children>

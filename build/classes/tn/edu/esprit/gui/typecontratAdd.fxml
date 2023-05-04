@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="314.0" prefWidth="607.0" styleClass="box1" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.edu.esprit.gui.typecontratAddController">
+   <children>
+      <ImageView fitHeight="314.0" fitWidth="605.0">
+         <image>
+            <Image url="file:///C:/Users/azizb/Downloads/dark2.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="42.0" fitWidth="104.0" layoutX="503.0" layoutY="11.0">
+         <image>
+            <Image url="file:/C:/xampp/htdocs/produit_final/produit/public/images/logo/1.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnajouter" layoutX="264.0" layoutY="223.0" mnemonicParsing="false" onAction="#OnCreate" style="-fx-background-color: ff8600; -fx-background-radius: 20; -fx-border-color: 7187E;" stylesheets="@ticket.css" text="Ajouter">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Label layoutX="72.0" layoutY="122.0" prefHeight="17.0" prefWidth="125.0" text="Contrat" textFill="#5dc21d">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="18.0" />
+         </font></Label>
+      <Label fx:id="dateDebut" layoutX="79.0" layoutY="170.0" prefHeight="17.0" prefWidth="93.0" text="nom" textFill="#5dc21d">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="18.0" />
+         </font></Label>
+      <TextField fx:id="nomtf" layoutX="166.0" layoutY="168.0" prefHeight="26.0" prefWidth="274.0" />
+      <ComboBox fx:id="nomcontrat" layoutX="168.0" layoutY="120.0" prefHeight="25.0" prefWidth="267.0" promptText="choisir Contrat" />
+      <Label layoutX="63.0" layoutY="53.0" text="AJOUTER TYPE AU CONTRAT" textFill="#5dc21d">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="30.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="620.0" prefWidth="941.0" stylesheets="@file:///C:/Users/azizb/Downloads/styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.edu.esprit.gui.PieChartController">
+   <children>
+      <VBox prefHeight="620.0" prefWidth="211.0" styleClass="side_menu" stylesheets="@back.css">
+         <children>
+            <AnchorPane prefHeight="617.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="95.0" fitWidth="200.0" layoutX="-6.0" layoutY="3.0">
+                     <image>
+                        <Image url="file:/C:/Users/azizb/Downloads/logo (2).png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="contrat" layoutX="1.0" layoutY="332.0" mnemonicParsing="false" onAction="#contrat" prefWidth="178.0" styleClass="menu-btn" text="Contrats" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="typecontrat" layoutX="1.0" layoutY="367.0" mnemonicParsing="false" onAction="#typecontrat" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Type Contrats" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="41.0" layoutY="581.0" mnemonicParsing="false" onAction="#handleLogOutBtn" prefHeight="24.0" prefWidth="115.0" styleClass="menu3-btn" stylesheets="@back.css" text="Log out" textFill="WHITE" />
+                  <Button fx:id="promotion" layoutX="4.0" layoutY="257.0" mnemonicParsing="false" onAction="#promotion" prefWidth="178.0" styleClass="menu-btn" text="Promotions" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="reclamation" layoutX="4.0" layoutY="295.0" mnemonicParsing="false" onAction="#reclamation" prefWidth="178.0" styleClass="menu-btn" text="Reclamations" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="user" layoutX="2.0" layoutY="183.0" mnemonicParsing="false" onAction="#user" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Users " textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="product" layoutX="2.0" layoutY="220.0" mnemonicParsing="false" onAction="#product" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Products" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="fournisseur" layoutX="3.0" layoutY="402.0" mnemonicParsing="false" onAction="#fournisseur" prefWidth="178.0" styleClass="menu-btn" text="Fournisseurs" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="publicite" layoutX="3.0" layoutY="438.0" mnemonicParsing="false" onAction="#publicite" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Publicites" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="home" layoutX="-1.0" layoutY="145.0" mnemonicParsing="false" onAction="#home" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Home" textFill="#07ff62">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="depense" layoutX="2.0" layoutY="477.0" mnemonicParsing="false" onAction="#depense" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Depenses" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="categorie" layoutY="518.0" mnemonicParsing="false" onAction="#categorie" prefWidth="178.0" styleClass="menu-btn" stylesheets="@back.css" text="Categories" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="17.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children></VBox>
+      <ImageView fitHeight="620.0" fitWidth="729.0" layoutX="211.0" layoutY="-1.0" opacity="0.61">
+         <image>
+           
+            <Image url="file:///C:/Users/azizb/Downloads/pie.jpg" />
+         </image>
+      </ImageView>
+      <PieChart fx:id="pieChart" layoutX="238.0" layoutY="111.0" prefHeight="405.0" prefWidth="531.0" />
+      <Label layoutX="225.0" layoutY="58.0" style="-fx-background-color: #F5F5DC;" text="LES PRIX DES PRODUITS PAR RAPPORT AU STOCK" textFill="#5dc21d">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="28.0" />
+         </font>
+      </Label>
+      <Button fx:id="calc" layoutX="869.0" layoutY="524.0" mnemonicParsing="false" onAction="#calculator" prefHeight="43.0" prefWidth="38.0" textFill="#efe0c4">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="close" layoutX="915.0" layoutY="6.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="24.0" />
+   </children>
+</AnchorPane>

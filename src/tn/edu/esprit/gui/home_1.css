@@ -1,0 +1,85 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 13 avr. 2023, 16:44:34
+    Author     : SOUISSI
+*/
+
+.side_menu{
+    -fx-background-color: linear-gradient(to bottom right, #177540,#4cc744);
+    -fx-border-color: transparent;
+    -fx-border-width: 2px 2px 2px 2px; 
+    -fx_border_radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+}
+.menu-btn{
+    -fx-background-color: transparent;
+    
+}
+.menu-btn:hover{
+    -fx-background-color: #bfb6b6;
+}
+.menu1-btn{
+    -fx-background-color: transparent;
+    
+}
+.menu1-btn:hover{
+    -fx-background-color: #bfb6b6;
+}
+
+.menu2-btn{
+    -fx-background-color: transparent;
+    
+}
+.menu2-btn:hover{
+    -fx-background-color: #bfb6b6;
+}
+
+.menu3-btn{
+    -fx-background-color: transparent;
+    
+}
+.msg-btn{
+    -fx-background-color:  #afdfbd;
+    
+}
+.menu3-btn:hover{
+    -fx-background-color: #bfb6b6;
+}
+
+.pane{
+    -fx-background-color: linear-gradient(to bottom right,  #ffbb00,#d74444);
+    -fx-border-color: transparent;
+    -fx-border-width: 2px 2px 2px 2px; 
+    -fx_border_radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+}
+
+    .tfModifier_btn{
+        -fx-background-color: #84c943;
+        -fx-background-radius: 50px;
+
+
+    }
+    .tfModifier_btn:hover{
+        -fx-background-color: #4cc744;
+        -fx-background-radius: 50px;
+    }
+
+.profilePic{
+    -fx-background-radius: 50%;
+    -fx-background-color: white;
+    -fx-border-radius: 50%;
+    -fx-border-color: black;
+    -fx-border-width: 3px;
+}
+.circular-image {
+    -fx-background-radius: 50%;
+    -fx-background-color: white;
+    -fx-background-size: cover;
+}

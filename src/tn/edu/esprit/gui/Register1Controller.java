@@ -5,7 +5,7 @@
  */
 package tn.edu.esprit.gui;
 
-import tn.edu.esprit.entites.User;
+import tn.edu.esprit.entities.User;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -112,12 +112,20 @@ public class Register1Controller implements Initializable {
     private Label URLImage;
     @FXML
     private Button takePhoto_btn;
+    @FXML
+    private Button close;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+          close.setStyle("-fx-background-image: url('file:///C:/Users/azizb/Downloads/close.png');-fx-background-size: 100% 100%;");
+
+    close.setOnAction(event -> {
+    Stage stage = (Stage) close.getScene().getWindow();
+    stage.close();
+});
         // TODO
     }
 

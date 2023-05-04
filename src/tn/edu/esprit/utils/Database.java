@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  * @author ghada
  */
 public class Database {
-        private final  String URL="jdbc:mysql://localhost:3306/pidev";
+        private final  String URL="jdbc:mysql://localhost:3306/pidev1";
     private final String LOGIN="root";
     private final String PWD="";
     Connection cnx;
@@ -28,7 +28,7 @@ public class Database {
         }       
     }
     public static Database getInstance() {
-        if(instance == null)
+        if(instance == null)    
             instance = new Database();
         return instance;
     }

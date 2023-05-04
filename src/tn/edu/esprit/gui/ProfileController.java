@@ -32,9 +32,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-import tn.edu.esprit.entites.Client;
-import tn.edu.esprit.entites.Server;
-import tn.edu.esprit.entites.User;
+import tn.edu.esprit.entities.Client;
+import tn.edu.esprit.entities.Server;
+import tn.edu.esprit.entities.User;
 import tn.edu.esprit.services.ServiceUser;
 
 /**
@@ -62,6 +62,16 @@ public class ProfileController implements Initializable {
     private Button btnSupprimer;
     @FXML
     private ComboBox<String> rechercheComboBox;
+    @FXML
+    private Button menu_btn;
+    @FXML
+    private Button product;
+    @FXML
+    private Button user1;
+    @FXML
+    private Button messagerie;
+    @FXML
+    private Button close;
 
     /**
      * Initializes the controller class.
@@ -69,6 +79,14 @@ public class ProfileController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
+              close.setStyle("-fx-background-image: url('file:///C:/Users/azizb/Downloads/close.png');-fx-background-size: 100% 100%;");
+
+    close.setOnAction(event -> {
+    Stage stage = (Stage) close.getScene().getWindow();
+    stage.close();
+});
+        
         ServiceUser serviceUser = new ServiceUser();
         rechercheComboBox.setEditable(true);
         rechercheComboBox.setButtonCell(new ListCell<>());
@@ -108,6 +126,7 @@ public class ProfileController implements Initializable {
     public void setTextAdresse(String message) {
         this.AdresseAcc.setText(message);
     }
+    
 
     private User user;
 
@@ -253,7 +272,6 @@ public class ProfileController implements Initializable {
 
     }
 
-    @FXML
     void sendMsg2(ActionEvent event) {
 
         try {
@@ -271,6 +289,69 @@ public class ProfileController implements Initializable {
             e.printStackTrace();
         }
 
+    }
+
+ 
+
+    @FXML
+    private void product(ActionEvent event) {
+         try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ListProduct.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+// assuming you have a reference to the button object
+        Stage stage = (Stage) product.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    }
+
+    @FXML
+    private void home(ActionEvent event) {
+        try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("homeprod.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+// assuming you have a reference to the button object
+        Stage stage = (Stage) menu_btn.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    }
+
+
+    @FXML
+    private void user1(ActionEvent event) {
+          try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Profile.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+// assuming you have a reference to the button object
+        Stage stage = (Stage) user1.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    }
+
+    @FXML
+    private void messagerie(ActionEvent event) {
+          try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Client.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+// assuming you have a reference to the button object
+        Stage stage = (Stage) menu_btn.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
     }
 
 }
