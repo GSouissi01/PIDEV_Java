@@ -294,7 +294,7 @@ for (Produit produit : listdata.getProduit()) {
     productImage.setPickOnBounds(true);
     productImage.setPreserveRatio(true);
 
-    String imageFile = "C:\\xampp\\htdocs\\produit_final\\produit\\public\\images\\product\\" + produit.getImageFile();
+    String imageFile = "C:\\xampp\\htdocs\\produit_final\\public\\images\\product\\" + produit.getImageFile();
     Image image = new Image(new File(imageFile).toURI().toString());
     productImage.setImage(image);
 
@@ -347,7 +347,7 @@ if ("active".equals(produit.getPromotion().getStatus())) {
     shareButton.setOnAction(event -> {
         String appId = "743598390581805";
         String appSecret = "94797061bde2cb22a19d29ab89c47ab2";
-        String accessToken = "EAAKkTH3tGi0BAHnGYGunCWgCjWyLZAF3yzOacvQp2ZBbrpK50msAbpMPrSNZCMHR37iyzoE87MDW0HLZCY89MHnyOjHn5TZBoDlUzliYYnp0yp9E8x3SoewwIxvAkY941DMFyWwqAESmVUG6c2BUQZABSdZASksbU996FLMver3yGXlRlHNjsLS";
+        String accessToken = "EAAKkTH3tGi0BABbVn0dz0zFSNheh8a5yZBamSaGq66WsPB2ZB4mmvvmYAu15QUZBifK94patZBerDONM1yk1YLAXkHSNB5N4UXou0SFFpZC3ZBvLkZCRJ1KBcZAb13RcI3dUjCEfkZByCWZBWJPtfc9HZCqu4tZBD94f4ZCAPzW7yWdP1xBoBQNoDDF64";
         FacebookClient fbClient = new DefaultFacebookClient(accessToken, appSecret, Version.LATEST);
 
         // Convert image to byte array
@@ -484,7 +484,7 @@ for (CartItem cartItem : cartItems) {
      ImageView productImage = new ImageView();
     productImage.setFitHeight(50);
     productImage.setPreserveRatio(true);
-    String imageFile = "C:\\xampp\\htdocs\\produit_final\\produit\\public\\images\\product\\" + cartItem.getProduct().getImageFile();
+    String imageFile = "C:\\xampp\\htdocs\\produit_final\\public\\images\\product\\" + cartItem.getProduct().getImageFile();
     Image image = new Image(new File(imageFile).toURI().toString());
     productImage.setImage(image);
     
@@ -865,7 +865,7 @@ private void filterProduits() {
         productImage.setPickOnBounds(true);
         productImage.setPreserveRatio(true);
 
-        String imageFile = "C:\\xampp\\htdocs\\produit_final\\produit\\public\\images\\product\\" + produit.getImageFile();
+        String imageFile = "C:\\xampp\\htdocs\\produit_final\\public\\images\\product\\" + produit.getImageFile();
         Image image = new Image(new File(imageFile).toURI().toString());
         productImage.setImage(image);
 

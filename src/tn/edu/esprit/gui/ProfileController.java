@@ -159,14 +159,14 @@ public class ProfileController implements Initializable {
         AdresseAcc.setText(adresseSup);
 
         // Set the profile picture
-        Image profilePicture = su.getProfilePic(imagePath);
+        /*Image profilePicture = su.getProfilePic(imagePath);
         if (profilePicture != null) {
             this.profilePic.setImage(profilePicture);
             double radius = 50.0;
                 Circle clip = new Circle(radius, radius, radius);
                 clip.setFill(Color.WHITE);
                 profilePic.setClip(clip);
-        }
+        }*/
     }
 
     @FXML

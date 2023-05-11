@@ -86,11 +86,11 @@ public class ServiceUser implements IUser<User> {
         return image;
     }
 
-    public void ajouter(User u) {
+      public void ajouter(User u) {
         try {
             // Hash the password
             String hashedPassword = PasswordHasher.hashPassword(u.getPassword());
-            
+           
             String req = "INSERT INTO user (email, password, tel, nom, prenom, nom_sup, adresse_sup, imagePath) VALUES ('" + u.getEmail() + "', '" + hashedPassword + "','" + u.getTel() + "','" + u.getNom() + "','" + u.getPrenom() + "','" + u.getNomSup() + "','" + u.getAdresseSup() + "','" + u.getImagePath() + "')";
             Statement st = cnx.createStatement();
             st.executeUpdate(req);
@@ -163,27 +163,29 @@ public class ServiceUser implements IUser<User> {
         }
     }
 
-    public User login(String email, String password) {
+    
+public User login(String email, String password) {
     try {
-        String hashedPassword = PasswordHasher.hashPassword(password);
-        String req = "SELECT * FROM user WHERE email = ? AND password = ?";
+        String req = "SELECT * FROM user WHERE email = ?";
         PreparedStatement stmt = cnx.prepareStatement(req);
         stmt.setString(1, email);
-        stmt.setString(2, hashedPassword);
         ResultSet rs = stmt.executeQuery();
         if (rs.next()) {
-            User u = new User();
-            u.setId(rs.getInt("id"));
-            u.setEmail(rs.getString("email"));
-            u.setPassword(rs.getString("password"));
-            u.setNom(rs.getString("nom"));
-            u.setPrenom(rs.getString("prenom"));
-            u.setTel(rs.getInt("tel"));
-            u.setNomSup(rs.getString("nom_sup"));
-            u.setAdresseSup(rs.getString("adresse_sup"));
-            u.setImagePath(rs.getString("imagePath"));
-            u.setRole(rs.getString("role")); // Ajout de la colonne "role"
-            return u;
+            String hashedPassword = rs.getString("password");
+            if (PasswordHasher.verifyPassword(password, hashedPassword)) {
+                User u = new User();
+                u.setId(rs.getInt("id"));
+                u.setEmail(rs.getString("email"));
+                u.setPassword(rs.getString("password"));
+                u.setNom(rs.getString("nom"));
+                u.setPrenom(rs.getString("prenom"));
+                u.setTel(rs.getInt("tel"));
+                u.setNomSup(rs.getString("nom_sup"));
+                u.setAdresseSup(rs.getString("adresse_sup"));
+                u.setImagePath(rs.getString("imagePath"));
+                u.setRole(rs.getString("role")); // Ajout de la colonne "role"
+                return u;
+            }
         }
     } catch (SQLException ex) {
         System.out.println(ex.getMessage());

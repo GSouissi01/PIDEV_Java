@@ -33,7 +33,7 @@ public class MainClass extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         // Load homeprod.fxml
-  FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("../gui/Register1.fxml"));
+  FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/tn/edu/esprit/gui/Register1.fxml"));
 Parent homeRoot = homeLoader.load();
 Scene homeScene = new Scene(homeRoot);
 

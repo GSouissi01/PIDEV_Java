@@ -89,12 +89,7 @@ public class PieChartController implements Initializable {
          Media media = new Media(new File("C:\\Users\\azizb\\Downloads\\sound.mp3").toURI().toString());
 
     // Ajouter un événement de souris pour jouer le son lors du survol du bouton "menu_btn"
-    menu_btn.setOnMouseEntered(e -> {
-        // Créer un nouveau MediaPlayer pour chaque événement de souris
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.play();
-    });
-    
+  
     // Ajouter un événement de souris pour jouer le son lors du survol du bouton "promotion"
     promotion.setOnMouseEntered(e -> {
         // Créer un nouveau MediaPlayer pour chaque événement de souris

@@ -240,7 +240,7 @@ public class Login1Controller implements Initializable {
 
             if (u.getRole().equals("ADMIN")) {
                 // redirect to backend page
-                Parent root = FXMLLoader.load(getClass().getResource("../gui/dash.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("dash.fxml"));
                 Scene scene = new Scene(root);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);

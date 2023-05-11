@@ -279,7 +279,7 @@ test.setStyle("-fx-background-color: transparent; -fx-background-image: url('fil
  
 
     img.setCellValueFactory(cellData -> {
-        String imageFile = "C:\\xampp\\htdocs\\produit_final\\produit\\public\\images\\product\\" + cellData.getValue().getImageFile();
+        String imageFile = "C:\\xampp\\htdocs\\produit_final\\public\\images\\product\\" + cellData.getValue().getImageFile();
         Image image = new Image(new File(imageFile).toURI().toString());
         ImageView imageView = new ImageView(image);
         imageView.setFitWidth(50);
@@ -563,7 +563,7 @@ JLabel label = new JLabel(new ImageIcon(bufferedImage));
             Produit produit = TableProduit.getSelectionModel().getSelectedItem();
               
 
-            String path = "C:\\xampp\\htdocs\\produit_final\\produit\\public\\images\\product\\" + produit.getImageFile();
+            String path = "C:\\xampp\\htdocs\\produit_final\\public\\images\\product\\" + produit.getImageFile();
             File file = new File(path);
             URLImage.setText(path);
             Image img = new Image(file.toURI().toString());
@@ -605,7 +605,7 @@ JLabel label = new JLabel(new ImageIcon(bufferedImage));
 
         Produit produit = TableProduit.getSelectionModel().getSelectedItem();
         combo.getSelectionModel().select(produit.getPromotion().getTitre());
-        String path = "C:\\xampp\\htdocs\\produit_final\\produit\\public\\images\\product\\" + produit.getImageFile();
+        String path = "C:\\xampp\\htdocs\\produit_final\\public\\images\\product\\\\" + produit.getImageFile();
          String path1 =  produit.getImageFile();
         File file = new File(path);
         URLImage.setText(path1);

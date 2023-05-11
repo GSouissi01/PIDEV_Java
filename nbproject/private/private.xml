@@ -3,113 +3,88 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/contrat.fxml</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/Client.fxml</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/MaAnimation.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/services/IUser.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/cat.fxml</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/entities/Server.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/catController.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/fournisseuradd.fxml</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/home.css</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/Register1Controller.java</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/build.xml</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/Style.css</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/ProfileController.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/typecontrat.fxml</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/listcss.css</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/contratController.java</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/services/TwilioService.java</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/services/ServiceProduct.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/entities/TypeContrat.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/test_1.fxml</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/typecontratAddController.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/StatController.java</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/home_1.css</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/homeprodController.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/Login1Controller.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/contratadd.fxml</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/CartController.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/BackReclamController.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/fournisseurAddController.java</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/BackEndController.java</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/register.css</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/services/ServiceUser.java</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/entities/Cart.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/AddReclamController.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/AddPromotion.fxml</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/services/DepenseCRUD.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/entities/Client.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/dialog/PasswordDialog.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/home.fxml</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/entities/publicite.java</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/com/edu/project/fournisseur/fournisseurAddController.java</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/tests/ClientApp.java</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/typecontratController.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/tests/ServerApp.java</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/AddProductController.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/AppSecretProofGenerator.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/ListData.java</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/services/ServiceReclamation.java</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/DashController.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/entities/Categorie.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/depController.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/messenger.css</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/fournisseurController.java</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/entities/CartItem.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/contratAddController.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/ListProduct.fxml</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/entities/Promotion.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/Styleadd.css</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/PDFGenerator.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/entities/Produit.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/ServerController.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/services/ipromotion.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/entities/contrat.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/AddReclam.fxml</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/RatingControl.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/publiciteController.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/tests/ProductWindow.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/PieChartController.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/JavaFX_QRCodeWriter.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/MatrixToImageWriter.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/UserController.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/BackEnd.fxml</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/back_1.css</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/entities/Reclamation.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/entities/PasswordHasher.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/entities/Depense.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/stat.fxml</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/tests/MainClass.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/publiciteAdd.fxml</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/UpdateProductController.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/MaAnimation.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/Profile.fxml</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/entities/Server.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/home.css</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/Register1Controller.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/build.xml</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/listcss.css</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/contratController.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/services/ServiceProduct.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/Login1.fxml</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/typecontratAddController.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/home_1.css</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/homeprodController.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/BackEndController.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/register.css</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/entities/Cart.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/fournisseur.fxml</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/Server.fxml</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/services/DepenseCRUD.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/com/edu/project/fournisseur/fournisseurAddController.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/homeprod.fxml</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/tests/ClientApp.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/typecontratController.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/AddProductController.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/services/ServiceReclamation.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/DashController.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/fournisseurController.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/entities/CartItem.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/entities/Promotion.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/VideoController.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/entities/User.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/publiciteAddController.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/publicite.fxml</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/entities/PasswordResetToken.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/typecontratAdd.fxml</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/RatingControl.java</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/publiciteController.java</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/tests/ProductWindow.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/utils/Database.java</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/PieChartController.java</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/JavaFX_QRCodeWriter.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/calculatorController.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/ClientController.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/utils/MyConnection.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/depense.fxml</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/calculator.fxml</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/ListProductController.java</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/MatrixToImageWriter.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/services/ServicePromotion.java</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/UserController.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/entities/fournisseur.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/AddPromotionController.java</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/BackReclam.fxml</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/back_1.css</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/entities/Reclamation.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/HomeController.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/field.css</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/entities/PasswordHasher.java</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/entities/Depense.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/services/IProduct.java</file>
             <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/back.css</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/Register1.fxml</file>
-            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/dash.fxml</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/tests/MainClass.java</file>
+            <file>file:/C:/Users/azizb/Downloads/Product/Product/src/tn/edu/esprit/gui/UpdateProductController.java</file>
         </group>
     </open-files>
 </project-private>

@@ -5,29 +5,21 @@
  */
 package tn.edu.esprit.entities;
 
-/**
- *
- * @author SOUISSI
- */
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import org.mindrot.jbcrypt.BCrypt;
+
+
+ 
+
 
 public class PasswordHasher {
-    
-    public static String hashPassword(String password) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-256");
-            byte[] hashedBytes = md.digest(password.getBytes());
-            
-            StringBuilder sb = new StringBuilder();
-            for (byte b : hashedBytes) {
-                sb.append(String.format("%02x", b));
-            }
-            
-            return sb.toString();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
+ 
+  public static String hashPassword(String password) {
+    String salt = BCrypt.gensalt(12);
+    String hashedPassword = BCrypt.hashpw(password, salt);
+    return hashedPassword;
+  }
+ 
+  public static boolean verifyPassword(String password, String hashedPassword) {
+    return BCrypt.checkpw(password, hashedPassword.replaceFirst("\\$2y\\$", "\\$2a\\$"));
+  }
 }
